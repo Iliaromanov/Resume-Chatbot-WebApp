@@ -4,7 +4,6 @@ import pickle
 import numpy as np
 
 from flask import Flask, redirect, render_template, request, session
-from flask_session import Session
 
 import nltk
 from nltk.corpus import wordnet
