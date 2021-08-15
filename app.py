@@ -10,6 +10,10 @@ import nltk
 from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer
 
+# Necessary downloads
+nltk.download('punkt', quiet=True)
+nltk.download('wordnet', quiet=True)
+
 from typing import List
 
 
