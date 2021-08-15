@@ -61,7 +61,7 @@
     <div id="chatbot_window">
         <div id="chat_history"></div>
         <div id="input_window">
-            <form id="message_form" onsubmit="getChatbotResponse();" autocomplete="off">
+            <form id="message_form" onsubmit="getChatbotResponse()" autocomplete="off">
                 <input id="message" type="text" placeholder="Type your message here">
                 <input type="button" value="Send" onclick="getChatbotResponse()">
             </form>
@@ -75,8 +75,10 @@
         function stopRefresh(event) {event.preventDefault();}
         msgForm.addEventListener('submit', stopRefresh)
 
-        let chatHistoryDiv = document.getElementById("chat_history")
-        chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight
+        function scrollDown() {
+            let chatHistoryDiv = document.getElementById("chat_history")
+            chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight
+        }
 
         function getChatbotResponse() {
             /* Sends POST request to Flask route that passes msg to the DNN model and returns prediction results
@@ -101,11 +103,13 @@
             sentMsgDiv.className = "user_sent_msg"
 
             chatHistoryDiv.appendChild(sentMsgDiv)
+            scrollDown()
 
             fetch(`/get_response?msg=${msg}`, {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then((response) => {
+                console.log(response)
                 return response.json()
             }).then((data) => {
                 let probs = data.top_three_predictions
@@ -121,6 +125,7 @@
                 responseMsgDiv.className = "chatbot_response"
 
                 chatHistoryDiv.appendChild(responseMsgDiv)
+                scrollDown()
             })
 
             document.getElementById("message").value = ''; // empty the input box
