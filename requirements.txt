@@ -1,5 +1,4 @@
 gunicorn==20.0.4
 Flask==1.1.2
-nltk==3.5
 numpy==1.19.2
 tensorflow==2.4.1

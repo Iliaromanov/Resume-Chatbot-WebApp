@@ -1,24 +1,11 @@
-import nltk
-from nltk.corpus import wordnet
-from nltk.stem import WordNetLemmatizer
+import pickle
 
 import numpy as np
 from typing import List
 
 
-def nltk_POS_lemmatizer(sentence: str) -> List[str]:
-    tag_dict = {
-        "J": wordnet.ADJ,
-        "N": wordnet.NOUN,
-        "V": wordnet.VERB,
-        "R": wordnet.ADV
-    }
-    lemmatizer = WordNetLemmatizer()
-    tokens = nltk.word_tokenize(sentence)
-    token_tag_pairs = nltk.pos_tag(tokens)
-
-    return [lemmatizer.lemmatize(token[0], tag_dict.get(token[1][0], wordnet.NOUN)).lower()
-            for token in token_tag_pairs if token[0] not in "?!,."]
+# Save this to a pickle file cus not enough space on heroku
+nltk_POS_lemmatizer = pickle.load(open('nltk_POS_lemmatizer.pkl', 'rb'))
 
 
 def bag_words(sentence, known_words):
