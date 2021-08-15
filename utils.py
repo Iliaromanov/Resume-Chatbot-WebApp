@@ -2,10 +2,6 @@ import nltk
 from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer
 
-# Necessary downloads
-nltk.download('punkt', quiet=True)
-nltk.download('wordnet', quiet=True)
-
 import numpy as np
 from typing import List
 
