@@ -1,20 +1,9 @@
 import tensorflow as tf
-# from model.nlp_pipelines import nltk_POS_lemmatizer
 import pickle
 import numpy as np
-
 from flask import Flask, redirect, render_template, request, session
 
-import nltk
-from nltk.corpus import wordnet
-from nltk.stem import WordNetLemmatizer
-
-# Necessary downloads
-nltk.download('punkt', quiet=True)
-nltk.download('wordnet', quiet=True)
-
-from typing import List
-
+from utils import bag_words
 
 app = Flask(__name__)
 
@@ -48,35 +37,6 @@ def get_response():
         "top_three_predictions": probs_top_three,
         "chatbot_response": None
     }
-
-
-def bag_words(sentence, known_words):
-    bag = [0] * len(known_words)
-
-    word_pattern = nltk_POS_lemmatizer(sentence)
-
-    for new_word in word_pattern:
-        for i, word in enumerate(known_words):
-            if new_word == word:
-                bag[i] = 1
-
-    return np.array(bag)
-
-
-def nltk_POS_lemmatizer(sentence: str) -> List[str]:
-    tag_dict = {
-        "J": wordnet.ADJ,
-        "N": wordnet.NOUN,
-        "V": wordnet.VERB,
-        "R": wordnet.ADV
-    }
-    lemmatizer = WordNetLemmatizer()
-    tokens = nltk.word_tokenize(sentence)
-    token_tag_pairs = nltk.pos_tag(tokens)
-
-    return [lemmatizer.lemmatize(token[0], tag_dict.get(token[1][0], wordnet.NOUN)).lower() 
-            for token in token_tag_pairs if token[0] not in "?!,."]
-
 
 
 if __name__ == "__main__":
