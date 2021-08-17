@@ -1,4 +1,4 @@
-import keras
+import tensorflow as tf
 import pickle
 from flask import Flask, redirect, render_template, request, session
 
@@ -19,7 +19,7 @@ def index():
 @app.route("/get_response", methods=["POST"])
 def get_response():
     model_path = r'./adam_model_2'
-    model = keras.models.load_model(model_path)
+    model = tf.keras.models.load_model(model_path)
     words = pickle.load(open(f'{model_path}/words.pkl', 'rb'))
     classes = pickle.load(open(f'{model_path}/classes.pkl', 'rb'))
 
