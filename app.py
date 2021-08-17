@@ -5,6 +5,12 @@ from flask import Flask, redirect, render_template, request, session
 import numpy as np
 from utils import bag_words
 
+import nltk
+# Necessary downloads
+nltk.download('punkt', quiet=True)
+nltk.download('wordnet', quiet=True)
+
+
 app = Flask(__name__)
 
 # Ensure templates are auto-reloaded
