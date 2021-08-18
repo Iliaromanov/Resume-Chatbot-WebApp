@@ -1,3 +1,12 @@
+body {
+    background-image:url('images/chatbotBackground.gif');
+    background-repeat:repeat;
+    background-size: cover;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
 #chatbot_window {
     display: grid;
     grid-template-columns: auto;
@@ -10,13 +19,16 @@
     left: 30%;
     border: 2px solid black;
     border-radius: 5px 5px 5px 5px;
+    background-color: aliceblue;
 }
 #chat_history {
     padding: 5px;
     position: relative;
     overflow-y: auto;
+    scrollbar-width: 0px;
     border: 2px solid black;
     border-radius: 5px 5px 5px 5px;
+    background-color: rgba(54, 46, 46, 0.959);
 }
 #message {
     width: 80%;

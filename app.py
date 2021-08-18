@@ -19,7 +19,7 @@ def index():
 
 @app.route("/get_response", methods=["POST"])
 def get_response():
-    model_path = r'./adam_model_2'
+    model_path = r'./keras_DNN_model'
     model = tf.keras.models.load_model(model_path)
     words = pickle.load(open(f'{model_path}/words.pkl', 'rb'))
     classes = pickle.load(open(f'{model_path}/classes.pkl', 'rb'))
