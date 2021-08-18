@@ -1,6 +1,7 @@
 import tensorflow as tf
 import pickle
-from flask import Flask, redirect, render_template, request, session
+from flask import Flask, render_template, request
+import requests
 
 import numpy as np
 from utils import bag_words
@@ -28,9 +29,16 @@ def get_response():
     model = tf.keras.models.load_model(model_path)
     words = pickle.load(open(f'{model_path}/words.pkl', 'rb'))
     classes = pickle.load(open(f'{model_path}/classes.pkl', 'rb'))
-
     sentence = request.args["msg"]
-    bag = bag_words(sentence, words)
+
+    # contact created nlp-pipeline-API to get a bag of words
+    url = "https://nlp-pipeline-api.herokuapp.com/"
+    payload = {
+        "sentence": sentence,
+        "known_words": words
+    }
+    response = requests.post(url, json=payload).json()
+    bag = response["bag"]
 
     result = model.predict(np.array([bag]))[0]
     probs = {classes[i]: prob for i, prob in enumerate(result)}
