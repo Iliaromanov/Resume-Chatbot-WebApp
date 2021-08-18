@@ -4,12 +4,6 @@ from flask import Flask, render_template, request
 import requests
 
 import numpy as np
-from utils import bag_words
-
-import nltk
-# Necessary downloads
-nltk.download('punkt', quiet=True)
-nltk.download('wordnet', quiet=True)
 
 
 app = Flask(__name__)
