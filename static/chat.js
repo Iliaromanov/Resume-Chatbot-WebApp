@@ -33,6 +33,8 @@ function getChatbotResponse() {
     chatHistoryDiv.appendChild(sentMsgDiv)
     scrollDown()
 
+    console.log(msg)
+
     fetch(`/get_response?msg=${msg}`, {
         method: "POST",
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
