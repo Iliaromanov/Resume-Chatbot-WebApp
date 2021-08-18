@@ -3,59 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Ilia's Resume Chatbot</title>
-
-    <style>
-        #chatbot_window {
-            display: grid;
-            grid-template-columns: auto;
-            grid-template-rows: auto 25px;
-            position: absolute;
-            padding: 5px;
-            height: 80%;
-            width: 40%;
-            top: 7%;
-            left: 30%;
-            border: 2px solid black;
-            border-radius: 5px 5px 5px 5px;
-        }
-        #chat_history {
-            padding: 5px;
-            position: relative;
-            overflow-y: auto;
-            border: 2px solid black;
-            border-radius: 5px 5px 5px 5px;
-        }
-        #message {
-            width: 80%;
-        }
-        .user_sent_msg {
-            float: right;
-            padding-left: 10px;
-            padding-right: 10px;
-            word-break: break-word;
-            border-radius: 10px 10px 0px 10px;
-            background-color: #f1eded;
-            font-family: 'Lato', sans-serif;
-            max-width: 80%;
-            min-width: 25%;
-            margin-bottom: 5px;
-            margin-top: 5px;
-            margin-left: 50%;
-        }
-        .chatbot_response {
-            float: left;
-            padding-left: 10px;
-            padding-right: 10px;
-            word-break: break-word;
-            border-radius: 10px 10px 10px 0px;
-            background-color: #94f1ef;
-            font-family: 'Lato', sans-serif;
-            max-width: 80%;
-            min-width: 25%;
-            margin-bottom: 5px;
-            margin-top: 5px;
-        }
-    </style>
+    <link href="/static/chatStyle.css" rel="stylesheet">
 </head>
 <body>
     <div id="chatbot_window">
