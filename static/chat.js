@@ -12,7 +12,7 @@ function getChatbotResponse() {
     /* Sends POST request to Flask route that passes msg to the DNN model and returns prediction results
        then updates chat history div
     */
-    let msg = document.getElementById("message").value
+    let msg = document.getElementById("userInputBox").value
     let chatHistoryDiv = document.getElementById("chat_history")
     console.log(msg)
 
@@ -21,9 +21,10 @@ function getChatbotResponse() {
     }
 
     let sentMsgDiv = document.createElement("div")
-    let innerTag = document.createElement("p")
+    /**/
     let innerTag1 = document.createElement("p")
     innerTag1.innerHTML = "You"
+
     let innerTag2 = document.createElement("p")
     innerTag2.innerHTML = msg
     sentMsgDiv.appendChild(innerTag1)
@@ -45,18 +46,29 @@ function getChatbotResponse() {
         let probs = data.top_three_predictions
         console.log(probs)
 
+        let responseContainer = document.createElement("div")
+        responseContainer.className = "responseContainer"
+        let chatbotImg = document.createElement("img")
+        chatbotImg.className = "chatbotImg"
+        chatbotImg.src = "https://cdn.dribbble.com/users/37530/screenshots/2937858/drib_blink_bot.gif"
+        responseContainer.appendChild(chatbotImg)
+
         let responseMsgDiv = document.createElement("div")
+        /**/
         let innerTag1 = document.createElement("p")
         innerTag1.innerHTML = "Chatbot"
+
         let innerTag2 = document.createElement("p")
         innerTag2.innerHTML = JSON.stringify(probs)
         responseMsgDiv.appendChild(innerTag1)
         responseMsgDiv.appendChild(innerTag2)
         responseMsgDiv.className = "chatbot_response"
+        responseContainer.appendChild(responseMsgDiv)
 
-        chatHistoryDiv.appendChild(responseMsgDiv)
+
+        chatHistoryDiv.appendChild(responseContainer)
         scrollDown()
     })
 
-    document.getElementById("message").value = ''; // empty the input box
+    document.getElementById("userInputBox").value = ''; // empty the input box
 }
