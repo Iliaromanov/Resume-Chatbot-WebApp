@@ -16,10 +16,8 @@ function fetchChatbotResponse(responseDiv, msg) {
     loadingGif.className = "loadingGif"
     responseDiv.appendChild(loadingGif)
 
-    console.log(responseDiv.scrollHeight)
-
     scrollDown()
-    
+
     return fetch(`/get_response?msg=${msg}`, {
         method: "POST",
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -66,11 +64,11 @@ function showChatbotResponse() {
     chatHistoryDiv.appendChild(responseContainer)
 
     fetchChatbotResponse(responseMsgDiv, msg).then((response) => {
+        console.log(response)
 
         let loadingGif = responseMsgDiv.getElementsByClassName("loadingGif")[0]
         loadingGif.remove()
 
-        console.log(response)
         return response.json()
     }).then((data) => {
         let probs = data.top_three_predictions
@@ -93,6 +91,8 @@ function showChatbotResponse() {
         responseContainer.appendChild(responseMsgDiv)
 
         scrollDown()
+    }).catch((e) => {
+        console.log(e)
     })/**/
 
     document.getElementById("userInputBox").value = ''; // empty the input box
