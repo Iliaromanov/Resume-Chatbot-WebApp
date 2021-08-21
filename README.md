@@ -3,5 +3,5 @@ A web app that uses my Resume Chatbot neural network model to answer questions r
 
 To see the development and training process of the model used in this web app or to use the CLI version of the Chatbot go to https://github.com/Iliaromanov/Resume-Chatbot-Model
 
-
+<img src="https://img.shields.io/badge/-JavaScript-yellow" /> <img src="https://img.shields.io/badge/-Python-blue" /> <img src="https://img.shields.io/badge/-Flask-light_green" /> <img src="https://img.shields.io/badge/-Tensorflow-orange" /> <img src="https://img.shields.io/badge/-NLTK-dark_green" /> <img src="https://img.shields.io/badge/-HTML5-red" /> <img src="https://img.shields.io/badge/-CSS-purple" />
 
