@@ -8,13 +8,18 @@ function scrollDown() {
     chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight
 }
 
-function fetchChatbotResponse(responseDiv, msg) {
+function fetchChatbotResponse(chatDiv, responseDiv, msg) {
     let loadingGif = document.createElement("img")
     loadingGif.src = "/static/images/grey_circles-loading.gif"
     console.log(loadingGif.src)
     loadingGif.alt = "Loading..."
     loadingGif.className = "loadingGif"
     responseDiv.appendChild(loadingGif)
+
+    // Create a div for widgets like project cards, experiences ... to add to it later
+    //   (doing it here so that its under the response message later
+    let widgetDiv = document.createElement("div")
+    chatDiv.appendChild(widgetDiv)
 
     scrollDown()
 
@@ -63,7 +68,8 @@ function showChatbotResponse() {
     responseContainer.appendChild(responseMsgDiv)
     chatHistoryDiv.appendChild(responseContainer)
 
-    fetchChatbotResponse(responseMsgDiv, msg).then((response) => {
+    fetchChatbotResponse(chatHistoryDiv, responseMsgDiv, msg)
+      .then((response) => {
         console.log(response)
 
         let loadingGif = responseMsgDiv.getElementsByClassName("loadingGif")[0]
@@ -92,6 +98,9 @@ function showChatbotResponse() {
 
         scrollDown()
     }).catch((e) => {
+        let whoopsTag = document.createElement("p")
+        whoopsTag.innerHTML = "Whoops something went wrong. Please try again."
+        responseMsgDiv.appendChild(whoopsTag)
         console.log(e)
     })/**/
 
