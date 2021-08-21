@@ -8,7 +8,25 @@ function scrollDown() {
     chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight
 }
 
-function getChatbotResponse() {
+function fetchChatbotResponse(responseDiv, msg) {
+    let loadingGif = document.createElement("img")
+    loadingGif.src = "/static/images/grey_circles-loading.gif"
+    console.log(loadingGif.src)
+    loadingGif.alt = "Loading..."
+    loadingGif.className = "loadingGif"
+    responseDiv.appendChild(loadingGif)
+
+    console.log(responseDiv.scrollHeight)
+
+    scrollDown()
+    
+    return fetch(`/get_response?msg=${msg}`, {
+        method: "POST",
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    })
+}
+
+function showChatbotResponse() {
     /* Sends POST request to Flask route that passes msg to the DNN model and returns prediction results
        then updates chat history div
     */
@@ -21,54 +39,61 @@ function getChatbotResponse() {
     }
 
     let sentMsgDiv = document.createElement("div")
-    /**/
-    let innerTag1 = document.createElement("p")
-    innerTag1.innerHTML = "You"
+    /*
+    let youTag = document.createElement("p")
+    youTag.innerHTML = "You"
+    sentMsgDiv.appendChild(youTag)*/
 
-    let innerTag2 = document.createElement("p")
-    innerTag2.innerHTML = msg
-    sentMsgDiv.appendChild(innerTag1)
-    sentMsgDiv.appendChild(innerTag2)
+    let youMsg = document.createElement("p")
+    youMsg.innerHTML = msg
+    sentMsgDiv.appendChild(youMsg)
     sentMsgDiv.className = "user_sent_msg"
 
     chatHistoryDiv.appendChild(sentMsgDiv)
     scrollDown()
 
-    console.log(msg)
+    // Prepare response div and pass it to the fetch function
+    let responseContainer = document.createElement("div")
+    responseContainer.className = "responseContainer"
+    let chatbotImg = document.createElement("img")
+    chatbotImg.className = "chatbotImg"
+    chatbotImg.src = "https://cdn.dribbble.com/users/37530/screenshots/2937858/drib_blink_bot.gif"
+    responseContainer.appendChild(chatbotImg)
 
-    fetch(`/get_response?msg=${msg}`, {
-        method: "POST",
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-    }).then((response) => {
+    let responseMsgDiv = document.createElement("div")
+    responseMsgDiv.className = "chatbot_response"
+    responseContainer.appendChild(responseMsgDiv)
+    chatHistoryDiv.appendChild(responseContainer)
+
+    fetchChatbotResponse(responseMsgDiv, msg).then((response) => {
+
+        let loadingGif = responseMsgDiv.getElementsByClassName("loadingGif")[0]
+        loadingGif.remove()
+
         console.log(response)
         return response.json()
     }).then((data) => {
         let probs = data.top_three_predictions
         console.log(probs)
 
-        let responseContainer = document.createElement("div")
-        responseContainer.className = "responseContainer"
-        let chatbotImg = document.createElement("img")
-        chatbotImg.className = "chatbotImg"
-        chatbotImg.src = "https://cdn.dribbble.com/users/37530/screenshots/2937858/drib_blink_bot.gif"
-        responseContainer.appendChild(chatbotImg)
+        /*
+        let botTag = document.createElement("p")
+        botTag.innerHTML = "Chatbot"
+        responseMsgDiv.appendChild(botTag)
+         */
+        let botMsg = document.createElement("p")
+        botMsg.innerHTML = JSON.stringify(probs)
+            .split(',').join(' ')
+            .replaceAll('"', '')
+            .replaceAll(':', ': ')
+        responseMsgDiv.appendChild(botMsg)
 
-        let responseMsgDiv = document.createElement("div")
-        /**/
-        let innerTag1 = document.createElement("p")
-        innerTag1.innerHTML = "Chatbot"
+        console.log(responseMsgDiv.scrollHeight)
 
-        let innerTag2 = document.createElement("p")
-        innerTag2.innerHTML = JSON.stringify(probs)
-        responseMsgDiv.appendChild(innerTag1)
-        responseMsgDiv.appendChild(innerTag2)
-        responseMsgDiv.className = "chatbot_response"
         responseContainer.appendChild(responseMsgDiv)
 
-
-        chatHistoryDiv.appendChild(responseContainer)
         scrollDown()
-    })
+    })/**/
 
     document.getElementById("userInputBox").value = ''; // empty the input box
 }
