@@ -12,10 +12,15 @@
         <div id="input_window">
             <form id="messageForm" onsubmit="showChatbotResponse()" autocomplete="off">
                 <textarea id="userInputBox" type="text" placeholder="Type your message here"></textarea>
+                <div id="sendButton" type="button" onclick="showChatbotResponse()">
+                    <img src="/static/images/send.png" alt="Send">
+                </div>
                 <!--
                 <input id="userInputBox" type="text" placeholder="Type your message here">
                 -->
+                <!--
                 <input id="sendButton" type="button" value="Send" onclick="showChatbotResponse()">
+                -->
             </form>
 
         </div>

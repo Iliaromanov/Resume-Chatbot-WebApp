@@ -115,6 +115,7 @@ function showChatbotResponse() {
         whoopsTag.innerHTML = "Whoops something went wrong. Please try again."
         responseMsgDiv.appendChild(whoopsTag)
         scrollDown()
+
         console.log(e)
     })/**/
 
