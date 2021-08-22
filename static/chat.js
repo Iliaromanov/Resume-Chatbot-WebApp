@@ -1,11 +1,24 @@
 // Ensure page does not refresh on form submit
-let msgForm = document.getElementById("message_form")
+let msgForm = document.getElementById("messageForm")
 function stopRefresh(event) {event.preventDefault();}
 msgForm.addEventListener('submit', stopRefresh)
+
+// Allow submission of textarea input with enter key
+document.getElementById(
+    "userInputBox"
+).addEventListener("keypress", submitTextareaOnEnter)
 
 function scrollDown() {
     let chatHistoryDiv = document.getElementById("chat_history")
     chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight
+}
+
+function submitTextareaOnEnter(event){
+    if(event.which === 13) {
+        event.target.form.dispatchEvent(new Event("submit", {cancelable: true}));
+        event.preventDefault(); // Prevents the addition of a new line in the textfield
+        event.target.value = ""; // clear textarea
+    }
 }
 
 function fetchChatbotResponse(chatDiv, responseDiv, msg) {
@@ -101,6 +114,7 @@ function showChatbotResponse() {
         let whoopsTag = document.createElement("p")
         whoopsTag.innerHTML = "Whoops something went wrong. Please try again."
         responseMsgDiv.appendChild(whoopsTag)
+        scrollDown()
         console.log(e)
     })/**/
 

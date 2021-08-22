@@ -10,8 +10,11 @@
     <div id="chatbot_window">
         <div id="chat_history"></div>
         <div id="input_window">
-            <form id="message_form" onsubmit="showChatbotResponse()" autocomplete="off">
+            <form id="messageForm" onsubmit="showChatbotResponse()" autocomplete="off">
+                <textarea id="userInputBox" type="text" placeholder="Type your message here"></textarea>
+                <!--
                 <input id="userInputBox" type="text" placeholder="Type your message here">
+                -->
                 <input id="sendButton" type="button" value="Send" onclick="showChatbotResponse()">
             </form>
 
