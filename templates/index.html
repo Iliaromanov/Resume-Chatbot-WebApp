@@ -8,6 +8,7 @@
 </head>
 <body>
     <div id="chatbot_window">
+        <nav id="navTitle">IliaBot</nav>
         <div id="chat_history"></div>
         <div id="input_window">
             <form id="messageForm" onsubmit="showChatbotResponse()" autocomplete="off">
@@ -22,12 +23,8 @@
                 <input id="sendButton" type="button" value="Send" onclick="showChatbotResponse()">
                 -->
             </form>
-
         </div>
     </div>
-    <script type="text/javascript">
-        console.log("{{url_for('static', filename='images/orange-blue-loading.gif')}}")
-    </script>
     <script type="text/javascript" src="{{ url_for('static', filename='chat.js') }}"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ body {
 #chatbot_window {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 90% 10%;
+    grid-template-rows: 10% 80% 10%;
     position: absolute;
     /*padding: 5px;*/
     height: 80%;
@@ -20,13 +20,18 @@ body {
     border-radius: 5px 5px 5px 5px;
     background-color: aliceblue;
 }
+#navTitle {
+    display: flex;
+    justify-content: center;
+    font-family: Arial;
+    padding-top: 1%
+}
 #chat_history {
     padding: 5px;
     position: relative;
     overflow-y: auto;
     scrollbar-width: 0px;
     border: 2px solid black;
-    border-radius: 5px 5px 5px 5px;
     background-color: white/*rgba(54, 46, 46, 0.959);*/
 }
 #messageForm {
