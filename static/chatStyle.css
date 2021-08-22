@@ -53,6 +53,7 @@ body {
     display:flex;
     align-items:center;
     margin-left:1%;
+    border-radius: 10px 10px 10px 10px;
 }
 #sendButton img {
     width: 90%;
@@ -60,8 +61,10 @@ body {
     margin-left:5%
 }
 #sendButton:hover {
-    border-radius: 10px 10px 10px 10px;
     background-color: #445ee2;
+}
+#sendButton:active {
+    background-color: #7588e7;
 }
 #sendButton img:hover {
     filter: invert(100%);
