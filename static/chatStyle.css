@@ -21,10 +21,20 @@ body {
     background-color: aliceblue;
 }
 #navTitle {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    justify-items: center;
     font-family: Arial;
-    padding-top: 1%
+    padding-bottom: 2%;
+    grid-template-rows: 50% auto;
+    grid-template-columns: auto;
+    grid-row-gap: 9px;
+}
+#navTitle h1 {
+    margin-top: -0.2%;
+    margin-bottom: 1%
+}
+#prediction {
+    margin-top: -0.01%;
 }
 #chat_history {
     padding: 5px;
@@ -61,12 +71,12 @@ body {
     margin-left:5%
 }
 #sendButton:hover {
-    background-color: #445ee2;
+    background-color: #dedede;
 }
 #sendButton:active {
-    background-color: #7588e7;
+    background-color: #445ee2;
 }
-#sendButton img:hover {
+#sendButton img:active {
     filter: invert(100%);
 }
 .user_sent_msg {

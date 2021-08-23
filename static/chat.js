@@ -92,6 +92,10 @@ function showChatbotResponse() {
     }).then((data) => {
         let probs = data.top_three_predictions
         console.log(probs)
+        let probsStr = JSON.stringify(probs)
+            .split(',').join(' ')
+            .replaceAll('"', '')
+            .replaceAll(':', ': ')
 
         /*
         let botTag = document.createElement("p")
@@ -99,13 +103,11 @@ function showChatbotResponse() {
         responseMsgDiv.appendChild(botTag)
          */
         let botMsg = document.createElement("p")
-        botMsg.innerHTML = JSON.stringify(probs)
-            .split(',').join(' ')
-            .replaceAll('"', '')
-            .replaceAll(':', ': ')
+        botMsg.innerHTML = probsStr
         responseMsgDiv.appendChild(botMsg)
 
-        console.log(responseMsgDiv.scrollHeight)
+        let predictionDisplay = document.getElementById("prediction")
+        predictionDisplay.innerHTML = probsStr
 
         responseContainer.appendChild(responseMsgDiv)
 
