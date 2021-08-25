@@ -91,11 +91,19 @@ function showChatbotResponse() {
         return response.json()
     }).then((data) => {
         let probs = data.top_three_predictions
-        console.log(probs)
         let probsStr = JSON.stringify(probs)
             .split(',').join(' ')
             .replaceAll('"', '')
             .replaceAll(':', ': ')
+
+        // Render the probabilities dropdown in nav
+        let dropdown = document.getElementById("prediction")
+        console.log(dropdown.style.display)
+        dropdown.style.display = ""  // remove display: none;
+        console.log(dropdown.style.display)
+        let summary = dropdown.getElementsByTagName("summary")[0]
+        let dropdownBodyDiv = dropdown.getElementsByTagName("div")[0]
+        summary.innerHTML = "Predictions"
 
         /*
         let botTag = document.createElement("p")
@@ -105,9 +113,6 @@ function showChatbotResponse() {
         let botMsg = document.createElement("p")
         botMsg.innerHTML = probsStr
         responseMsgDiv.appendChild(botMsg)
-
-        let predictionDisplay = document.getElementById("prediction")
-        predictionDisplay.innerHTML = probsStr
 
         responseContainer.appendChild(responseMsgDiv)
 
