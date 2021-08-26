@@ -1,5 +1,5 @@
 body {
-    background-image:url('images/chatbotBackground.gif');
+    background-image:url('images/blueBackground.gif');
     background-size: cover;
 }
 ::-webkit-scrollbar {
@@ -37,8 +37,8 @@ body {
     margin-top: -0.01%;
 }
 #prediction summary{
-    /*This is how you change from the ugly triangle thing*/
-    list-style-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/right-arrow.svg);
+    /*This is how you change from the ugly triangle thing
+    list-style-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/right-arrow.svg);*/
 }
 #chat_history {
     padding: 5px;

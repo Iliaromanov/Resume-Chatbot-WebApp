@@ -37,11 +37,6 @@ def get_response():
     probs = {classes[i]: prob for i, prob in enumerate(result)}
     probs_top_three = {k: f"{v * 100:,.2f}%" for k, v in sorted(probs.items(), key=lambda x: x[1], reverse=True)[:3]}
 
-    # Choose how many prediction results to show
-    if len(str(probs_top_three)) > 70:
-        # only show first k, v pair
-        probs_top_three = next(iter(probs_top_three.items()))
-
     return {
         "all_predictions": {k: f"{v * 100:,.2f}%" for k, v in sorted(probs.items(), key=lambda x: x[1], reverse=True)},
         "top_three_predictions": probs_top_three,

@@ -98,12 +98,16 @@ function showChatbotResponse() {
 
         // Render the probabilities dropdown in nav
         let dropdown = document.getElementById("prediction")
-        console.log(dropdown.style.display)
         dropdown.style.display = ""  // remove display: none;
-        console.log(dropdown.style.display)
         let summary = dropdown.getElementsByTagName("summary")[0]
-        let dropdownBodyDiv = dropdown.getElementsByTagName("div")[0]
         summary.innerHTML = "Predictions"
+        let dropdownBodyDiv = dropdown.getElementsByTagName("div")[0]
+        dropdownBodyDiv.innerHTML = '';  // clear previous predictions
+        for (const category in probs) {
+            let prediction = document.createElement("p")
+            prediction.innerHTML = `${category}: ${probs[category]}`
+            dropdownBodyDiv.appendChild(prediction)
+        }
 
         /*
         let botTag = document.createElement("p")
