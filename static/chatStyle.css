@@ -15,7 +15,7 @@ body {
         position: absolute;
         height: 80%;
         width: 40%;
-        min-width: 200px;
+        min-width: 500px;
         top: 7%;
         left: 30%;
         border: 2px solid black;
@@ -32,7 +32,7 @@ body {
         position: absolute;
         height: 80%;
         width: 60%;
-        min-width: 200px;
+        min-width: 500px;
         top: 7%;
         left: 20%;
         border: 2px solid black;
