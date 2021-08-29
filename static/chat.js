@@ -36,9 +36,12 @@ function fetchChatbotResponse(chatDiv, responseDiv, msg) {
 
     scrollDown()
 
-    return fetch(`/get_response?msg=${msg}`, {
+    return fetch(`/get_response`, {
         method: "POST",
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        body: JSON.stringify({
+            msg: msg
+        }),
+        headers: {'Content-Type': 'application/json; charset=UTF-8'}
     })
 }
 
@@ -97,6 +100,7 @@ function showChatbotResponse() {
             .replaceAll(':', ': ')
 
         // Render the probabilities dropdown in nav
+        /* Instead of doing all this dropdown shit just make the chatbot window width bigger on smaller screens with brians thing*/
         let dropdown = document.getElementById("prediction")
         dropdown.style.display = ""  // remove display: none;
         let summary = dropdown.getElementsByTagName("summary")[0]

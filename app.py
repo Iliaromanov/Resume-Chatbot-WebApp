@@ -22,7 +22,7 @@ def get_response():
     model = tf.keras.models.load_model(model_path)
     words = pickle.load(open(f'{model_path}/words.pkl', 'rb'))
     classes = pickle.load(open(f'{model_path}/classes.pkl', 'rb'))
-    sentence = request.args["msg"]
+    sentence = request.json["msg"]
 
     # contact created nlp-pipeline-API to get a bag of words
     url = "https://nlp-pipeline-api.herokuapp.com/"
