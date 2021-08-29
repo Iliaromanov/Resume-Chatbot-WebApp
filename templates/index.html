@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>Ilia's Resume Chatbot</title>
     <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico" />
     <link href="/static/chatStyle.css" rel="stylesheet">
@@ -10,10 +11,13 @@
     <div id="chatbot_window">
         <nav id="navTitle">
             <h1>IliaBot</h1>
+            <p id="prediction"></p>
+            <!--
             <details id="prediction" style="display: none">
-                <summary></summary>
+                <summary>Predictions</summary>
                 <div></div>
             </details>
+            -->
         </nav>
         <div id="chat_history"></div>
         <div id="input_window">
@@ -22,12 +26,6 @@
                 <div id="sendButton" type="button" onclick="showChatbotResponse()">
                     <img src="/static/images/send.png" alt="Send">
                 </div>
-                <!--
-                <input id="userInputBox" type="text" placeholder="Type your message here">
-                -->
-                <!--
-                <input id="sendButton" type="button" value="Send" onclick="showChatbotResponse()">
-                -->
             </form>
         </div>
     </div>

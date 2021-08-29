@@ -6,20 +6,41 @@ body {
     width: 0;  /* Remove scrollbar space */
     background: transparent;  /* Optional: just make scrollbar invisible */
 }
-#chatbot_window {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 10% 80% 10%;
-    position: absolute;
-    /*padding: 5px;*/
-    height: 80%;
-    width: 40%;
-    top: 7%;
-    left: 30%;
-    border: 2px solid black;
-    border-radius: 5px 5px 5px 5px;
-    background-color: aliceblue;
+
+@media (min-width: 1101px) {
+    #chatbot_window {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: 10% 80% 10%;
+        position: absolute;
+        height: 80%;
+        width: 40%;
+        min-width: 200px;
+        top: 7%;
+        left: 30%;
+        border: 2px solid black;
+        border-radius: 5px 5px 5px 5px;
+        background-color: aliceblue;
+    }
 }
+
+@media (max-width: 1100px) {
+    #chatbot_window {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: 10% 80% 10%;
+        position: absolute;
+        height: 80%;
+        width: 60%;
+        min-width: 200px;
+        top: 7%;
+        left: 20%;
+        border: 2px solid black;
+        border-radius: 5px 5px 5px 5px;
+        background-color: aliceblue;
+    }
+}
+
 #navTitle {
     display: grid;
     justify-items: center;

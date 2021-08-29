@@ -101,23 +101,18 @@ function showChatbotResponse() {
 
         // Render the probabilities dropdown in nav
         /* Instead of doing all this dropdown shit just make the chatbot window width bigger on smaller screens with brians thing*/
-        let dropdown = document.getElementById("prediction")
-        dropdown.style.display = ""  // remove display: none;
-        let summary = dropdown.getElementsByTagName("summary")[0]
-        summary.innerHTML = "Predictions"
-        let dropdownBodyDiv = dropdown.getElementsByTagName("div")[0]
-        dropdownBodyDiv.innerHTML = '';  // clear previous predictions
-        for (const category in probs) {
-            let prediction = document.createElement("p")
-            prediction.innerHTML = `${category}: ${probs[category]}`
-            dropdownBodyDiv.appendChild(prediction)
-        }
+        let predictionsElem = document.getElementById("prediction")
+        predictionsElem.innerHTML = probsStr
 
-        /*
-        let botTag = document.createElement("p")
-        botTag.innerHTML = "Chatbot"
-        responseMsgDiv.appendChild(botTag)
-         */
+        // dropdown.style.display = ""  // remove display: none;
+        // let dropdownBodyDiv = dropdown.getElementsByTagName("div")[0]
+        // dropdownBodyDiv.innerHTML = '';  // clear previous predictions
+        // for (const category in probs) {
+        //     let prediction = document.createElement("p")
+        //     prediction.innerHTML = `${category}: ${probs[category]}`
+        //     dropdownBodyDiv.appendChild(prediction)
+        // }
+
         let botMsg = document.createElement("p")
         botMsg.innerHTML = probsStr
         responseMsgDiv.appendChild(botMsg)
