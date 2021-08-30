@@ -13,10 +13,10 @@ body {
         grid-template-columns: auto;
         grid-template-rows: 10% 80% 10%;
         position: absolute;
-        height: 80%;
+        height: 90%;
         width: 40%;
         min-width: 500px;
-        top: 7%;
+        top: 5%;
         left: 30%;
         border: 2px solid black;
         border-radius: 5px 5px 5px 5px;
@@ -30,10 +30,10 @@ body {
         grid-template-columns: auto;
         grid-template-rows: 10% 80% 10%;
         position: absolute;
-        height: 80%;
+        height: 90%;
         width: 60%;
         min-width: 500px;
-        top: 7%;
+        top: 5%;
         left: 20%;
         border: 2px solid black;
         border-radius: 5px 5px 5px 5px;
@@ -57,11 +57,9 @@ body {
 #prediction {
     margin-top: -0.01%;
 }
-#prediction summary{
-    /*This is how you change from the ugly triangle thing
-    list-style-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/right-arrow.svg);*/
-}
 #chat_history {
+    /*background-image:url('images/darkWoodChatHistoryBckGrnd.jpg');*/
+    /*background-size: cover;*/
     padding: 5px;
     position: relative;
     overflow-y: auto;
