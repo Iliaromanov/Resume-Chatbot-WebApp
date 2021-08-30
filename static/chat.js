@@ -113,9 +113,11 @@ function showChatbotResponse() {
 
         responseContainer.appendChild(responseMsgDiv)
 
+        let slider = document.getElementById('optionsDiv');
         if (data.top_category === "greeting") {
-            console.log("this is kinda gay")
-            addOptionsDiv()
+            addOptionsDiv(slider)
+        } else if (slider) {
+            slider.remove()
         }
 
         scrollDown()

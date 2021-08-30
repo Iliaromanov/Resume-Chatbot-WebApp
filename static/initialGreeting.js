@@ -11,7 +11,7 @@ sendMsg (
         "Ask me anything specific, or choose one of the options below and I can get the conversation rolling :)",
         1500
 ).then(() => {
-    addOptionsDiv();
+    addOptionsDiv(null);
 })
 })
 
@@ -54,9 +54,8 @@ let isDown = false;
 let startX;
 let scrollLeft;
 
-function addOptionsDiv() {
+function addOptionsDiv(slider) {
     // Make it draggable
-    let slider = document.getElementById('optionsDiv');
 
     if (slider) {
         document.getElementById('chat_history').appendChild(slider)
