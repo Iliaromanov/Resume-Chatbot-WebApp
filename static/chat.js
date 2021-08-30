@@ -1,3 +1,6 @@
+// Global vars
+let showOptionChips = true;
+
 // Ensure page does not refresh on form submit
 let msgForm = document.getElementById("messageForm")
 function stopRefresh(event) {event.preventDefault();}
@@ -104,22 +107,19 @@ function showChatbotResponse() {
         let predictionsElem = document.getElementById("prediction")
         predictionsElem.innerHTML = probsStr
 
-        // dropdown.style.display = ""  // remove display: none;
-        // let dropdownBodyDiv = dropdown.getElementsByTagName("div")[0]
-        // dropdownBodyDiv.innerHTML = '';  // clear previous predictions
-        // for (const category in probs) {
-        //     let prediction = document.createElement("p")
-        //     prediction.innerHTML = `${category}: ${probs[category]}`
-        //     dropdownBodyDiv.appendChild(prediction)
-        // }
-
         let botMsg = document.createElement("p")
-        botMsg.innerHTML = probsStr
+        botMsg.innerHTML = data.top_category
         responseMsgDiv.appendChild(botMsg)
 
         responseContainer.appendChild(responseMsgDiv)
 
+        if (data.top_category === "greeting") {
+            console.log("this is kinda gay")
+            addOptionsDiv()
+        }
+
         scrollDown()
+
     }).catch((e) => {
         let whoopsTag = document.createElement("p")
         whoopsTag.innerHTML = "Whoops something went wrong. Please try again."

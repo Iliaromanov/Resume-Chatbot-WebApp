@@ -36,10 +36,13 @@ def get_response():
     result = model.predict(np.array([bag]))[0]
     probs = {classes[i]: prob for i, prob in enumerate(result)}
     probs_top_three = {k: f"{v * 100:,.2f}%" for k, v in sorted(probs.items(), key=lambda x: x[1], reverse=True)[:3]}
+    top_category = list(probs_top_three.keys())[0]
+    print(top_category)
 
     return {
         "all_predictions": {k: f"{v * 100:,.2f}%" for k, v in sorted(probs.items(), key=lambda x: x[1], reverse=True)},
         "top_three_predictions": probs_top_three,
+        "top_category": top_category,
         "chatbot_response": None
     }
 
