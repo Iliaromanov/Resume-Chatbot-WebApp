@@ -73,6 +73,8 @@ body {
     margin-top: 8px;
     float: left;
     width: 100%;
+    /*max-width: 80%;*/
+    /*min-width: 25%;*/
 }
 #optionsDiv:active {
     cursor: grabbing;
@@ -94,7 +96,9 @@ body {
     color: white;
     background-color: #7588e7;
 }
-.optionChip:active {}
+.optionChip:active {
+    cursor: grabbing;
+}
 #messageForm {
     display: flex;
     justify-content: center;
@@ -123,6 +127,7 @@ body {
 }
 #sendButton:hover {
     background-color: #dedede;
+    cursor: pointer;
 }
 #sendButton:active {
     background-color: #445ee2;

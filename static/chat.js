@@ -32,11 +32,6 @@ function fetchChatbotResponse(chatDiv, responseDiv, msg) {
     loadingGif.className = "loadingGif"
     responseDiv.appendChild(loadingGif)
 
-    // Create a div for widgets like project cards, experiences ... to add to it later
-    //   (doing it here so that its under the response message later
-    let widgetDiv = document.createElement("div")
-    chatDiv.appendChild(widgetDiv)
-
     scrollDown()
 
     return fetch(`/get_response`, {
@@ -61,10 +56,6 @@ function showChatbotResponse() {
     }
 
     let sentMsgDiv = document.createElement("div")
-    /*
-    let youTag = document.createElement("p")
-    youTag.innerHTML = "You"
-    sentMsgDiv.appendChild(youTag)*/
 
     let youMsg = document.createElement("p")
     youMsg.innerHTML = msg
@@ -108,13 +99,13 @@ function showChatbotResponse() {
         predictionsElem.innerHTML = probsStr
 
         let botMsg = document.createElement("p")
-        botMsg.innerHTML = data.top_category
+        botMsg.innerHTML = data.chatbot_response
         responseMsgDiv.appendChild(botMsg)
 
         responseContainer.appendChild(responseMsgDiv)
 
         let slider = document.getElementById('optionsDiv');
-        if (data.top_category === "greeting") {
+        if (data.top_category === "iliaBOT_options") {
             addOptionsDiv(slider)
         } else if (slider) {
             slider.remove()
