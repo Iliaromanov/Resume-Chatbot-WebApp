@@ -27,7 +27,6 @@ function submitTextareaOnEnter(event){
 function fetchChatbotResponse(chatDiv, responseDiv, msg) {
     let loadingGif = document.createElement("img")
     loadingGif.src = "/static/images/grey_circles-loading.gif"
-    console.log(loadingGif.src)
     loadingGif.alt = "Loading..."
     loadingGif.className = "loadingGif"
     responseDiv.appendChild(loadingGif)
