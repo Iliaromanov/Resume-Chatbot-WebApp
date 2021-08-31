@@ -83,7 +83,7 @@ function showChatbotResponse() {
         responseContainer.appendChild(responseMsgDiv)
 
         let slider = document.getElementById('optionsDiv');
-        if (data.top_category === "iliaBOT_options") {
+        if (data.top_category === "iliaBOT_options" || data.top_category === "bio") {
             addOptionsDiv(slider)
         } else if (slider) {
             slider.remove()
