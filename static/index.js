@@ -1,6 +1,5 @@
-// Global vars
-let showOptionChips = true;
 
+//=============Even listener configurations================
 // Ensure page does not refresh on form submit
 let msgForm = document.getElementById("messageForm")
 function stopRefresh(event) {event.preventDefault();}
@@ -10,27 +9,15 @@ msgForm.addEventListener('submit', stopRefresh)
 document.getElementById(
     "userInputBox"
 ).addEventListener("keypress", submitTextareaOnEnter)
+//=========================================================
 
-function scrollDown() {
-    let chatHistoryDiv = document.getElementById("chat_history")
-    chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight
-}
 
-function submitTextareaOnEnter(event){
-    if(event.which === 13) {
-        event.target.form.dispatchEvent(new Event("submit", {cancelable: true}));
-        event.preventDefault(); // Prevents the addition of a new line in the textfield
-        event.target.value = ""; // clear textarea
-    }
-}
+// Send initial greeting
+sendInitialGreeting();
 
-function fetchChatbotResponse(chatDiv, responseDiv, msg) {
-    let loadingGif = document.createElement("img")
-    loadingGif.src = "/static/images/grey_circles-loading.gif"
-    loadingGif.alt = "Loading..."
-    loadingGif.className = "loadingGif"
-    responseDiv.appendChild(loadingGif)
 
+function fetchChatbotResponse(responseDiv, msg) {
+    responseDiv.appendChild(createLoadingGif())
     scrollDown()
 
     return fetch(`/get_response`, {
@@ -55,7 +42,6 @@ function showChatbotResponse() {
     }
 
     let sentMsgDiv = document.createElement("div")
-
     let youMsg = document.createElement("p")
     youMsg.innerHTML = msg
     sentMsgDiv.appendChild(youMsg)
@@ -64,20 +50,13 @@ function showChatbotResponse() {
     chatHistoryDiv.appendChild(sentMsgDiv)
     scrollDown()
 
-    // Prepare response div and pass it to the fetch function
-    let responseContainer = document.createElement("div")
-    responseContainer.className = "responseContainer"
-    let chatbotImg = document.createElement("img")
-    chatbotImg.className = "chatbotImg"
-    chatbotImg.src = "https://cdn.dribbble.com/users/37530/screenshots/2937858/drib_blink_bot.gif"
-    responseContainer.appendChild(chatbotImg)
-
-    let responseMsgDiv = document.createElement("div")
-    responseMsgDiv.className = "chatbot_response"
-    responseContainer.appendChild(responseMsgDiv)
+    // use helper to create response container
+    let responseDivElems = createBotMsgContainer();
+    let responseContainer = responseDivElems[1];
+    let responseMsgDiv = responseDivElems[0];
     chatHistoryDiv.appendChild(responseContainer)
 
-    fetchChatbotResponse(chatHistoryDiv, responseMsgDiv, msg)
+    fetchChatbotResponse(responseMsgDiv, msg)
       .then((response) => {
         console.log(response)
 

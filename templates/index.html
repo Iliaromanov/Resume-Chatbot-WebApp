@@ -16,12 +16,6 @@
         <nav id="navTitle">
             <h1>IliaBOT</h1>
             <p id="prediction"></p>
-            <!--
-            <details id="prediction" style="display: none">
-                <summary>Predictions</summary>
-                <div></div>
-            </details>
-            -->
         </nav>
         <div id="chat_history"></div>
         <div id="input_window">
@@ -41,7 +35,7 @@
             headers: {'Content-Type': 'application/json;'}
         }).then((response) => {console.log("Loaded API")});
     </script>
-    <script type="text/javascript" src="{{ url_for('static', filename='initialGreeting.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='chat.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='utils.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
 </body>
 </html>
