@@ -105,8 +105,8 @@ body {
 }
 .collapsablesDiv {
     float: left;
-    padding: 5px;
     width: 100%;
+    margin-top: 8px;
     background-color: #f1ecec;
 }
 .collapsableHeader {

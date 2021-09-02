@@ -3,6 +3,7 @@ const scrollDown = () => {
     // Scrolls to bottom of chat history div
     let chatHistoryDiv = document.getElementById("chat_history")
     chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight
+    console.log("scrolled")
 }
 
 const submitTextareaOnEnter = (event) => {
@@ -162,12 +163,18 @@ const createCollapsablesContainer = (titleArr, bodyArr) => {
 
         collapsableHeader.addEventListener("click", () => {
             collapsableHeader.classList.toggle("activeHeader")
+
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null
+                let title = collapsableHeader.innerHTML
+                collapsableHeader.innerHTML = "+" + title.slice(1, title.length)
             } else {
                 panel.style.maxHeight = panel.scrollHeight + "px"
+                let title = collapsableHeader.innerHTML
+                collapsableHeader.innerHTML = "-" + title.slice(1, title.length)
                 scrollDown()
             }
+            console.log(collapsableHeader.innerHTML)
         })
     }
 
@@ -190,8 +197,9 @@ const createProjectsWidget = () => {
     // creates and appends projects widget to chat_history div
     let body = $(`
         <p>
-            Created a computer vision based alternative to a physical mouse and keyboard allowing hand gesture based 
-            control of mouse, hand gesture based master volume slider, and speech to text typing functionality
+            Created a computer vision based alternative to a physical mouse and keyboard allowing intuitive, hand gesture
+            based control of mouse motion and mouse buttons, a hand gesture based master volume slider for convinience, 
+            and speech to text typing functionality also triggered by hand gesture
         </p>
         <p>
             Check out the demo and code for this project 
@@ -200,7 +208,7 @@ const createProjectsWidget = () => {
     `)
     console.log(body)
     let projectsWidget = createCollapsablesContainer(
-        ["AI Based Desktop Controller"], [body]
+        ["+ AI Based Desktop Controller"], [body]
     )
 
     // append to chat_history
