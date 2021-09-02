@@ -9,8 +9,21 @@ msgForm.addEventListener('submit', stopRefresh)
 document.getElementById(
     "userInputBox"
 ).addEventListener("keypress", submitTextareaOnEnter)
-//=========================================================
 
+
+let keepChatScrollDown = setInterval(scrollDown, 1);  // scroll down in chat div every millisecond
+let paused = false;  // when paused the scroll won't scroll down
+// Disable chat scrolldown when user scrolls up
+$("#chat_history").bind("mousewheel", (event) => {
+    if (event.originalEvent.wheelDelta > 0) {
+        console.log("disable scroll")
+        paused = true
+    } else {
+        paused = false
+        keepChatScrollDown = setInterval(scrollDown, 1);
+    }
+})
+//=========================================================
 
 // Send initial greeting
 sendInitialGreeting();
@@ -90,7 +103,12 @@ function showChatbotResponse() {
                 slider.remove()
             }
             if (data.top_category === "projects") {
-                createProjectsWidget()
+                let existingProjectsDiv = document.getElementById("projectsWidget")
+                if (existingProjectsDiv) { // if it already exists, just move it to the bottom
+                    chatHistoryDiv.appendChild(existingProjectsDiv)
+                } else {
+                    createProjectsWidget()
+                }
             }
         }
         scrollDown()

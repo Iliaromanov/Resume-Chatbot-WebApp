@@ -1,9 +1,10 @@
 
 const scrollDown = () => {
     // Scrolls to bottom of chat history div
+    if (paused) return;
+
     let chatHistoryDiv = document.getElementById("chat_history")
     chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight
-    console.log("scrolled")
 }
 
 const submitTextareaOnEnter = (event) => {
@@ -109,9 +110,9 @@ function addOptionsDiv(slider) {
                     <div class="optionChip">Education 🎓</div>
 <!--                    <div class="optionChip">About IliaBOT 🤔</div>-->
                 </div>
-                <p style="font-size: 10px; margin-top: -10px; margin-left: 5px">
-                    Drag to scroll
-                </p>
+<!--                <p style="font-size: 10px; margin-top: -10px; margin-left: 5px">-->
+<!--                    Drag to scroll-->
+<!--                </p>-->
             </div>
         `).appendTo( '#chat_history' )
 
@@ -166,15 +167,15 @@ const createCollapsablesContainer = (titleArr, bodyArr) => {
 
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null
+                panel.style.border = null
                 let title = collapsableHeader.innerHTML
                 collapsableHeader.innerHTML = "+" + title.slice(1, title.length)
             } else {
                 panel.style.maxHeight = panel.scrollHeight + "px"
+                panel.style.border = "1px solid black"
                 let title = collapsableHeader.innerHTML
                 collapsableHeader.innerHTML = "-" + title.slice(1, title.length)
-                scrollDown()
             }
-            console.log(collapsableHeader.innerHTML)
         })
     }
 
@@ -185,22 +186,112 @@ const createCollapsablesContainer = (titleArr, bodyArr) => {
 //===================Specific Collapsable Widgets Generation======================//
 const createProjectsWidget = () => {
     // creates and appends projects widget to chat_history div
+
+    let existingProjectsDiv = document.getElementById("projectsWidget")
+    if (existingProjectsDiv) { // if it already exists, just move it to the bottom
+        document.getElementById("chat_history").appendChild(existingProjectsDiv)
+        return;
+    }
+
+    let chatbot = $(`
+        <p style="font-size: 17.5px">
+        Designed and built the web app you are using right now, as well as the keras neural network model for the
+        chatbot used in the backend of this app and an NLP pipeline API that acts as a microservice for this website.
+        </p>
+        <div class="skillsSection">
+            <b>Tech Used:</b> 
+            <div class="skillsChipsContainer">
+                <div class="skillChip">Python</div><div class="skillChip">Flask</div><div class="skillChip">FastAPI</div>
+                <div class="skillChip">JavaScript</div><div class="skillChip">jQuery</div><div class="skillChip">Keras</div>
+                <div class="skillChip">Pandas</div><div class="skillChip">Numpy</div><div class="skillChip">NLTK</div>
+                <div class="skillChip">HTML5</div><div class="skillChip">CSS</div><div class="skillChip">Git</div>
+            </div>
+        </div>
+        <p style="margin-bottom: -3px">Check out the code for this web app 
+        <a href="https://github.com/Iliaromanov/Resume-Chatbot-WebApp">here</a>!</p>
+        <p style="margin-bottom: -3px">Check out the code for the model development process and CLI version of the chatbot
+        <a href="https://github.com/Iliaromanov/Resume-Chatbot-Model">here</a>!</p>
+        <p>Check out the code for the NLP-pipeline-API
+        <a href="https://github.com/Iliaromanov/nlp-pipeline-API">here</a>!</p>
+    `)
+
     let desktopController = $(`
-        <p>
+        <p style="font-size: 17.5px">
             Created a computer vision based alternative to a physical mouse and keyboard allowing intuitive hand gesture
             based control of mouse motion and mouse buttons, a hand gesture based master volume slider for convinience, 
             and speech to text typing functionality also triggered by hand gesture.
         </p>
-        <p><b>Tech Used:</b> Python, OpenCV, Mediapipe, Numpy, Google web speech-to-text API, Git</p>
+        <div class="skillsSection">
+            <b>Tech Used:</b> 
+            <div class="skillsChipsContainer">
+                <div class="skillChip">Python</div><div class="skillChip">OpenCV</div>
+                <div class="skillChip">Mediapipe</div><div class="skillChip">Numpy</div>
+                <div class="skillChip">Google web speech-to-text API</div><div class="skillChip">Git</div>
+            </div>
+        </div>
         <p>
             Check out the demo and code for this project 
-            <a href="https://github.com/Iliaromanov/AI-Based-Desktop-Controller">here!</a>
+            <a href="https://github.com/Iliaromanov/AI-Based-Desktop-Controller">here</a>!
         </p>
     `)
-    console.log(body)
+
+    let stockTrade = $(`
+        <p style="font-size: 17.5px">
+            Built a web app that allows users to track real-time stock prices, providing users with personal accounts 
+            including stock portfolios and transaction histories.
+        </p>
+        <div class="skillsSection">
+            <b>Tech Used:</b> 
+            <div class="skillsChipsContainer">
+                <div class="skillChip">Python</div><div class="skillChip">Flask</div>
+                <div class="skillChip">PostgreSQL</div><div class="skillChip">IEX Cloud API</div>
+                <div class="skillChip">HTML</div><div class="skillChip">CSS</div><div class="skillChip">Git</div>
+            </div>
+        </div>
+        <p>Check out the $tock Trade website <a href="https://ilia-stock-trade.herokuapp.com/">here</a>!</p>
+        <p>Check out the code for this project <a href="https://github.com/Iliaromanov/Stock-Trade">here</a>!</p>
+    `)
+
+    let doorDetection = $(`
+        <p style="font-size: 17.5px">
+            Worked on a small team for nwHacks 2021 to build a neural network model based program for detecting whether a 
+            door is open or closed given ultrasonic sensor data obtained by a microcontroller such as an ESP32.
+        </p>
+        <div class="skillsSection">
+            <b>Tech Used:</b> 
+            <div class="skillsChipsContainer">
+                <div class="skillChip">Python</div><div class="skillChip">Tensorflow</div>
+                <div class="skillChip">Pandas</div><div class="skillChip">Numpy</div><div class="skillChip">Seaborn</div>
+                <div class="skillChip">C/C++</div><div class="skillChip">Git</div>
+            </div>
+        </div>
+        <p>Check out the code for this project <a href="https://github.com/Iliaromanov/Door-Detection">here</a>!</p>
+    `)
+
+    let solitaire = $(`
+        <p style="font-size: 17.5px">
+            Recreated the solitaire card game using Object-Oriented Programming in Python.
+        </p>
+        <div class="skillsSection">
+            <b>Tech Used:</b> 
+            <div class="skillsChipsContainer">
+                <div class="skillChip">Python</div><div class="skillChip">Arcade</div><div class="skillChip">Git</div>
+            </div>
+        </div>
+        <p>Check out the code for this project <a href="https://github.com/Iliaromanov/Solitaire">here</a>!</p>
+    `)
+
     let projectsWidget = createCollapsablesContainer(
-        ["+ AI Based Desktop Controller"], [body]
+        [
+            "+  AI Based Desktop Controller ⌨",
+            "+  IliaBOT - Resume Chatbot 🧠",
+            "+  $tock Trade 📈",
+            "+  Door Detection 🚪",
+            // "+  Solitaire 🃏"
+        ],
+        [desktopController, chatbot, stockTrade, doorDetection]
     )
+    projectsWidget.id = "projectsWidget"
 
     // append to chat_history
     document.getElementById("chat_history").appendChild(projectsWidget)
