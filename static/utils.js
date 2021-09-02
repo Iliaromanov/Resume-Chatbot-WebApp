@@ -107,7 +107,7 @@ function addOptionsDiv(slider) {
                     <div class="optionChip">Work Experience 💼</div>
                     <div class="optionChip" onclick="createProjectsWidget()">Projects 💡</div>
                     <div class="optionChip">Education 🎓</div>
-                    <div class="optionChip">About IliaBOT 🤔</div>
+<!--                    <div class="optionChip">About IliaBOT 🤔</div>-->
                 </div>
                 <p style="font-size: 10px; margin-top: -10px; margin-left: 5px">
                     Drag to scroll
@@ -178,16 +178,6 @@ const createCollapsablesContainer = (titleArr, bodyArr) => {
         })
     }
 
-    //
-    // for (let i=0; i < titleArr.length; i++) {
-    //     let details = document.createElement("details")
-    //     details.className = "collapsable"
-    //     let summary = document.createElement("summary")
-    //     summary.innerHTML = titleArr[0]
-    //     details.appendChild(summary)
-    //     bodyArr[0].appendTo(details)
-    // }
-    //
     return collapsablesDiv
 }
 
@@ -195,12 +185,13 @@ const createCollapsablesContainer = (titleArr, bodyArr) => {
 //===================Specific Collapsable Widgets Generation======================//
 const createProjectsWidget = () => {
     // creates and appends projects widget to chat_history div
-    let body = $(`
+    let desktopController = $(`
         <p>
-            Created a computer vision based alternative to a physical mouse and keyboard allowing intuitive, hand gesture
+            Created a computer vision based alternative to a physical mouse and keyboard allowing intuitive hand gesture
             based control of mouse motion and mouse buttons, a hand gesture based master volume slider for convinience, 
-            and speech to text typing functionality also triggered by hand gesture
+            and speech to text typing functionality also triggered by hand gesture.
         </p>
+        <p><b>Tech Used:</b> Python, OpenCV, Mediapipe, Numpy, Google web speech-to-text API, Git</p>
         <p>
             Check out the demo and code for this project 
             <a href="https://github.com/Iliaromanov/AI-Based-Desktop-Controller">here!</a>
