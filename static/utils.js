@@ -80,11 +80,11 @@ const sendInitialGreeting = async () => {
     // Sends initial greeting message and shows user main options
     await sendMsg(
         "Hi there👋! I'm Ilia's Resume Chatbot, IliaBOT, thanks for taking the time to chat with me!",
-        2000
+        1500
     );
     await sendMsg(
         "Ask me anything specific, or choose one of the options below and I can get the conversation rolling :)",
-        1500
+        1000
     );
     addOptionsDiv(null)
 }
@@ -99,15 +99,20 @@ function addOptionsDiv(slider) {
     if (slider) {
         document.getElementById('chat_history').appendChild(slider)
     } else {
-        $(
-            `<div id='optionsDiv'>
-                <div class="optionChip">Skills 🤹‍♀️</div>
-                <div class="optionChip">Work Experience 💼</div>
-                <div class="optionChip">Projects 💡</div>
-                <div class="optionChip">Education 🎓</div>
-                <div class="optionChip">About IliaBOT 🤔</div>
-            </div>`
-        ).appendTo( '#chat_history' )
+        $(`
+            <div id="optionsDivContainer">
+                <div id='optionsDiv'>
+                    <div class="optionChip">Skills 🤹‍♀️</div>
+                    <div class="optionChip">Work Experience 💼</div>
+                    <div class="optionChip" onclick="createProjectsWidget()">Projects 💡</div>
+                    <div class="optionChip">Education 🎓</div>
+                    <div class="optionChip">About IliaBOT 🤔</div>
+                </div>
+                <p style="font-size: 10px; margin-top: -10px; margin-left: 5px">
+                    Drag to scroll
+                </p>
+            </div>
+        `).appendTo( '#chat_history' )
 
         slider = document.getElementById('optionsDiv');
 
@@ -135,4 +140,70 @@ function addOptionsDiv(slider) {
     }
 }
 
+
+//===================Collapsable Widget Generation================================//
+const createCollapsablesContainer = (titleArr, bodyArr) => {
+    // Takes in an array of titles and corresponding array of body jQuery html elements
+    // and creates a container with collapsable widgets
+
+    let collapsablesDiv = document.createElement("div")
+    collapsablesDiv.className = "collapsablesDiv"
+
+    for (let i = 0; i < titleArr.length; i++) {
+        let collapsableHeader = document.createElement("button")
+        collapsableHeader.className = "collapsableHeader"
+        collapsableHeader.innerHTML = titleArr[i]
+        collapsablesDiv.appendChild(collapsableHeader)
+
+        let panel = document.createElement("div")
+        panel.className = "panel"
+        bodyArr[i].appendTo(panel)
+        collapsablesDiv.appendChild(panel)
+
+        collapsableHeader.addEventListener("click", () => {
+            collapsableHeader.classList.toggle("activeHeader")
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px"
+                scrollDown()
+            }
+        })
+    }
+
+    //
+    // for (let i=0; i < titleArr.length; i++) {
+    //     let details = document.createElement("details")
+    //     details.className = "collapsable"
+    //     let summary = document.createElement("summary")
+    //     summary.innerHTML = titleArr[0]
+    //     details.appendChild(summary)
+    //     bodyArr[0].appendTo(details)
+    // }
+    //
+    return collapsablesDiv
+}
+
+
+//===================Specific Collapsable Widgets Generation======================//
+const createProjectsWidget = () => {
+    // creates and appends projects widget to chat_history div
+    let body = $(`
+        <p>
+            Created a computer vision based alternative to a physical mouse and keyboard allowing hand gesture based 
+            control of mouse, hand gesture based master volume slider, and speech to text typing functionality
+        </p>
+        <p>
+            Check out the demo and code for this project 
+            <a href="https://github.com/Iliaromanov/AI-Based-Desktop-Controller">here!</a>
+        </p>
+    `)
+    console.log(body)
+    let projectsWidget = createCollapsablesContainer(
+        ["AI Based Desktop Controller"], [body]
+    )
+
+    // append to chat_history
+    document.getElementById("chat_history").appendChild(projectsWidget)
+}
 
