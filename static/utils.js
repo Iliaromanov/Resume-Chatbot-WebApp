@@ -40,7 +40,7 @@ const createBotMsgContainer = () => {
 const createLoadingGif = () => {
     // Creates and returns an img element containing loading gif
     let loadingGif = document.createElement("img")
-    loadingGif.src = "/static/images/grey_circles-loading.gif"
+    loadingGif.src = "/static/images/new_loading.gif"
     loadingGif.alt = "Loading..."
     loadingGif.className = "loadingGif"
 
@@ -104,7 +104,7 @@ function addOptionsDiv(slider) {
         $(`
             <div id="optionsDivContainer">
                 <div id='optionsDiv'>
-                    <div class="optionChip">Skills 🤹‍♀️</div>
+                    <div class="optionChip" onclick="createSkillsWidget()">Skills 🤹‍♀️</div>
                     <div class="optionChip">Work Experience 💼</div>
                     <div class="optionChip" onclick="createProjectsWidget()">Projects 💡</div>
                     <div class="optionChip">Education 🎓</div>
@@ -199,7 +199,7 @@ const createProjectsWidget = () => {
         chatbot used in the backend of this app and an NLP pipeline API that acts as a microservice for this website.
         </p>
         <div class="skillsSection">
-            <b>Tech Used:</b> 
+            <b style="text-align: center">Tech Used:</b> 
             <div class="skillsChipsContainer">
                 <div class="skillChip">Python</div><div class="skillChip">Flask</div><div class="skillChip">FastAPI</div>
                 <div class="skillChip">JavaScript</div><div class="skillChip">jQuery</div><div class="skillChip">Keras</div>
@@ -207,11 +207,11 @@ const createProjectsWidget = () => {
                 <div class="skillChip">HTML5</div><div class="skillChip">CSS</div><div class="skillChip">Git</div>
             </div>
         </div>
-        <p style="margin-bottom: -3px">Check out the code for this web app 
+        <p style="margin-bottom: -3px; text-align: center">Check out the code for this web app 
         <a href="https://github.com/Iliaromanov/Resume-Chatbot-WebApp">here</a>!</p>
-        <p style="margin-bottom: -3px">Check out the code for the model development process and CLI version of the chatbot
+        <p style="margin-bottom: -3px; text-align: center">Check out the code for the model development process and CLI version of the chatbot
         <a href="https://github.com/Iliaromanov/Resume-Chatbot-Model">here</a>!</p>
-        <p>Check out the code for the NLP-pipeline-API
+        <p style="text-align: center">Check out the code for the NLP-pipeline-API
         <a href="https://github.com/Iliaromanov/nlp-pipeline-API">here</a>!</p>
     `)
 
@@ -222,14 +222,14 @@ const createProjectsWidget = () => {
             and speech to text typing functionality also triggered by hand gesture.
         </p>
         <div class="skillsSection">
-            <b>Tech Used:</b> 
+            <b style="text-align: center">Tech Used:</b> 
             <div class="skillsChipsContainer">
                 <div class="skillChip">Python</div><div class="skillChip">OpenCV</div>
                 <div class="skillChip">Mediapipe</div><div class="skillChip">Numpy</div>
                 <div class="skillChip">Google web speech-to-text API</div><div class="skillChip">Git</div>
             </div>
         </div>
-        <p>
+        <p style="text-align: center">
             Check out the demo and code for this project 
             <a href="https://github.com/Iliaromanov/AI-Based-Desktop-Controller">here</a>!
         </p>
@@ -241,15 +241,15 @@ const createProjectsWidget = () => {
             including stock portfolios and transaction histories.
         </p>
         <div class="skillsSection">
-            <b>Tech Used:</b> 
+            <b style="text-align: center">Tech Used:</b> 
             <div class="skillsChipsContainer">
                 <div class="skillChip">Python</div><div class="skillChip">Flask</div>
                 <div class="skillChip">PostgreSQL</div><div class="skillChip">IEX Cloud API</div>
                 <div class="skillChip">HTML</div><div class="skillChip">CSS</div><div class="skillChip">Git</div>
             </div>
         </div>
-        <p>Check out the $tock Trade website <a href="https://ilia-stock-trade.herokuapp.com/">here</a>!</p>
-        <p>Check out the code for this project <a href="https://github.com/Iliaromanov/Stock-Trade">here</a>!</p>
+        <p style="margin-bottom: -3px; text-align: center">Check out the $tock Trade website <a href="https://ilia-stock-trade.herokuapp.com/">here</a>!</p>
+        <p style="text-align: center">Check out the code for this project <a href="https://github.com/Iliaromanov/Stock-Trade">here</a>!</p>
     `)
 
     let doorDetection = $(`
@@ -258,14 +258,14 @@ const createProjectsWidget = () => {
             door is open or closed given ultrasonic sensor data obtained by a microcontroller such as an ESP32.
         </p>
         <div class="skillsSection">
-            <b>Tech Used:</b> 
+            <b style="text-align: center">Tech Used:</b> 
             <div class="skillsChipsContainer">
                 <div class="skillChip">Python</div><div class="skillChip">Tensorflow</div>
                 <div class="skillChip">Pandas</div><div class="skillChip">Numpy</div><div class="skillChip">Seaborn</div>
                 <div class="skillChip">C/C++</div><div class="skillChip">Git</div>
             </div>
         </div>
-        <p>Check out the code for this project <a href="https://github.com/Iliaromanov/Door-Detection">here</a>!</p>
+        <p style="text-align: center">Check out the code for this project <a href="https://github.com/Iliaromanov/Door-Detection">here</a>!</p>
     `)
 
     let solitaire = $(`
@@ -273,18 +273,18 @@ const createProjectsWidget = () => {
             Recreated the solitaire card game using Object-Oriented Programming in Python.
         </p>
         <div class="skillsSection">
-            <b>Tech Used:</b> 
+            <b style="text-align: center">Tech Used:</b> 
             <div class="skillsChipsContainer">
                 <div class="skillChip">Python</div><div class="skillChip">Arcade</div><div class="skillChip">Git</div>
             </div>
         </div>
-        <p>Check out the code for this project <a href="https://github.com/Iliaromanov/Solitaire">here</a>!</p>
+        <p style="text-align: center">Check out the code for this project <a href="https://github.com/Iliaromanov/Solitaire">here</a>!</p>
     `)
 
     let projectsWidget = createCollapsablesContainer(
         [
             "+  AI Based Desktop Controller ⌨",
-            "+  IliaBOT - Resume Chatbot 🧠",
+            "+  IliaBOT - Resume Chatbot 🤖",
             "+  $tock Trade 📈",
             "+  Door Detection 🚪",
             // "+  Solitaire 🃏"
@@ -295,5 +295,62 @@ const createProjectsWidget = () => {
 
     // append to chat_history
     document.getElementById("chat_history").appendChild(projectsWidget)
+}
+
+const createSkillsWidget = () => {
+    // creates and appends skills widget to chat_history div
+
+    let existingSkillsDiv = document.getElementById("skillsWidget")
+    if (existingSkillsDiv) { // if it already exists, just move it to the bottom
+        document.getElementById("chat_history").appendChild(existingSkillsDiv)
+        return;
+    }
+
+    let langs = $(`
+        <div class="skillsChipsContainer" style="padding: 8px">
+            <div class="skillChip">Python</div><div class="skillChip">JavaScript</div><div class="skillChip">SQL</div>
+            <div class="skillChip">HTML/CSS</div><div class="skillChip">Go</div><div class="skillChip">C/C++</div>
+            <div class="skillChip">R</div>
+        </div>
+    `)
+
+    let libsAndFrameworks = $(`
+        <div class="skillsChipsContainer" style="padding: 8px">
+            <div class="skillChip">Flask</div><div class="skillChip">Django</div><div class="skillChip">FastAPI</div>
+            <div class="skillChip">jQuery</div><div class="skillChip">Tensorflow</div>
+            <div class="skillChip">Keras</div><div class="skillChip">Pandas</div>
+            <div class="skillChip">Numpy</div><div class="skillChip">OpenCV</div>
+            <div class="skillChip">Mediapipe</div><div class="skillChip">NLTK</div><div class="skillChip">SpcaCy</div>
+        </div>
+    `)
+
+    let databases = $(`
+        <div class="skillsChipsContainer" style="padding: 8px">
+            <div class="skillChip">PostgreSQL</div><div class="skillChip">MongoDB</div>
+            <div class="skillChip">Microsoft SQL Server</div><div class="skillChip">Oracle Database</div>
+            <div class="skillChip">Apache Hive</div>
+        </div>
+    `)
+
+    let toolsAndOtherTech = $(`
+        <div class="skillsChipsContainer" style="padding: 8px">
+            <div class="skillChip">Git</div><div class="skillChip">Docker</div><div class="skillChip">Postman</div>
+            <div class="skillChip">Jupyter Notebook</div>
+        </div>
+    `)
+
+    let skillssWidget = createCollapsablesContainer(
+        [
+            "+  Programming Languages",
+            "+  Libraries and Frameworks",
+            "+  Databases",
+            "+  Other Tools and Technologies",
+        ],
+        [langs, libsAndFrameworks, databases, toolsAndOtherTech]
+    )
+    skillssWidget.id = "skillsWidget"
+
+    // append to chat_history
+    document.getElementById("chat_history").appendChild(skillssWidget)
 }
 
