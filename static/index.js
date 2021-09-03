@@ -96,14 +96,24 @@ function showChatbotResponse() {
         responseContainer.appendChild(responseMsgDiv)
 
         let slider = document.getElementById('optionsDivContainer');
-        data.top_category === "iliaBOT_options" || data.top_category === "bio" ? addOptionsDiv(slider) : slider.remove()
+        if (data.top_category === "iliaBOT_options" || data.top_category === "bio") { // deal with options slider
+            addOptionsDiv(slider);
+        } else if (slider) {
+            slider.remove();
+        }
 
         switch (data.top_category) {
             case "skills":
                 createSkillsWidget();
                 break;
+            case "experience":
+
+                break;
             case "projects":
                 createProjectsWidget();
+                break;
+            case "education":
+                createEducationWidget();
                 break;
         }
 
