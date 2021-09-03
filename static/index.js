@@ -96,28 +96,22 @@ function showChatbotResponse() {
         responseContainer.appendChild(responseMsgDiv)
 
         let slider = document.getElementById('optionsDivContainer');
-        if (data.top_category === "iliaBOT_options" || data.top_category === "bio") {
-            addOptionsDiv(slider)
-        } else {
-            if (slider) {
-                slider.remove()
-            }
-            if (data.top_category === "projects") {
-                let existingProjectsDiv = document.getElementById("projectsWidget")
-                if (existingProjectsDiv) { // if it already exists, just move it to the bottom
-                    chatHistoryDiv.appendChild(existingProjectsDiv)
-                } else {
-                    createProjectsWidget()
-                }
-            }
+        data.top_category === "iliaBOT_options" || data.top_category === "bio" ? addOptionsDiv(slider) : slider.remove()
+
+        switch (data.top_category) {
+            case "skills":
+                createSkillsWidget();
+                break;
+            case "projects":
+                createProjectsWidget();
+                break;
         }
-        scrollDown()
+
 
     }).catch((e) => {
         let whoopsTag = document.createElement("p")
         whoopsTag.innerHTML = "Whoops something went wrong. Please try again."
         responseMsgDiv.appendChild(whoopsTag)
-        scrollDown()
 
         console.log(e)
     })/**/
