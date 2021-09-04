@@ -87,8 +87,8 @@ const sendInitialGreeting = async () => {
         1000
     );
     createOptionsWidget(
-        ["Skills 🤹‍♂️", "Work Experience 💼", "Projects 💡", "Education 🎓"],
-        [createSkillsWidget, createWorkExperienceWidget, createProjectsWidget, createEducationWidget]
+        ["Skills 🤹‍♂️", "Projects 💡", "Work Experience 💼", "Education 🎓"],
+        [createSkillsWidget, createProjectsWidget, createWorkExperienceWidget, createEducationWidget]
     );
 }
 
@@ -495,5 +495,50 @@ const createEducationWidget = () => {
 }
 
 const createWorkExperienceWidget = () => {
-    //
+    let existingExperienceDiv = document.getElementById("experienceWidget")
+    if (existingExperienceDiv) { // if it already exists, just move it to the bottom
+        document.getElementById("experienceMsgBefore").parentElement.parentElement.remove()
+
+        sendMsg(
+            $(`<p id="experienceMsgBefore">Here's Ilia's work experience 💼 again</p>`),
+            0
+        )
+        document.getElementById("chat_history").appendChild(existingExperienceDiv)
+    } else {
+        sendMsg(
+            $(`<p id="experienceMsgBefore">Ilia's work experience💼</p>`),
+            500
+        )
+
+        let opta = $(`
+            <p style="font-size: 17.5px">
+                Worked as a Software Developer Co-op at Opta Information Intelligence | May 2021 - Aug 2021
+            </p>
+            
+            <b>Notable Projects:</b>
+            <ul style="margin-top: -0.1px; margin-bottom: 10px; font-size: 15.5px; list-style-position: outside; padding-left: 1em;">
+                <li>Built a <b>Convolutional Neural Network</b> model using Keras to classify report pages with <b>>90% prediction
+                accuracy</b>, greatly reducing the number of pages that need to be manually reviewed during report creation.</li>
+                <li>Designed a <b>full-stack web app</b> around the Keras CNN model using JavaScript/jQuery with HTML/CSS for a 
+                dynamic frontend, Python, Flask, Tensorflow, and Pandas for the backend which preprocesses image data and 
+                applies the Keras CNN model, and Microsoft SQL Server for the database.</li>
+                <li>Wrote Python script using the SpaCy NLP library and threading to parse <b>>1.5 billion rows</b> of unusable 
+                raw text data from a SQL Server database into usable categorical data with <b>94% parsing accuracy</b>.</li>
+                <li>Worked as member of an <b>Agile Scrum</b> team to build several <b>API microservices</b> using languages, databases, 
+                and tools such as Python, Pandas, Flask, JavaScript, jQuery, MongoDB, Apache Hive, Docker, and Postman.</li>
+            </ul>
+            
+        `)
+
+        let experienceWidget = createCollapsablesContainer(
+            [
+                "+  Software Developer Co-op"
+            ],
+            [opta]
+        )
+        experienceWidget.id = "experienceWidget"
+
+        // append to chat_history
+        document.getElementById("chat_history").appendChild(experienceWidget)
+    }
 }
