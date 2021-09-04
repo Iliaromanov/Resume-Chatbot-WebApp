@@ -12,14 +12,14 @@ document.getElementById(
 
 
 let keepChatScrollDown = setInterval(scrollDown, 1);  // scroll down in chat div every millisecond
-let paused = false;  // when paused the scroll won't scroll down
+let scrollPaused = false;  // when paused the scroll won't scroll down
 // Disable chat scrolldown when user scrolls up
 $("#chat_history").bind("mousewheel", (event) => {
     if (event.originalEvent.wheelDelta > 0) {
         console.log("disable scroll")
-        paused = true
+        scrollPaused = true
     } else {
-        paused = false
+        scrollPaused = false
         keepChatScrollDown = setInterval(scrollDown, 1);
     }
 })
@@ -99,7 +99,7 @@ function showChatbotResponse() {
         // }
         if (data.top_category === "iliaBOT_options" || data.top_category === "bio") { // deal with options slider
             createOptionsWidget(
-                ["Skills 🤹‍♀️", "Work Experience 💼", "Projects 💡", "Education 🎓"],
+                ["Skills 🤹‍♂️", "Work Experience 💼", "Projects 💡", "Education 🎓"],
                 [createSkillsWidget, createWorkExperienceWidget, createProjectsWidget, createEducationWidget]
             );
         }
