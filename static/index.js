@@ -50,9 +50,7 @@ function showChatbotResponse() {
     let chatHistoryDiv = document.getElementById("chat_history")
     console.log(msg)
 
-    if (!msg) {
-        return;
-    }
+    if (!msg) return;
 
     let sentMsgDiv = document.createElement("div")
     let youMsg = document.createElement("p")
@@ -95,11 +93,15 @@ function showChatbotResponse() {
 
         responseContainer.appendChild(responseMsgDiv)
 
-        let slider = document.getElementById('optionsDivContainer');
+        let optionsDiv = document.getElementById('optionsDivContainer')
+        if (optionsDiv) {
+            optionsDiv.remove();
+        }
         if (data.top_category === "iliaBOT_options" || data.top_category === "bio") { // deal with options slider
-            addOptionsDiv(slider);
-        } else if (slider) {
-            slider.remove();
+            createOptionsWidget(
+                ["Skills 🤹‍♀️", "Work Experience 💼", "Projects 💡", "Education 🎓"],
+                [createSkillsWidget, createWorkExperienceWidget, createProjectsWidget, createEducationWidget]
+            );
         }
 
         switch (data.top_category) {
@@ -116,7 +118,6 @@ function showChatbotResponse() {
                 createEducationWidget();
                 break;
         }
-
 
     }).catch((e) => {
         let whoopsTag = document.createElement("p")

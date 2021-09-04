@@ -71,24 +71,29 @@ const sendMsg = async (msg, typingTime) => {
     await sleep(typingTime)
 
     // Render msg
-    let botMsg = document.createElement("p")
-    botMsg.innerHTML = msg
+    // let botMsg = document.createElement("p")
+    // botMsg.innerHTML = msg
+    // loadingGif.remove()
+    // responseMsgDiv.appendChild(botMsg)
     loadingGif.remove()
-    responseMsgDiv.appendChild(botMsg)
+    msg.appendTo(responseMsgDiv)
 }
 
 
 const sendInitialGreeting = async () => {
     // Sends initial greeting message and shows user main options
     await sendMsg(
-        "Hi there👋! I'm Ilia's Resume Chatbot, IliaBOT, thanks for taking the time to chat with me!",
+        $(`<p>Hi there👋! I'm Ilia's Resume Chatbot, IliaBOT, thanks for taking the time to chat with me!</p>`),
         1500
     );
     await sendMsg(
-        "Ask me anything specific, or choose one of the options below and I can get the conversation rolling :)",
+        $(`<p>Ask me anything specific, or choose one of the options below and I can get the conversation rolling :)</p>`),
         1000
     );
-    addOptionsDiv(null)
+    createOptionsWidget(
+        ["Skills 🤹‍♀️", "Work Experience 💼", "Projects 💡", "Education 🎓"],
+        [createSkillsWidget, createWorkExperienceWidget, createProjectsWidget, createEducationWidget]
+    );
 }
 
 
@@ -97,49 +102,54 @@ let isDown = false;
 let startX;
 let scrollLeft;
 
-function addOptionsDiv(slider) {
-    if (slider) {
-        document.getElementById('chat_history').appendChild(slider)
-    } else {
-        $(`
-            <div id="optionsDivContainer">
-                <div id='optionsDiv'>
-                    <div class="optionChip" onclick="createSkillsWidget()">Skills 🤹‍♀️</div>
-                    <div class="optionChip">Work Experience 💼</div>
-                    <div class="optionChip" onclick="createProjectsWidget()">Projects 💡</div>
-                    <div class="optionChip">Education 🎓</div>
-<!--                    <div class="optionChip">About IliaBOT 🤔</div>-->
-                </div>
-<!--                <p style="font-size: 10px; margin-top: -10px; margin-left: 5px">-->
-<!--                    Drag to scroll-->
-<!--                </p>-->
-            </div>
-        `).appendTo( '#chat_history' )
+function createOptionsWidget(options, onclicks) {
+    // takes in an array of options and corresponding onclicks and creates option bubbles
 
-        slider = document.getElementById('optionsDiv');
-
-        slider.addEventListener('mousedown', (e) => {
-          isDown = true;
-          slider.classList.add('active');
-          startX = e.pageX - slider.offsetLeft;
-          scrollLeft = slider.scrollLeft;
-        });
-        slider.addEventListener('mouseleave', () => {
-          isDown = false;
-          slider.classList.remove('active');
-        });
-        slider.addEventListener('mouseup', () => {
-          isDown = false;
-          slider.classList.remove('active');
-        });
-        slider.addEventListener('mousemove', (e) => {
-          if(!isDown) return;
-          e.preventDefault();
-          const x = e.pageX - slider.offsetLeft;
-          const walk = (x - startX) * 3; //scroll-fast
-          slider.scrollLeft = scrollLeft - walk;
-        });
+    let existingOptionsSlider = document.getElementById('optionsDivContainer')
+    if (existingOptionsSlider) {
+        existingOptionsSlider.remove();
     }
+
+    // Create main container (for chips and maybe "Drag to Scroll"
+    let container = document.createElement("div")
+    container.id = "optionsDivContainer"
+
+    // Create div for chips
+    let optionsDiv = document.createElement("div")
+    optionsDiv.id = "optionsDiv"
+
+    // Add option chips to optionsDiv
+    for (let i = 0; i < options.length; i++) {
+        let chip = document.createElement("div")
+        chip.className = "optionChip"
+        chip.innerHTML = options[i]
+        chip.onclick = onclicks[i]
+        optionsDiv.appendChild(chip)
+    }
+    container.appendChild(optionsDiv)
+    document.getElementById('chat_history').appendChild(container)
+
+    optionsDiv.addEventListener('mousedown', (e) => {
+      isDown = true;
+      optionsDiv.classList.add('active');
+      startX = e.pageX - optionsDiv.offsetLeft;
+      scrollLeft = optionsDiv.scrollLeft;
+    });
+    optionsDiv.addEventListener('mouseleave', () => {
+      isDown = false;
+      optionsDiv.classList.remove('active');
+    });
+    optionsDiv.addEventListener('mouseup', () => {
+      isDown = false;
+      optionsDiv.classList.remove('active');
+    });
+    optionsDiv.addEventListener('mousemove', (e) => {
+      if(!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - optionsDiv.offsetLeft;
+      const walk = (x - startX) * 3; //scroll-fast
+      optionsDiv.scrollLeft = scrollLeft - walk;
+    });
 }
 
 
@@ -297,60 +307,127 @@ const createProjectsWidget = () => {
     document.getElementById("chat_history").appendChild(projectsWidget)
 }
 
-const createSkillsWidget = () => {
+const createSkillsWidget = async () => {
     // creates and appends skills widget to chat_history div
-
     let existingSkillsDiv = document.getElementById("skillsWidget")
     if (existingSkillsDiv) { // if it already exists, just move it to the bottom
         document.getElementById("chat_history").appendChild(existingSkillsDiv)
-        return;
+    } else {
+        let langs = $(`
+            <div class="skillsChipsContainer" style="padding: 8px">
+                <div class="skillChip">Python</div><div class="skillChip">JavaScript</div><div class="skillChip">SQL</div>
+                <div class="skillChip">HTML/CSS</div><div class="skillChip">Go</div><div class="skillChip">C/C++</div>
+                <div class="skillChip">R</div>
+            </div>
+        `)
+
+        let libsAndFrameworks = $(`
+            <div class="skillsChipsContainer" style="padding: 8px">
+                <div class="skillChip">Flask</div><div class="skillChip">Django</div><div class="skillChip">FastAPI</div>
+                <div class="skillChip">jQuery</div><div class="skillChip">Tensorflow</div>
+                <div class="skillChip">Keras</div><div class="skillChip">Pandas</div>
+                <div class="skillChip">Numpy</div><div class="skillChip">OpenCV</div>
+                <div class="skillChip">Mediapipe</div><div class="skillChip">NLTK</div><div class="skillChip">SpcaCy</div>
+            </div>
+        `)
+
+        let databases = $(`
+            <div class="skillsChipsContainer" style="padding: 8px">
+                <div class="skillChip">PostgreSQL</div><div class="skillChip">MongoDB</div>
+                <div class="skillChip">Microsoft SQL Server</div><div class="skillChip">Oracle Database</div>
+                <div class="skillChip">Apache Hive</div>
+            </div>
+        `)
+
+        let toolsAndOtherTech = $(`
+            <div class="skillsChipsContainer" style="padding: 8px">
+                <div class="skillChip">Git</div><div class="skillChip">Docker</div><div class="skillChip">Postman</div>
+                <div class="skillChip">Jupyter Notebook</div>
+            </div>
+        `)
+
+        let skillssWidget = createCollapsablesContainer(
+            [
+                "+  Programming Languages",
+                "+  Libraries and Frameworks",
+                "+  Databases",
+                "+  Other Tools and Technologies",
+            ],
+            [langs, libsAndFrameworks, databases, toolsAndOtherTech]
+        )
+        skillssWidget.id = "skillsWidget"
+
+        // append to chat_history
+        document.getElementById("chat_history").appendChild(skillssWidget)
     }
 
-    let langs = $(`
-        <div class="skillsChipsContainer" style="padding: 8px">
-            <div class="skillChip">Python</div><div class="skillChip">JavaScript</div><div class="skillChip">SQL</div>
-            <div class="skillChip">HTML/CSS</div><div class="skillChip">Go</div><div class="skillChip">C/C++</div>
-            <div class="skillChip">R</div>
-        </div>
-    `)
-
-    let libsAndFrameworks = $(`
-        <div class="skillsChipsContainer" style="padding: 8px">
-            <div class="skillChip">Flask</div><div class="skillChip">Django</div><div class="skillChip">FastAPI</div>
-            <div class="skillChip">jQuery</div><div class="skillChip">Tensorflow</div>
-            <div class="skillChip">Keras</div><div class="skillChip">Pandas</div>
-            <div class="skillChip">Numpy</div><div class="skillChip">OpenCV</div>
-            <div class="skillChip">Mediapipe</div><div class="skillChip">NLTK</div><div class="skillChip">SpcaCy</div>
-        </div>
-    `)
-
-    let databases = $(`
-        <div class="skillsChipsContainer" style="padding: 8px">
-            <div class="skillChip">PostgreSQL</div><div class="skillChip">MongoDB</div>
-            <div class="skillChip">Microsoft SQL Server</div><div class="skillChip">Oracle Database</div>
-            <div class="skillChip">Apache Hive</div>
-        </div>
-    `)
-
-    let toolsAndOtherTech = $(`
-        <div class="skillsChipsContainer" style="padding: 8px">
-            <div class="skillChip">Git</div><div class="skillChip">Docker</div><div class="skillChip">Postman</div>
-            <div class="skillChip">Jupyter Notebook</div>
-        </div>
-    `)
-
-    let skillssWidget = createCollapsablesContainer(
-        [
-            "+  Programming Languages",
-            "+  Libraries and Frameworks",
-            "+  Databases",
-            "+  Other Tools and Technologies",
-        ],
-        [langs, libsAndFrameworks, databases, toolsAndOtherTech]
+    await sendMsg(
+        $(`
+             <p>If you would like to see where Ilia has applied these skills,
+             you can take a look at
+             </p>
+        `),
+        200
     )
-    skillssWidget.id = "skillsWidget"
-
-    // append to chat_history
-    document.getElementById("chat_history").appendChild(skillssWidget)
+    createOptionsWidget(
+        ["Projects 💡", "Work Experience 💼"],
+        [createProjectsWidget, createWorkExperienceWidget]
+    );
 }
 
+
+const createEducationWidget = () => {
+    let existingEducationDiv = document.getElementById("educationWidget")
+    if (existingEducationDiv) { // if it already exists, just move it to the bottom
+        document.getElementById("chat_history").appendChild(existingEducationDiv)
+    } else {
+        let uw = $(`
+            <p style="font-size: 17.5px">Bachelor of Computer Science (BCs) Sep 2020 - Apr 2025</p>
+            <ul>
+                <li>Cumulative GPA: 94.1%</li>
+                <li>Term Distinction: Fall 2020, Winter 2021</li>
+                <li>Presidents Scholarship of Distinction recipient</li>
+            </ul>
+            <b>Notable Courses:</b>
+            <ul style="margin-top: -1px">
+                <li>Object-Oriented Software Development (C++, Unix)</li>
+                <li>Elementary Algorithm Design and Data Abstraction (C)</li>
+                <li>Probability (R)</li>
+                <li>Computer Organization and Design (RISC Assembly Language)</li>
+            </ul>
+            
+        `)
+
+        let online = $(`
+            <b>DeepLearning.ai:</b>
+            <ul style="margin-top: -1px">
+                <li>Neural Networks and Deep Learning (Python, NumPy)</li>
+            </ul>
+            
+            <b>Kaggle:</b>
+            <ul style="margin-top: -1px">
+                <li>Deep Learning (Python, Tensorflow, Keras)</li>
+                <li>Natural Language Processing (Python, SpaCy)</li>
+                <li>Computer Vision (Python, Tensorflow, Keras)</li>
+                <li>Intro to Machine Learning (Python, Pandas, Numpy)</li>
+                <li>Intro to SQL (Python, SQL, Google BigQuery)</li>
+            </ul>
+        `)
+
+        let skillssWidget = createCollapsablesContainer(
+            [
+                "+  University of Waterloo",
+                "+  Online Courseware"
+            ],
+            [uw, online]
+        )
+        skillssWidget.id = "educationWidget"
+
+        // append to chat_history
+        document.getElementById("chat_history").appendChild(skillssWidget)
+    }
+}
+
+const createWorkExperienceWidget = () => {
+    //
+}
