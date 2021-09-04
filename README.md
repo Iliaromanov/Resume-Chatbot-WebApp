@@ -7,3 +7,4 @@ You can also checkout the code for the NLP pipeline API I made as a microservice
 
 <img src="https://img.shields.io/badge/-JavaScript-yellow" /> <img src="https://img.shields.io/badge/-Python-blue" /> <img src="https://img.shields.io/badge/-Flask-light_green" /> <img src="https://img.shields.io/badge/-Tensorflow-orange" /> <img src="https://img.shields.io/badge/-NLTK-dark_green" /> <img src="https://img.shields.io/badge/-HTML5-red" /> <img src="https://img.shields.io/badge/-CSS-purple" />
 
+<!--To embed just the chat window (exclude background) use: <iframe src="https://www.xkcd.com/#chatbot_window"></iframe>-->
