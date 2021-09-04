@@ -1,7 +1,7 @@
 body {
     background-image:url('images/blueBackground.gif');
     background-size: cover;
-    font-family: Arial;
+    font-family: Raleway;
 }
 ::-webkit-scrollbar {
     width: 0;  /* Remove scrollbar space */
@@ -42,7 +42,7 @@ body {
 #navTitle {
     display: grid;
     justify-items: center;
-    font-family: Arial;
+    /*font-family: Arial;*/
     padding-bottom: 2%;
     grid-template-rows: 50% auto;
     grid-template-columns: auto;
@@ -76,7 +76,7 @@ body {
     justify-content: center;
 }
 .skillChip {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     display: inline-block;
     border: 2px solid #003abb;
     border-radius: 10px;
@@ -162,7 +162,7 @@ body {
     word-break: normal;
     border-radius: 10px 10px 0px 10px;
     background-color: #f1eded;
-    font-family: 'Lato', sans-serif;
+    /*font-family: 'Lato', sans-serif;*/
     max-width: 80%;
     min-width: 25%;
     margin-bottom: 5px;
@@ -188,7 +188,7 @@ body {
     background-color: #44d2e2;*/
     color:white;
 
-    font-family: 'Lato', sans-serif;
+    /*font-family: 'Lato', sans-serif;*/
     max-width: 73%;
     min-width: 19%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -225,7 +225,7 @@ body {
     resize: none;
     outline: none;
     overflow-y: auto;
-    font-family: Arial;
+    font-family: Lato, sans-serif;
 }
 #sendButton {
     display:flex;
