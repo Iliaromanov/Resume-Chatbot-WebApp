@@ -197,13 +197,13 @@ const createCollapsablesContainer = (titleArr, bodyArr) => {
 
 
 //===================Specific Collapsable Widgets Generation======================//
-const createProjectsWidget = () => {
+const createProjectsWidget = async () => {
     // creates and appends projects widget to chat_history div
 
     let existingProjectsDiv = document.getElementById("projectsWidget")
     if (existingProjectsDiv) { // if it already exists, just move it to the bottom
         document.getElementById("projectsMsgBefore").remove()
-        sendMsg(
+        await sendMsg(
             $(`<p id="projectsMsgBefore">
                 Here's another look at Ilia's projects💡
                 </p>`),
@@ -212,7 +212,7 @@ const createProjectsWidget = () => {
         document.getElementById("chat_history").appendChild(existingProjectsDiv)
         document.getElementById("projectsMsgAfter").remove()
     } else {
-        sendMsg(
+        await sendMsg(
             $(`<p id="projectsMsgBefore">
                 Ilia loves to take on new projects to expand his skill set. Here are some brief overviews of his 
                 notable projects💡
@@ -257,7 +257,7 @@ const createProjectsWidget = () => {
                 </div>
             </div>
             <p style="text-align: center">
-                Check out the demo and code for this project 
+                Check out the code and super cool for this project 
                 <a href="https://github.com/Iliaromanov/AI-Based-Desktop-Controller">here</a>!
             </p>
         `)
@@ -323,7 +323,7 @@ const createProjectsWidget = () => {
         // append to chat_history
         document.getElementById("chat_history").appendChild(projectsWidget)
     }
-    // sendMsg(
+    // await sendMsg(
     //     $(`<p id="projectsMsgAfter">
     //     For more details on a specific project,
     //     choose one of the options below, or send its name in the chat</p>`),
@@ -342,12 +342,12 @@ const createProjectsWidget = () => {
     // )
 }
 
-const createSkillsWidget = () => {
+const createSkillsWidget = async () => {
     // creates and appends skills widget to chat_history div
     let existingSkillsDiv = document.getElementById("skillsWidget")
     if (existingSkillsDiv) { // if it already exists, just move it to the bottom
         document.getElementById("skillsMsgBefore").parentElement.parentElement.remove()
-        sendMsg(
+        await sendMsg(
             $(`<p id="skillsMsgBefore">
                     Here's another look at some of Ilia's skills 👨‍💻
                </p>`),
@@ -356,7 +356,7 @@ const createSkillsWidget = () => {
         document.getElementById("chat_history").appendChild(existingSkillsDiv)
         document.getElementById("skillsMsgAfter").parentElement.parentElement.remove()
     } else {
-        sendMsg(
+        await sendMsg(
             $(`<p id="skillsMsgBefore">
                     Ilia is a strong believer in lifelong learning and is constantly looking to expand his skill set.
                     Here are some of his current technical skills 👨‍💻
@@ -411,7 +411,7 @@ const createSkillsWidget = () => {
         document.getElementById("chat_history").appendChild(skillssWidget)
     }
 
-    sendMsg(
+    await sendMsg(
         $(`
              <p id="skillsMsgAfter">To see where Ilia has applied these skills, you can take a look at:
              </p>
@@ -425,18 +425,18 @@ const createSkillsWidget = () => {
 }
 
 
-const createEducationWidget = () => {
+const createEducationWidget = async () => {
     let existingEducationDiv = document.getElementById("educationWidget")
     if (existingEducationDiv) { // if it already exists, just move it to the bottom
         document.getElementById("educationMsgBefore").parentElement.parentElement.remove()
 
-        sendMsg(
+        await sendMsg(
             $(`<p id="educationMsgBefore">Here's some info on Ilia's education 🎓 </p>`),
             0
         )
         document.getElementById("chat_history").appendChild(existingEducationDiv)
     } else {
-        sendMsg(
+        await sendMsg(
             $(`<p id="educationMsgBefore">Here's some info on Ilia's education 🎓 </p>`),
             500
         )
@@ -494,18 +494,18 @@ const createEducationWidget = () => {
     }
 }
 
-const createWorkExperienceWidget = () => {
+const createWorkExperienceWidget = async () => {
     let existingExperienceDiv = document.getElementById("experienceWidget")
     if (existingExperienceDiv) { // if it already exists, just move it to the bottom
         document.getElementById("experienceMsgBefore").parentElement.parentElement.remove()
 
-        sendMsg(
+        await sendMsg(
             $(`<p id="experienceMsgBefore">Here's Ilia's work experience 💼 again</p>`),
             0
         )
         document.getElementById("chat_history").appendChild(existingExperienceDiv)
     } else {
-        sendMsg(
+        await sendMsg(
             $(`<p id="experienceMsgBefore">Ilia's work experience💼</p>`),
             500
         )
