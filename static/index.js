@@ -93,10 +93,10 @@ function showChatbotResponse() {
 
         responseContainer.appendChild(responseMsgDiv)
 
-        let optionsDiv = document.getElementById('optionsDivContainer')
-        if (optionsDiv) {
-            optionsDiv.remove();
-        }
+        // let optionsDiv = document.getElementById('optionsDivContainer')
+        // if (optionsDiv) {
+        //     optionsDiv.remove();
+        // }
         if (data.top_category === "iliaBOT_options" || data.top_category === "bio") { // deal with options slider
             createOptionsWidget(
                 ["Skills 🤹‍♀️", "Work Experience 💼", "Projects 💡", "Education 🎓"],
@@ -106,15 +106,18 @@ function showChatbotResponse() {
 
         switch (data.top_category) {
             case "skills":
+                responseContainer.remove()  // this container was only used to display loading gif while fetching
                 createSkillsWidget();
                 break;
             case "experience":
 
                 break;
             case "projects":
+                responseContainer.remove()  // this container was only used to display loading gif while fetching
                 createProjectsWidget();
                 break;
             case "education":
+                responseContainer.remove()  // this container was only used to display loading gif while fetching
                 createEducationWidget();
                 break;
         }

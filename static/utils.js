@@ -70,13 +70,8 @@ const sendMsg = async (msg, typingTime) => {
     // Let artificial loading animation run to make it look more natural
     await sleep(typingTime)
 
-    // Render msg
-    // let botMsg = document.createElement("p")
-    // botMsg.innerHTML = msg
-    // loadingGif.remove()
-    // responseMsgDiv.appendChild(botMsg)
     loadingGif.remove()
-    msg.appendTo(responseMsgDiv)
+    msg.appendTo(responseMsgDiv)  // append jquery msg body to responseMsgDiv
 }
 
 
@@ -205,8 +200,8 @@ const createProjectsWidget = () => {
 
     let chatbot = $(`
         <p style="font-size: 17.5px">
-        Designed and built the web app you are using right now, as well as the keras neural network model for the
-        chatbot used in the backend of this app and an NLP pipeline API that acts as a microservice for this website.
+        Designed and built the web app you are using right now, as well as the Keras neural network model for the
+        chatbot used in the backend of this app and an NLP pipeline REST API that acts as a microservice for this website.
         </p>
         <div class="skillsSection">
             <b style="text-align: center">Tech Used:</b> 
@@ -312,7 +307,16 @@ const createSkillsWidget = async () => {
     let existingSkillsDiv = document.getElementById("skillsWidget")
     if (existingSkillsDiv) { // if it already exists, just move it to the bottom
         document.getElementById("chat_history").appendChild(existingSkillsDiv)
+        document.getElementById("skillsMsgBefore").parentElement.parentElement.remove()
+        document.getElementById("skillsMsgAfter").parentElement.parentElement.remove()
     } else {
+        await sendMsg(
+            $(`<p id="skillsMsgBefore">
+                    Ilia is a strong believer in lifelong learning and is constantly looking to expand his skill set.
+                    Here are some of his current technical skills 👨‍💻
+               </p>`),
+            400
+        )
         let langs = $(`
             <div class="skillsChipsContainer" style="padding: 8px">
                 <div class="skillChip">Python</div><div class="skillChip">JavaScript</div><div class="skillChip">SQL</div>
@@ -363,11 +367,10 @@ const createSkillsWidget = async () => {
 
     await sendMsg(
         $(`
-             <p>If you would like to see where Ilia has applied these skills,
-             you can take a look at
+             <p id="skillsMsgAfter">To see where Ilia has applied these skills, you can take a look at:
              </p>
         `),
-        200
+        0
     )
     createOptionsWidget(
         ["Projects 💡", "Work Experience 💼"],
@@ -379,17 +382,29 @@ const createSkillsWidget = async () => {
 const createEducationWidget = () => {
     let existingEducationDiv = document.getElementById("educationWidget")
     if (existingEducationDiv) { // if it already exists, just move it to the bottom
+        document.getElementById("educationMsgBefore").parentElement.parentElement.remove()
+
+        sendMsg(
+            $(`<p id="educationMsgBefore">Here's some info on Ilia's education 🎓 </p>`),
+            0
+        )
         document.getElementById("chat_history").appendChild(existingEducationDiv)
     } else {
+        sendMsg(
+            $(`<p id="educationMsgBefore">Here's some info on Ilia's education 🎓 </p>`),
+            500
+        )
+
         let uw = $(`
-            <p style="font-size: 17.5px">Bachelor of Computer Science (BCs) Sep 2020 - Apr 2025</p>
-            <ul>
+            <p style="font-size: 17.5px"><b>Bachelor of Computer Science (BCS) Sep 2020 - Apr 2025</b></p>
+            <b>Achievements:</b>
+            <ul style="margin-top: -0.1px">
                 <li>Cumulative GPA: 94.1%</li>
                 <li>Term Distinction: Fall 2020, Winter 2021</li>
                 <li>Presidents Scholarship of Distinction recipient</li>
             </ul>
             <b>Notable Courses:</b>
-            <ul style="margin-top: -1px">
+            <ul style="margin-top: -0.1px">
                 <li>Object-Oriented Software Development (C++, Unix)</li>
                 <li>Elementary Algorithm Design and Data Abstraction (C)</li>
                 <li>Probability (R)</li>
@@ -399,32 +414,37 @@ const createEducationWidget = () => {
         `)
 
         let online = $(`
-            <b>DeepLearning.ai:</b>
-            <ul style="margin-top: -1px">
-                <li>Neural Networks and Deep Learning (Python, NumPy)</li>
-            </ul>
-            
             <b>Kaggle:</b>
-            <ul style="margin-top: -1px">
+            <ul style="margin-top: -0.1px">
                 <li>Deep Learning (Python, Tensorflow, Keras)</li>
                 <li>Natural Language Processing (Python, SpaCy)</li>
                 <li>Computer Vision (Python, Tensorflow, Keras)</li>
-                <li>Intro to Machine Learning (Python, Pandas, Numpy)</li>
+                <li>Intro to Machine Learning (Python, Scikit-Learn, Pandas, NumPy)</li>
                 <li>Intro to SQL (Python, SQL, Google BigQuery)</li>
+            </ul>
+            
+            <b>DeepLearning.ai:</b>
+            <ul style="margin-top: -0.1px">
+                <li>Neural Networks and Deep Learning Theory (Python, NumPy)</li>
+            </ul>
+            
+            <b>freeCodeCamp:</b>
+            <ul style="margin-top: -0.1px">
+                <li>Advanced Computer Vision (Python, OpenCV, Mediapipe)</li>
             </ul>
         `)
 
-        let skillssWidget = createCollapsablesContainer(
+        let educationWidget = createCollapsablesContainer(
             [
                 "+  University of Waterloo",
                 "+  Online Courseware"
             ],
             [uw, online]
         )
-        skillssWidget.id = "educationWidget"
+        educationWidget.id = "educationWidget"
 
         // append to chat_history
-        document.getElementById("chat_history").appendChild(skillssWidget)
+        document.getElementById("chat_history").appendChild(educationWidget)
     }
 }
 
