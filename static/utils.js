@@ -302,15 +302,21 @@ const createProjectsWidget = () => {
     document.getElementById("chat_history").appendChild(projectsWidget)
 }
 
-const createSkillsWidget = async () => {
+const createSkillsWidget = () => {
     // creates and appends skills widget to chat_history div
     let existingSkillsDiv = document.getElementById("skillsWidget")
     if (existingSkillsDiv) { // if it already exists, just move it to the bottom
-        document.getElementById("chat_history").appendChild(existingSkillsDiv)
         document.getElementById("skillsMsgBefore").parentElement.parentElement.remove()
+        sendMsg(
+            $(`<p id="skillsMsgBefore">
+                    Here's another look at some of Ilia's skills 👨‍💻
+               </p>`),
+            0
+        )
+        document.getElementById("chat_history").appendChild(existingSkillsDiv)
         document.getElementById("skillsMsgAfter").parentElement.parentElement.remove()
     } else {
-        await sendMsg(
+        sendMsg(
             $(`<p id="skillsMsgBefore">
                     Ilia is a strong believer in lifelong learning and is constantly looking to expand his skill set.
                     Here are some of his current technical skills 👨‍💻
@@ -365,7 +371,7 @@ const createSkillsWidget = async () => {
         document.getElementById("chat_history").appendChild(skillssWidget)
     }
 
-    await sendMsg(
+    sendMsg(
         $(`
              <p id="skillsMsgAfter">To see where Ilia has applied these skills, you can take a look at:
              </p>
