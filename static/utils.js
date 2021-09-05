@@ -725,3 +725,49 @@ const createStockTradeWidget = async () => {
         document.getElementById("chat_history").appendChild(stockTradeWidget)
     }
 }
+
+const createDoorDetectionWidget = async () => {
+    let existingDoorDetectionDiv = document.getElementById("doorDetectionWidget")
+    if (existingDoorDetectionDiv) { // if it already exists, just move it to the bottom
+        document.getElementById("doorDetectionMsgBefore").parentElement.parentElement.remove()
+
+        await sendMsg(
+            $(`<p id="doorDetectionMsgBefore">
+                Here's some more info on Door Detection 🚪 
+                </p>`),
+            0
+        )
+        document.getElementById("chat_history").appendChild(existingDoorDetectionDiv)
+    } else {
+        await sendMsg(
+            $(`<p id="doorDetectionMsgBefore">Here's some more info on Door Detection 🚪 </p>`),
+            300
+        )
+
+        let body = $(`
+            <ul style="margin-top: -0.1px; margin-bottom: 10px; font-size: 15.5px; list-style-position: outside; padding-left: 1em;">
+                <li>
+                Wrote Python script using Pandas and NumPy to help teammates understand how our custom collected dataset should be formatted.
+                </li>
+                <li>
+                Given ultrasonic sensor data collected by a teammate, preprocessed and visualized the dataset to be used
+                for training a neural network model that can predict whether a door is open or closed with 92% accuracy.
+                </li>
+                <li>
+                Familiarized teammates with git to maximize productivity, organization, and efficiency of workflow.
+                </li>
+            </ul>
+        `)
+
+        let doorDetectionWidget = createCollapsablesContainer(
+            [
+                "+  Door Detection 🚪"
+            ],
+            [body]
+        )
+        doorDetectionWidget.id = "doorDetectionWidget"
+
+        // append to chat_history
+        document.getElementById("chat_history").appendChild(doorDetectionWidget)
+    }
+}

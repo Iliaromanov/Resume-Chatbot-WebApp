@@ -129,6 +129,10 @@ function showChatbotResponse() {
                 responseContainer.remove()
                 createStockTradeWidget()
                 break;
+            case "Door-Detection":
+                responseContainer.remove()
+                createDoorDetectionWidget()
+                break;
         }
 
     }).catch((e) => {
