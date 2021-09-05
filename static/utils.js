@@ -241,11 +241,11 @@ const createProjectsWidget = async () => {
                 </div>
             </div>
             <p style="margin-bottom: -3px; text-align: center">Check out the code for this web app 
-            <a href="https://github.com/Iliaromanov/Resume-Chatbot-WebApp">here</a>!</p>
+            <a href="https://github.com/Iliaromanov/Resume-Chatbot-WebApp" target="_blank">here</a>!</p>
             <p style="margin-bottom: -3px; text-align: center">Check out the code for the model development process and CLI version of the chatbot
-            <a href="https://github.com/Iliaromanov/Resume-Chatbot-Model">here</a>!</p>
+            <a href="https://github.com/Iliaromanov/Resume-Chatbot-Model" target="_blank">here</a>!</p>
             <p style="text-align: center">Check out the code for the NLP-pipeline-API
-            <a href="https://github.com/Iliaromanov/nlp-pipeline-API">here</a>!</p>
+            <a href="https://github.com/Iliaromanov/nlp-pipeline-API" target="_blank">here</a>!</p>
         `)
 
         let desktopController = $(`
@@ -264,7 +264,7 @@ const createProjectsWidget = async () => {
             </div>
             <p style="text-align: center">
                 Check out the code and super cool demo for this project 
-                <a href="https://github.com/Iliaromanov/AI-Based-Desktop-Controller">here</a>!
+                <a href="https://github.com/Iliaromanov/AI-Based-Desktop-Controller" target="_blank">here</a>!
             </p>
         `)
 
@@ -281,8 +281,8 @@ const createProjectsWidget = async () => {
                     <div class="skillChip">HTML</div><div class="skillChip">CSS</div><div class="skillChip">Git</div>
                 </div>
             </div>
-            <p style="margin-bottom: -3px; text-align: center">Check out the $tock Trade website <a href="https://ilia-stock-trade.herokuapp.com/">here</a>!</p>
-            <p style="text-align: center">Check out the code for this project <a href="https://github.com/Iliaromanov/Stock-Trade">here</a>!</p>
+            <p style="margin-bottom: -3px; text-align: center">Check out the $tock Trade website <a href="https://ilia-stock-trade.herokuapp.com/" target="_blank">here</a>!</p>
+            <p style="text-align: center">Check out the code for this project <a href="https://github.com/Iliaromanov/Stock-Trade" target="_blank">here</a>!</p>
         `)
 
         let doorDetection = $(`
@@ -298,7 +298,7 @@ const createProjectsWidget = async () => {
                     <div class="skillChip">C/C++</div><div class="skillChip">Git</div>
                 </div>
             </div>
-            <p style="text-align: center">Check out the code for this project <a href="https://github.com/Iliaromanov/Door-Detection">here</a>!</p>
+            <p style="text-align: center">Check out the code for this project <a href="https://github.com/Iliaromanov/Door-Detection" target="_blank">here</a>!</p>
         `)
 
         let solitaire = $(`
@@ -311,7 +311,7 @@ const createProjectsWidget = async () => {
                     <div class="skillChip">Python</div><div class="skillChip">Arcade</div><div class="skillChip">Git</div>
                 </div>
             </div>
-            <p style="text-align: center">Check out the code for this project <a href="https://github.com/Iliaromanov/Solitaire">here</a>!</p>
+            <p style="text-align: center">Check out the code for this project <a href="https://github.com/Iliaromanov/Solitaire" target="_blank">here</a>!</p>
         `)
 
         let projectsWidget = createCollapsablesContainer(
@@ -519,7 +519,9 @@ const createWorkExperienceWidget = async () => {
 
         let opta = $(`
             <p style="font-size: 17.5px">
-                Worked as a Software Developer Co-op at Opta Information Intelligence (May 2021 - Aug 2021)
+                Worked as a Software Developer Co-op at 
+                <a href="https://optaintel.ca/" target="_blank" style="text-decoration: none; color: black">
+                Opta Information Intelligence</a> (May 2021 - Aug 2021)
             </p>
             
             <b>Notable Projects:</b>

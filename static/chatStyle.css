@@ -4,8 +4,16 @@ body {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";;
 }
 ::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
+    width: 5px;  /* Remove scrollbar space */
     background: transparent;  /* Optional: just make scrollbar invisible */
+}
+*::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    border: 3px solid #ccc;
+}
+*::-webkit-scrollbar-thumb:hover {
+    border-radius: 20px;
+    border: 4px solid #003abb;
 }
 @media (min-width: 1101px) {
     #chatbot_window {
@@ -248,4 +256,7 @@ body {
 }
 #sendButton img:active {
     filter: invert(100%);
+}
+a {
+    color: cornflowerblue;
 }
