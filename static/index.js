@@ -93,10 +93,7 @@ function showChatbotResponse() {
 
         responseContainer.appendChild(responseMsgDiv)
 
-        // let optionsDiv = document.getElementById('optionsDivContainer')
-        // if (optionsDiv) {
-        //     optionsDiv.remove();
-        // }
+
         if (data.top_category === "iliaBOT_options" || data.top_category === "bio") { // deal with options slider
             createOptionsWidget(
                 ["Skills 🤹‍♂️", "Work Experience 💼", "Projects 💡", "Education 🎓"],

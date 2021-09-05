@@ -119,7 +119,13 @@ function createOptionsWidget(options, onclicks, showDragToScroll) {
         let chip = document.createElement("div")
         chip.className = "optionChip"
         chip.innerHTML = options[i]
-        chip.onclick = onclicks[i]
+        chip.addEventListener("click", onclicks[i])
+        chip.addEventListener("click", () => {
+            let optionsDiv = document.getElementById('optionsDivContainer')
+            if (optionsDiv) {
+                optionsDiv.remove();
+            }
+        })
         optionsDiv.appendChild(chip)
     }
 
