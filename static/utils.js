@@ -231,7 +231,7 @@ const createProjectsWidget = async () => {
             Designed and built the web app you are using right now, as well as the Keras neural network model for the
             chatbot used in the backend of this app and an NLP pipeline REST API that acts as a microservice for this website.
             </p>
-            <div class="skillsSection">
+            <div class="skillsSection" style="margin-bottom: 5px">
                 <b style="text-align: center">Tech Used:</b> 
                 <div class="skillsChipsContainer">
                     <div class="skillChip">Python</div><div class="skillChip">Flask</div><div class="skillChip">FastAPI</div>
@@ -240,11 +240,11 @@ const createProjectsWidget = async () => {
                     <div class="skillChip">HTML5</div><div class="skillChip">CSS</div><div class="skillChip">Git</div>
                 </div>
             </div>
-            <p style="margin-bottom: -3px; text-align: center">Check out the code for this web app 
+            <p style="margin: 1px; text-align: center">Check out the code for this web app 
             <a href="https://github.com/Iliaromanov/Resume-Chatbot-WebApp" target="_blank">here</a>!</p>
-            <p style="margin-bottom: -3px; text-align: center">Check out the code for the model development process and CLI version of the chatbot
+            <p style="margin: 1px; text-align: center">Check out the code for the model development process and CLI version of the chatbot
             <a href="https://github.com/Iliaromanov/Resume-Chatbot-Model" target="_blank">here</a>!</p>
-            <p style="text-align: center">Check out the code for the NLP-pipeline-API
+            <p style="margin: 1px; text-align: center">Check out the code for the NLP-pipeline-API
             <a href="https://github.com/Iliaromanov/nlp-pipeline-API" target="_blank">here</a>!</p>
         `)
 
@@ -273,7 +273,7 @@ const createProjectsWidget = async () => {
                 Built a web app that allows users to track real-time stock prices, providing users with personal accounts 
                 including stock portfolios and transaction histories.
             </p>
-            <div class="skillsSection">
+            <div class="skillsSection" style="margin-bottom: 5px">
                 <b style="text-align: center">Tech Used:</b> 
                 <div class="skillsChipsContainer">
                     <div class="skillChip">Python</div><div class="skillChip">Flask</div>
@@ -281,8 +281,8 @@ const createProjectsWidget = async () => {
                     <div class="skillChip">HTML</div><div class="skillChip">CSS</div><div class="skillChip">Git</div>
                 </div>
             </div>
-            <p style="margin-bottom: -3px; text-align: center">Check out the $tock Trade website <a href="https://ilia-stock-trade.herokuapp.com/" target="_blank">here</a>!</p>
-            <p style="text-align: center">Check out the code for this project <a href="https://github.com/Iliaromanov/Stock-Trade" target="_blank">here</a>!</p>
+            <p style="margin: 1px; text-align: center">Check out the $tock Trade website <a href="https://ilia-stock-trade.herokuapp.com/" target="_blank">here</a>!</p>
+            <p style="margin: 1px; text-align: center">Check out the code for this project <a href="https://github.com/Iliaromanov/Stock-Trade" target="_blank">here</a>!</p>
         `)
 
         let doorDetection = $(`
@@ -621,5 +621,60 @@ const createDesktopControllerWidget = async () => {
 
         // append to chat_history
         document.getElementById("chat_history").appendChild(desktopControllerWidget)
+    }
+}
+
+
+const createIliaBotWidget = async () => {
+    let existingIliaBotDiv = document.getElementById("IliaBotWidget")
+    if (existingIliaBotDiv) { // if it already exists, just move it to the bottom
+        document.getElementById("IliaBotMsgBefore").parentElement.parentElement.remove()
+
+        await sendMsg(
+            $(`<p id="IliaBotMsgBefore">
+                Here's the details on ME! 
+                Please tell Ilia I'm his coolest project, so he can build me some cool new features 👁👄👁
+               </p>`),
+            0
+        )
+        document.getElementById("chat_history").appendChild(existingIliaBotDiv)
+    } else {
+        await sendMsg(
+            $(`<p id="IliaBotMsgBefore">Here's the details on this Resume Chatbot project 🤖</p>`),
+            500
+        )
+
+        let body = $(`
+            <ul style="margin-top: -0.1px; margin-bottom: 10px; font-size: 15.5px; list-style-position: outside; padding-left: 1em;">
+                <li>
+                Developed a neural network model and full-stack web app for this AI chatbot to provide insights about myself and my resume.
+                </li>
+                <li>
+                Built a RESTful API microservice using Python FastAPI for applying NLTK based natural language processing
+                (NLP) pipelines to raw text data.
+                </li>
+                <li>
+                Experimented with training several machine learning algorithms such as scikit-learn's SVM and KNN models
+                and different custom architectures of Keras Sequential neural network models to determine the most effective way
+                of predicting intents behind preprocessed user text input messages.
+                </li>
+                <li>
+                Created this web app implementing a JavaScript/jQuery frontend with custom CSS styling, and a 
+                Python/Flask backend for calling the NLP-pipeline-API microservice and applying my neural network model 
+                to the preprocessed data.
+                </li>
+            </ul>
+        `)
+
+        let iliaBotWidget = createCollapsablesContainer(
+            [
+                "+  IliaBOT - Resume Chatbot 🧠"
+            ],
+            [body]
+        )
+        iliaBotWidget.id = "iliaBotWidget"
+
+        // append to chat_history
+        document.getElementById("chat_history").appendChild(iliaBotWidget)
     }
 }

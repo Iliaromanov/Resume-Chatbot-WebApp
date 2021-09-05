@@ -121,6 +121,10 @@ function showChatbotResponse() {
                 responseContainer.remove()
                 createDesktopControllerWidget()
                 break;
+            case "about_chatbot":
+                responseContainer.remove()
+                createIliaBotWidget()
+                break;
         }
 
     }).catch((e) => {
