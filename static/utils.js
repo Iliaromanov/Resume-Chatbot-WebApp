@@ -459,6 +459,7 @@ const createEducationWidget = async () => {
             <ul style="margin-top: -0.1px">
                 <li>Object-Oriented Software Development (C++, Unix)</li>
                 <li>Elementary Algorithm Design and Data Abstraction (C)</li>
+                <li>Designing Functional Programs (Racket)</li>
                 <li>Probability (R)</li>
                 <li>Computer Organization and Design (RISC Assembly Language)</li>
             </ul>
