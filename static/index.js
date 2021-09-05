@@ -110,7 +110,8 @@ function showChatbotResponse() {
                 createSkillsWidget();
                 break;
             case "experience":
-
+                responseContainer.remove()
+                createWorkExperienceWidget()
                 break;
             case "projects":
                 responseContainer.remove()  // this container was only used to display loading gif while fetching

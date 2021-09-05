@@ -129,6 +129,10 @@ function createOptionsWidget(options, onclicks, showDragToScroll) {
     }
     document.getElementById('chat_history').appendChild(container)
 
+
+    let lineBreak = document.createElement("br")
+    optionsDiv.appendChild(lineBreak)
+
     optionsDiv.addEventListener('mousedown', (e) => {
       isDown = true;
       optionsDiv.classList.add('active');
@@ -202,7 +206,7 @@ const createProjectsWidget = async () => {
 
     let existingProjectsDiv = document.getElementById("projectsWidget")
     if (existingProjectsDiv) { // if it already exists, just move it to the bottom
-        document.getElementById("projectsMsgBefore").remove()
+        document.getElementById("projectsMsgBefore").parentElement.parentElement.remove()
         await sendMsg(
             $(`<p id="projectsMsgBefore">
                 Here's another look at Ilia's projects💡
@@ -210,7 +214,7 @@ const createProjectsWidget = async () => {
             0
         )
         document.getElementById("chat_history").appendChild(existingProjectsDiv)
-        document.getElementById("projectsMsgAfter").remove()
+        // document.getElementById("projectsMsgAfter").remove()
     } else {
         await sendMsg(
             $(`<p id="projectsMsgBefore">
@@ -512,7 +516,7 @@ const createWorkExperienceWidget = async () => {
 
         let opta = $(`
             <p style="font-size: 17.5px">
-                Worked as a Software Developer Co-op at Opta Information Intelligence | May 2021 - Aug 2021
+                Worked as a Software Developer Co-op at Opta Information Intelligence (May 2021 - Aug 2021)
             </p>
             
             <b>Notable Projects:</b>
@@ -527,8 +531,28 @@ const createWorkExperienceWidget = async () => {
                 <li>Worked as member of an <b>Agile Scrum</b> team to build several <b>API microservices</b> using languages, databases, 
                 and tools such as Python, Pandas, Flask, JavaScript, jQuery, MongoDB, Apache Hive, Docker, and Postman.</li>
             </ul>
-            
         `)
+
+        let skills = $(`
+            <b style="text-align: center">Tech Used:</b>
+            <div class="skillsChipsContainer" style="padding: 8px">
+                <div class="skillChip">Python</div><div class="skillChip">JavaScript</div><div class="skillChip">Flask</div>
+                <div class="skillChip">Pandas</div><div class="skillChip">NumPy</div>
+                <div class="skillChip">Tensorflow</div><div class="skillChip">Keras</div><div class="skillChip">SpaCy</div>
+                <div class="skillChip">jQuery</div><div class="skillChip">HTML5</div><div class="skillChip">CSS</div>
+                
+                <div class="skillChip">Microsoft SQL Server</div><div class="skillChip">MongoDB</div>
+                <div class="skillChip">Apache Hive</div><div class="skillChip">Oracle Database</div>
+                
+                <div class="skillChip">Postman</div><div class="skillChip">Docker</div>
+                <div class="skillChip">Jira</div><div class="skillChip">Bitbucket</div>
+                <div class="skillChip">Jupyter Notebook</div><div class="skillChip">Git</div>
+            </div>
+        `)
+
+        // if (window.innerHeight >= 880) {
+        //     skills.appendTo(opta)
+        // }
 
         let experienceWidget = createCollapsablesContainer(
             [
