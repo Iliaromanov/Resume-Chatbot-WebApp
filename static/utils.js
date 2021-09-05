@@ -83,7 +83,7 @@ const sendInitialGreeting = async () => {
         1500
     );
     await sendMsg(
-        $(`<p>Ask me anything specific, or choose one of the options below and I can get the conversation rolling :)</p>`),
+        $(`<p>Ask me anything specific in the chat, or choose one of the options below, and I can get the conversation rolling :)</p>`),
         1000
     );
     createOptionsWidget(
@@ -258,12 +258,12 @@ const createProjectsWidget = async () => {
                 <b style="text-align: center">Tech Used:</b> 
                 <div class="skillsChipsContainer">
                     <div class="skillChip">Python</div><div class="skillChip">OpenCV</div>
-                    <div class="skillChip">Mediapipe</div><div class="skillChip">Numpy</div>
+                    <div class="skillChip">Mediapipe</div><div class="skillChip">NumPy</div>
                     <div class="skillChip">Google web speech-to-text API</div><div class="skillChip">Git</div>
                 </div>
             </div>
             <p style="text-align: center">
-                Check out the code and super cool for this project 
+                Check out the code and super cool demo for this project 
                 <a href="https://github.com/Iliaromanov/AI-Based-Desktop-Controller">here</a>!
             </p>
         `)
@@ -294,7 +294,7 @@ const createProjectsWidget = async () => {
                 <b style="text-align: center">Tech Used:</b> 
                 <div class="skillsChipsContainer">
                     <div class="skillChip">Python</div><div class="skillChip">Tensorflow</div>
-                    <div class="skillChip">Pandas</div><div class="skillChip">Numpy</div><div class="skillChip">Seaborn</div>
+                    <div class="skillChip">Pandas</div><div class="skillChip">NumPy</div><div class="skillChip">Seaborn</div>
                     <div class="skillChip">C/C++</div><div class="skillChip">Git</div>
                 </div>
             </div>
@@ -382,8 +382,8 @@ const createSkillsWidget = async () => {
                 <div class="skillChip">Flask</div><div class="skillChip">Django</div><div class="skillChip">FastAPI</div>
                 <div class="skillChip">jQuery</div><div class="skillChip">Tensorflow</div>
                 <div class="skillChip">Keras</div><div class="skillChip">Pandas</div>
-                <div class="skillChip">Numpy</div><div class="skillChip">OpenCV</div>
-                <div class="skillChip">Mediapipe</div><div class="skillChip">NLTK</div><div class="skillChip">SpcaCy</div>
+                <div class="skillChip">NumPy</div><div class="skillChip">Matplotlib</div><div class="skillChip">OpenCV</div>
+                <div class="skillChip">Mediapipe</div><div class="skillChip">NLTK</div><div class="skillChip">SpaCy</div>
             </div>
         `)
 
@@ -391,7 +391,7 @@ const createSkillsWidget = async () => {
             <div class="skillsChipsContainer" style="padding: 8px">
                 <div class="skillChip">PostgreSQL</div><div class="skillChip">MongoDB</div>
                 <div class="skillChip">Microsoft SQL Server</div><div class="skillChip">Oracle Database</div>
-                <div class="skillChip">Apache Hive</div>
+                <div class="skillChip">Apache Hive</div><div class="skillChip">SQLite</div>
             </div>
         `)
 
@@ -568,4 +568,9 @@ const createWorkExperienceWidget = async () => {
         // append to chat_history
         document.getElementById("chat_history").appendChild(experienceWidget)
     }
+}
+
+
+const createResumeWidget = () => {
+    // Will have to <a>s, one is Download other is View in New Tab
 }
