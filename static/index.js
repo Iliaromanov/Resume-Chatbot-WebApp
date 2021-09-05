@@ -125,11 +125,15 @@ function showChatbotResponse() {
                 responseContainer.remove()
                 createIliaBotWidget()
                 break;
+            case "Stock-Trade":
+                responseContainer.remove()
+                createStockTradeWidget()
+                break;
         }
 
     }).catch((e) => {
         let whoopsTag = document.createElement("p")
-        whoopsTag.innerHTML = "Whoops something went wrong. Please try again."
+        whoopsTag.innerHTML = "Whoops something went wrong :( Please try again."
         responseMsgDiv.appendChild(whoopsTag)
 
         console.log(e)

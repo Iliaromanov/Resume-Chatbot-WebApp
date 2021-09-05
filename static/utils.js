@@ -221,7 +221,7 @@ const createProjectsWidget = async () => {
         await sendMsg(
             $(`<p id="projectsMsgBefore">
                 Ilia loves to take on new projects to expand his skill set. Here are some brief overviews of his 
-                notable projects💡
+                notable projects💡 
                 </p>`),
             200
         )
@@ -355,7 +355,7 @@ const createSkillsWidget = async () => {
         document.getElementById("skillsMsgBefore").parentElement.parentElement.remove()
         await sendMsg(
             $(`<p id="skillsMsgBefore">
-                    Here's another look at some of Ilia's skills 👨‍💻
+                    Here's another look at some of Ilia's skills 👨‍💻 
                </p>`),
             0
         )
@@ -365,7 +365,7 @@ const createSkillsWidget = async () => {
         await sendMsg(
             $(`<p id="skillsMsgBefore">
                     Ilia is a strong believer in lifelong learning and is constantly looking to expand his skill set.
-                    Here are some of his current technical skills 👨‍💻
+                    Here are some of his current technical skills 👨‍💻 
                </p>`),
             400
         )
@@ -507,13 +507,13 @@ const createWorkExperienceWidget = async () => {
         document.getElementById("experienceMsgBefore").parentElement.parentElement.remove()
 
         await sendMsg(
-            $(`<p id="experienceMsgBefore">Here's Ilia's work experience 💼 again</p>`),
+            $(`<p id="experienceMsgBefore">Here's Ilia's work experience 💼 again </p>`),
             0
         )
         document.getElementById("chat_history").appendChild(existingExperienceDiv)
     } else {
         await sendMsg(
-            $(`<p id="experienceMsgBefore">Ilia's work experience💼</p>`),
+            $(`<p id="experienceMsgBefore">Ilia's work experience💼 </p>`),
             500
         )
 
@@ -591,7 +591,7 @@ const createDesktopControllerWidget = async () => {
     } else {
         await sendMsg(
             $(`<p id="controllerMsgBefore">Here's the details on Ilia's AI Based Desktop Controller project</p>`),
-            500
+            300
         )
 
         let body = $(`
@@ -641,7 +641,7 @@ const createIliaBotWidget = async () => {
     } else {
         await sendMsg(
             $(`<p id="IliaBotMsgBefore">Here's the details on this Resume Chatbot project 🤖</p>`),
-            500
+            300
         )
 
         let body = $(`
@@ -672,9 +672,56 @@ const createIliaBotWidget = async () => {
             ],
             [body]
         )
-        iliaBotWidget.id = "iliaBotWidget"
+        iliaBotWidget.id = "IliaBotWidget"
 
         // append to chat_history
         document.getElementById("chat_history").appendChild(iliaBotWidget)
+    }
+}
+
+const createStockTradeWidget = async () => {
+    let existingStockTradeDiv = document.getElementById("stockTradeWidget")
+    if (existingStockTradeDiv) { // if it already exists, just move it to the bottom
+        document.getElementById("stockTradeMsgBefore").parentElement.parentElement.remove()
+
+        await sendMsg(
+            $(`<p id="stockTradeMsgBefore">
+                Here's the details on $tock Trade 📈 
+                </p>`),
+            0
+        )
+        document.getElementById("chat_history").appendChild(existingStockTradeDiv)
+    } else {
+        await sendMsg(
+            $(`<p id="stockTradeMsgBefore">Here's the details on $tock Trade 📈 </p>`),
+            300
+        )
+
+        let body = $(`
+            <ul style="margin-top: -0.1px; margin-bottom: 10px; font-size: 15.5px; list-style-position: outside; padding-left: 1em;">
+                <li>
+                Deployed full stack web app that allows users to track real-time stock data, providing them with personal
+                accounts including stock portfolios and transaction histories using data from the IEX stock exchange API.
+                </li>
+                <li>
+                Built a fully functional user authentication system using Flask sessions and a PostgreSQL database.
+                </li>
+                <li>
+                Designed an intuitive interface using HTML5 and CSS to work together with the Python Flask backend 
+                for quickly delivering stock and personal profile information to users.
+                </li>
+            </ul>
+        `)
+
+        let stockTradeWidget = createCollapsablesContainer(
+            [
+                "+  $tock Trade 📈"
+            ],
+            [body]
+        )
+        stockTradeWidget.id = "stockTradeWidget"
+
+        // append to chat_history
+        document.getElementById("chat_history").appendChild(stockTradeWidget)
     }
 }
