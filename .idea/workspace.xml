@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f1437a9-20f1-4f10-896e-e2be88107d4c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Resume-Chatbot-WebApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Resume-Chatbot-WebApp.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/chat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/chatStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/chatStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +73,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -110,7 +107,19 @@
       <workItem from="1629586761640" duration="5739000" />
       <workItem from="1629641186114" duration="12718000" />
       <workItem from="1629845474983" duration="6443000" />
-      <workItem from="1629932620054" duration="3479000" />
+      <workItem from="1629932620054" duration="4279000" />
+      <workItem from="1630159344650" duration="4004000" />
+      <workItem from="1630247785949" duration="18244000" />
+      <workItem from="1630287549175" duration="2535000" />
+      <workItem from="1630335016721" duration="3066000" />
+      <workItem from="1630339837200" duration="20938000" />
+      <workItem from="1630420834486" duration="16032000" />
+      <workItem from="1630511224083" duration="13917000" />
+      <workItem from="1630585657155" duration="17108000" />
+      <workItem from="1630684539711" duration="3496000" />
+      <workItem from="1630698879542" duration="1378000" />
+      <workItem from="1630702409478" duration="16726000" />
+      <workItem from="1630762800783" duration="25789000" />
     </task>
     <servers />
   </component>
@@ -131,6 +140,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Resume_Chatbot_WebApp$Resume_Chatbot_WebApp.coverage" NAME="Resume-Chatbot-WebApp Coverage Results" MODIFIED="1629854371923" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Resume_Chatbot_WebApp$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1629945211996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Resume_Chatbot_WebApp$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1630765750213" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
