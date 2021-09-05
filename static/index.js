@@ -117,6 +117,10 @@ function showChatbotResponse() {
                 responseContainer.remove()
                 createEducationWidget();
                 break;
+            case "Desktop-Controller":
+                responseContainer.remove()
+                createDesktopControllerWidget()
+                break;
         }
 
     }).catch((e) => {

@@ -576,3 +576,50 @@ const createWorkExperienceWidget = async () => {
 const createResumeWidget = () => {
     // Will have to <a>s, one is Download other is View in New Tab
 }
+
+
+const createDesktopControllerWidget = async () => {
+    let existingDesktopControllerDiv = document.getElementById("desktopControllerWidget")
+    if (existingDesktopControllerDiv) { // if it already exists, just move it to the bottom
+        document.getElementById("controllerMsgBefore").parentElement.parentElement.remove()
+
+        await sendMsg(
+            $(`<p id="controllerMsgBefore">Here's the details on Ilia's AI Based Desktop Controller project</p>`),
+            0
+        )
+        document.getElementById("chat_history").appendChild(existingExperienceDiv)
+    } else {
+        await sendMsg(
+            $(`<p id="controllerMsgBefore">Here's the details on Ilia's AI Based Desktop Controller project</p>`),
+            500
+        )
+
+        let body = $(`
+            <ul style="margin-top: -0.1px; margin-bottom: 10px; font-size: 15.5px; list-style-position: outside; padding-left: 1em;">
+                <li>
+                Created a computer vision based alternative to a physical mouse and keyboard allowing hand gesture 
+                based control of mouse, hand gesture based master volume slider, and speech to text typing functionality.
+                </li>
+                <li>
+                Utilized OpenCV, Mediapipe, and NumPy to generate and process real-time position vector data of 
+                user’s hands and execute Python scripts to perform gesture triggered actions.
+                </li>
+                <li>
+                Implemented a multi-process architecture using Python's concurrent.futures module to allow users to 
+                seamlessly perform several actions in parallel.
+                </li>
+            </ul>
+        `)
+
+        let desktopControllerWidget = createCollapsablesContainer(
+            [
+                "+  AI Based Desktop Controller ⌨"
+            ],
+            [body]
+        )
+        desktopControllerWidget.id = "desktopControllerWidget"
+
+        // append to chat_history
+        document.getElementById("chat_history").appendChild(desktopControllerWidget)
+    }
+}
