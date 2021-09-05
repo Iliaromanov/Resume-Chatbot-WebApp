@@ -135,10 +135,6 @@ function createOptionsWidget(options, onclicks, showDragToScroll) {
     }
     document.getElementById('chat_history').appendChild(container)
 
-
-    let lineBreak = document.createElement("br")
-    optionsDiv.appendChild(lineBreak)
-
     optionsDiv.addEventListener('mousedown', (e) => {
       isDown = true;
       optionsDiv.classList.add('active');
