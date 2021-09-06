@@ -1,11 +1,12 @@
 
 const scrollDown = () => {
     // Scrolls to bottom of chat history div
-    if (scrollPaused) return;
-
-    let chatHistoryDiv = document.getElementById("chat_history")
-    chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight
-
+    if (scrollPaused) {
+        $('#chat_history').stop();
+    } else {
+        $('#chat_history').animate({scrollTop: $('#chat_history').get(0).scrollHeight}, 1000)
+    }
+    // chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight
 }
 
 const submitTextareaOnEnter = (event) => {
@@ -329,23 +330,23 @@ const createProjectsWidget = async () => {
         // append to chat_history
         document.getElementById("chat_history").appendChild(projectsWidget)
     }
-    // await sendMsg(
-    //     $(`<p id="projectsMsgAfter">
-    //     For more details on a specific project,
-    //     choose one of the options below, or send its name in the chat</p>`),
-    //     200
-    // )
-    // createOptionsWidget(
-    //     [
-    //             "Desktop Controller ⌨",
-    //             "IliaBOT 🤖",
-    //             "$tock Trade 📈",
-    //             "Door Detection 🚪",
-    //             // "+  Solitaire 🃏"
-    //         ],
-    //     [null, null, null, null],
-    //     true
-    // )
+    await sendMsg(
+        $(`<p id="projectsMsgAfter">
+        For more details on a specific project,
+        choose one of the options below, or just send its name in the chat</p>`),
+        200
+    )
+    createOptionsWidget(
+        [
+                "Desktop Controller ⌨",
+                "IliaBOT 🤖",
+                "$tock Trade 📈",
+                "Door Detection 🚪",
+                // "+  Solitaire 🃏"
+            ],
+        [createDesktopControllerWidget, createIliaBotWidget, createStockTradeWidget, createDoorDetectionWidget],
+        true
+    )
 }
 
 const createSkillsWidget = async () => {
