@@ -590,19 +590,19 @@ const createResumeWidget = async () => {
         )
 
         $(`
-<!--            <div id="resumeWidgetContainer">-->
-                <div id="resumeWidget">
-                    <div id="resumeHeaderDiv">
-                        <img src="static/images/pdfIcon.png" width="55px" height="65px">
-                        <p style="text-align: center; font-size: 18px; margin-left: 25px">resume.pdf</p>
-                    </div>
-                    <div id="resumeLinksDiv">
-                        <a href="static/images/resume.pdf" download="">Download</a>
-                        <a href="static/images/resume.pdf" target="_blank" style="margin-left: 20px">View in New Tab</a>
-                    </div>
+            <div id="resumeWidget">
+                <div id="resumeHeaderDiv">
+                    <img src="static/images/pdfIcon.png" width="55px" height="65px">
+                    <p style="text-align: center; font-size: 18px; margin-left: 25px">resume.pdf</p>
                 </div>
-<!--            </div>-->
+                <div id="resumeLinksDiv">
+                    <a href="static/images/resume.pdf" download="">Download</a>
+                    <a href="static/images/resume.pdf" target="_blank" style="margin-left: 20px">View in New Tab</a>
+                </div>
+            </div>
         `).appendTo('#chat_history')
+
+        console.log("resume widget created")
     }
 }
 
