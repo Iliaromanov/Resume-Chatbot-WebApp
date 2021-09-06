@@ -573,8 +573,37 @@ const createWorkExperienceWidget = async () => {
 }
 
 
-const createResumeWidget = () => {
-    // Will have to <a>s, one is Download other is View in New Tab
+const createResumeWidget = async () => {
+   let existingResumeDiv = document.getElementById("resumeWidget")
+    if (existingResumeDiv) { // if it already exists, just move it to the bottom
+        document.getElementById("resumeMsgBefore").parentElement.parentElement.remove()
+
+        await sendMsg(
+            $(`<p id="resumeMsgBefore">Here's Ilia's resume again</p>`),
+            0
+        )
+        document.getElementById("chat_history").appendChild(existingResumeDiv)
+    } else {
+        await sendMsg(
+            $(`<p id="resumeMsgBefore">Here's Ilia's resume</p>`),
+            200
+        )
+
+        $(`
+<!--            <div id="resumeWidgetContainer">-->
+                <div id="resumeWidget">
+                    <div id="resumeHeaderDiv">
+                        <img src="static/images/pdfIcon.png" width="55px" height="65px">
+                        <p style="text-align: center; font-size: 18px; margin-left: 25px">resume.pdf</p>
+                    </div>
+                    <div id="resumeLinksDiv">
+                        <a href="static/images/resume.pdf" download="">Download</a>
+                        <a href="static/images/resume.pdf" target="_blank" style="margin-left: 20px">View in New Tab</a>
+                    </div>
+                </div>
+<!--            </div>-->
+        `).appendTo('#chat_history')
+    }
 }
 
 
@@ -650,17 +679,20 @@ const createIliaBotWidget = async () => {
                 Developed a neural network model and full-stack web app for this AI chatbot to provide insights about myself and my resume.
                 </li>
                 <li>
-                Built a RESTful API microservice using Python FastAPI for applying NLTK based natural language processing
-                (NLP) pipelines to raw text data.
+                Designed and experimented with several natural language processing (NLP) pipelines using the NLTK and SpaCy
+                Python NLP libraries to create the most effective way of standardizing and preprocessing raw text data inputted by users.
+                </li>
+                <li>
+                Built a RESTful API microservice using Python FastAPI for applying the NLP pipelines to provided raw text data.
                 </li>
                 <li>
                 Experimented with training several machine learning algorithms such as scikit-learn's SVM and KNN models
-                and different custom architectures of Keras Sequential neural network models to determine the most effective way
-                of predicting intents behind preprocessed user text input messages.
+                and varying custom architectures of Keras Sequential neural network models to determine the most effective way
+                of predicting intents behind preprocessed user input data.
                 </li>
                 <li>
                 Created this web app implementing a JavaScript/jQuery frontend with custom CSS styling, and a 
-                Python/Flask backend for calling the NLP-pipeline-API microservice and applying my neural network model 
+                Python/Flask backend for calling the NLP-pipeline-API microservice and applying the neural network model 
                 to the preprocessed data.
                 </li>
             </ul>

@@ -257,6 +257,31 @@ body {
 #sendButton img:active {
     filter: invert(100%);
 }
+#resumeWidgetContainer {
+    display: flex;
+    justify-content: center;
+    float: left;
+}
+#resumeWidget {
+    display: grid;
+    grid-template-rows: auto auto;
+    float: left;
+    clear: both;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    margin-left: 5px;
+    /*padding-right: 50px;*/
+}
+#resumeHeaderDiv {
+    display: flex;
+    vertical-align: center;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+#resumeLinksDiv {
+    display: flex;
+    justify-content: center;
+}
 a {
     color: cornflowerblue;
 }

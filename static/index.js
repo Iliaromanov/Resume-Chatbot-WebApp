@@ -133,6 +133,10 @@ function showChatbotResponse() {
                 responseContainer.remove()
                 createDoorDetectionWidget()
                 break;
+            case "show_resume":
+                responseContainer.remove()
+                createResumeWidget()
+                break;
         }
 
     }).catch((e) => {
