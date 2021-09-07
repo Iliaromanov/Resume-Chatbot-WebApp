@@ -195,12 +195,14 @@ const createCollapsablesContainer = (titleArr, bodyArr) => {
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null
                 panel.style.border = null
+                panel.style.paddingBottom = null
                 let title = collapsableHeader.innerHTML
                 collapsableHeader.innerHTML = "+" + title.slice(1, title.length)
                 // scrollPaused = false
             } else {
                 panel.style.maxHeight = panel.scrollHeight + "px"
                 panel.style.border = "1px solid black"
+                panel.style.paddingBottom = "8px"
                 let title = collapsableHeader.innerHTML
                 collapsableHeader.innerHTML = "-" + title.slice(1, title.length)
                 // document.getElementById("chat_history").scrollTo(collapsableHeader.scrollHeight)
@@ -545,7 +547,8 @@ const createWorkExperienceWidget = async () => {
                 applies the Keras CNN model, and Microsoft SQL Server for the database.</li>
                 <li>Wrote Python script using the SpaCy NLP library and threading to parse <b>>1.5 billion rows</b> of unusable 
                 raw text data from a SQL Server database into usable categorical data with <b>94% parsing accuracy</b>.</li>
-                <li>Worked as member of an <b>Agile Scrum</b> team to build several <b>API microservices</b> using languages, databases, 
+                <li style="margin-bottom: 10px">Worked as member of an <b>Agile Scrum</b> team to build several
+                 <b>API microservices</b> using languages, databases, 
                 and tools such as Python, Pandas, Flask, JavaScript, jQuery, MongoDB, Apache Hive, Docker, and Postman.</li>
             </ul>
         `)
