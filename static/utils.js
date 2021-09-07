@@ -227,7 +227,7 @@ const createProjectsWidget = async () => {
             0
         )
         document.getElementById("chat_history").appendChild(existingProjectsDiv)
-        // document.getElementById("projectsMsgAfter").remove()
+        document.getElementById("projectsMsgAfter").remove()
     } else {
         await sendMsg(
             $(`<p id="projectsMsgBefore">
@@ -240,7 +240,8 @@ const createProjectsWidget = async () => {
         let chatbot = $(`
             <p style="font-size: 17.5px">
             Designed and built the web app you are using right now, as well as the Keras neural network model for the
-            chatbot used in the backend of this app and an NLP pipeline REST API that acts as a microservice for this website.
+            chatbot used in the backend of this app and an NLP pipeline REST API that acts as a microservice for this 
+            website to preprocess the raw text data inputted in the chat below.
             </p>
             <div class="skillsSection" style="margin-bottom: 5px">
                 <b style="text-align: center">Tech Used:</b> 
@@ -281,7 +282,7 @@ const createProjectsWidget = async () => {
 
         let stockTrade = $(`
             <p style="font-size: 17.5px">
-                Built a web app that allows users to track real-time stock prices, providing users with personal accounts 
+                Built a web app that allows users to simulate buying and selling stocks, providing users with personal accounts 
                 including stock portfolios and transaction histories.
             </p>
             <div class="skillsSection" style="margin-bottom: 5px">
@@ -430,7 +431,7 @@ const createSkillsWidget = async () => {
 
     await sendMsg(
         $(`
-             <p id="skillsMsgAfter">To see where Ilia has applied these skills, you can take a look at:
+             <p id="skillsMsgAfter">To see where Ilia has applied these skills, you can take a look at
              </p>
         `),
         0
@@ -540,7 +541,7 @@ const createWorkExperienceWidget = async () => {
                 <li>Built a <b>Convolutional Neural Network</b> model using Keras to classify report pages with <b>>90% prediction
                 accuracy</b>, greatly reducing the number of pages that need to be manually reviewed during report creation.</li>
                 <li>Designed a <b>full-stack web app</b> around the Keras CNN model using JavaScript/jQuery with HTML/CSS for a 
-                dynamic frontend, Python, Flask, Tensorflow, and Pandas for the backend which preprocesses image data and 
+                dynamic user-friendly frontend, Python, Flask, Tensorflow, and Pandas for the backend which preprocesses image data and 
                 applies the Keras CNN model, and Microsoft SQL Server for the database.</li>
                 <li>Wrote Python script using the SpaCy NLP library and threading to parse <b>>1.5 billion rows</b> of unusable 
                 raw text data from a SQL Server database into usable categorical data with <b>94% parsing accuracy</b>.</li>
@@ -581,6 +582,16 @@ const createWorkExperienceWidget = async () => {
         // append to chat_history
         document.getElementById("chat_history").appendChild(experienceWidget)
     }
+
+    // await sendMsg(
+    //     $(`<p>Here are the main options again.
+    //         If you would like to see something else, just send me a quick chat below :)</p>`)
+    // )
+    //
+    // createOptionsWidget(
+    // ["Skills 🤹‍♂️", "Work Experience 💼", "Projects 💡", "Education 🎓"],
+    // [createSkillsWidget, createWorkExperienceWidget, createProjectsWidget, createEducationWidget]
+    // );
 }
 
 
@@ -607,7 +618,7 @@ const createResumeWidget = async () => {
                     <p style="text-align: center; font-size: 18px; margin-left: 25px">resume.pdf</p>
                 </div>
                 <div id="resumeLinksDiv">
-                    <a href="static/images/resume.pdf" download="">Download</a>
+                    <a href=" static/images/resume.pdf" download="">Download</a>
                     <a href="static/images/resume.pdf" target="_blank" style="margin-left: 20px">View in New Tab</a>
                 </div>
             </div>
@@ -624,10 +635,11 @@ const createDesktopControllerWidget = async () => {
         document.getElementById("controllerMsgBefore").parentElement.parentElement.remove()
 
         await sendMsg(
-            $(`<p id="controllerMsgBefore">Here's the details on Ilia's AI Based Desktop Controller project</p>`),
+            $(`<p id="controllerMsgBefore">Here's another look Ilia's AI Based Desktop Controller project</p>`),
             0
         )
-        document.getElementById("chat_history").appendChild(existingExperienceDiv)
+        document.getElementById("chat_history").appendChild(existingDesktopControllerDiv)
+        document.getElementById("controllerMsgAfter").parentElement.parentElement.remove()
     } else {
         await sendMsg(
             $(`<p id="controllerMsgBefore">Here's the details on Ilia's AI Based Desktop Controller project</p>`),
@@ -662,6 +674,8 @@ const createDesktopControllerWidget = async () => {
         // append to chat_history
         document.getElementById("chat_history").appendChild(desktopControllerWidget)
     }
+
+    await projectMsgAfter("controllerMsgAfter")
 }
 
 
@@ -678,6 +692,7 @@ const createIliaBotWidget = async () => {
             0
         )
         document.getElementById("chat_history").appendChild(existingIliaBotDiv)
+        document.getElementById("IliaBotMsgAfter").parentElement.parentElement.remove()
     } else {
         await sendMsg(
             $(`<p id="IliaBotMsgBefore">Here's the details on this Resume Chatbot project 🤖</p>`),
@@ -720,6 +735,8 @@ const createIliaBotWidget = async () => {
         // append to chat_history
         document.getElementById("chat_history").appendChild(iliaBotWidget)
     }
+
+    await projectMsgAfter("IliaBotMsgAfter")
 }
 
 const createStockTradeWidget = async () => {
@@ -734,6 +751,7 @@ const createStockTradeWidget = async () => {
             0
         )
         document.getElementById("chat_history").appendChild(existingStockTradeDiv)
+        document.getElementById("stockTradeMsgAfter").parentElement.parentElement.remove()
     } else {
         await sendMsg(
             $(`<p id="stockTradeMsgBefore">Here's the details on $tock Trade 📈 </p>`),
@@ -767,6 +785,8 @@ const createStockTradeWidget = async () => {
         // append to chat_history
         document.getElementById("chat_history").appendChild(stockTradeWidget)
     }
+
+    await projectMsgAfter("stockTradeMsgAfter")
 }
 
 const createDoorDetectionWidget = async () => {
@@ -781,6 +801,7 @@ const createDoorDetectionWidget = async () => {
             0
         )
         document.getElementById("chat_history").appendChild(existingDoorDetectionDiv)
+        document.getElementById("doorDetectionMsgAfter").parentElement.parentElement.remove()
     } else {
         await sendMsg(
             $(`<p id="doorDetectionMsgBefore">Here's some more info on Door Detection 🚪 </p>`),
@@ -813,6 +834,36 @@ const createDoorDetectionWidget = async () => {
         // append to chat_history
         document.getElementById("chat_history").appendChild(doorDetectionWidget)
     }
+
+    await projectMsgAfter("doorDetectionMsgAfter")
+}
+
+
+const projectMsgAfter = async (msgId) => {
+    // Sends a msg and gives options after displaying a details widget for specific project
+
+    await sendMsg(
+        $(`<p id=${msgId}>
+        Would you like to take a look at some of Ilia's other projects, or see the main options again?</p>`),
+        200
+    )
+    createOptionsWidget(
+        ["Projects💡", "Show Main Options📃"],
+        [
+            createProjectsWidget,
+            async function () {
+                await sendMsg(
+                    $(`<p>Here are the main options again. 
+                        If you would like to see something else, just send me a quick chat below :)</p>`)
+                )
+
+                createOptionsWidget(
+                ["Skills 🤹‍♂️", "Work Experience 💼", "Projects 💡", "Education 🎓"],
+                [createSkillsWidget, createWorkExperienceWidget, createProjectsWidget, createEducationWidget]
+                );
+            }
+        ]
+    )
 }
 
 
