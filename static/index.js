@@ -16,11 +16,12 @@ let scrollPaused = false;  // when paused the scroll won't scroll down
 // Disable chat scrolldown when user scrolls up
 $("#chat_history").bind("mousewheel", (event) => {
     if (event.originalEvent.wheelDelta > 0) {
-        console.log("disable scroll")
-        scrollPaused = true
+        document.querySelector("#autoScroll").checked = false
     } else {
-        scrollPaused = false
-        keepChatScrollDown = setInterval(scrollDown, 1);
+        let chatHistoryDiv = document.querySelector("#chat_history")
+        if (chatHistoryDiv.scrollTop === chatHistoryDiv.scrollHeight) {
+            document.querySelector("#autoScroll").checked = true
+        }
     }
 })
 //=========================================================

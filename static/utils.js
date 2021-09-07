@@ -1,12 +1,22 @@
 
 const scrollDown = () => {
     // Scrolls to bottom of chat history div
-    if (scrollPaused) {
-        $('#chat_history').stop();
+    if ($('#autoScroll').get(0).checked) {
+        scrollPaused = false
+        let chatHistoryDiv = document.querySelector('#chat_history')
+        chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight
     } else {
-        $('#chat_history').animate({scrollTop: $('#chat_history').get(0).scrollHeight}, 1000)
+        scrollPaused = true
+        return
     }
-    // chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight
+
+    // if (scrollPaused) {
+    //     $('#chat_history').stop();
+    // } else {
+    //     $('#chat_history').animate({scrollTop: $('#chat_history').get(0).scrollHeight},
+    //         {duration: 500, start: function() {if (scrollPaused) {$('#chat_history').stop(); console.log("pause")}}}
+    //     )
+    // }
 }
 
 const submitTextareaOnEnter = (event) => {
@@ -187,14 +197,14 @@ const createCollapsablesContainer = (titleArr, bodyArr) => {
                 panel.style.border = null
                 let title = collapsableHeader.innerHTML
                 collapsableHeader.innerHTML = "+" + title.slice(1, title.length)
+                // scrollPaused = false
             } else {
                 panel.style.maxHeight = panel.scrollHeight + "px"
                 panel.style.border = "1px solid black"
                 let title = collapsableHeader.innerHTML
                 collapsableHeader.innerHTML = "-" + title.slice(1, title.length)
-
+                // document.getElementById("chat_history").scrollTo(collapsableHeader.scrollHeight)
                 // scrollPaused = true
-                // collapsableHeader.scrollIntoView({behavior: "smooth"})
             }
         })
     }
@@ -803,4 +813,30 @@ const createDoorDetectionWidget = async () => {
         // append to chat_history
         document.getElementById("chat_history").appendChild(doorDetectionWidget)
     }
+}
+
+
+const callToAction = async () => {
+
+    await sendMsg(
+        $(`
+            <p>Hey, sorry to interrupt. I hope you're finding this chatbot helpful.
+            I just wanted to jump in and mention that Ilia loves hearing feedback about his work and is also looking for
+             co-op/internship opportunities for the Winter 2022 term.
+             If you have some free time available, Ilia would be happy to set up a quick chat.</p>
+        `),
+        200
+    )
+
+    await sendMsg(
+        $(`<p>
+            Fill out this form and press send to let Ilia know you would be interested in chatting with him.
+            Thank you so much! I'll let you get back chatting with IliaBOT now :)
+           </p>
+        `),
+        200
+    )
+
+    // Send a form that asks for Name, Quick Msg, contact info
+    // use some gmail api to send this info to myself and then get a job at google in san francisco
 }
