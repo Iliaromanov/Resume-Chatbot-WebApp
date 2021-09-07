@@ -404,8 +404,8 @@ const createSkillsWidget = async () => {
         let databases = $(`
             <div class="skillsChipsContainer" style="padding: 8px">
                 <div class="skillChip">PostgreSQL</div><div class="skillChip">MongoDB</div>
-                <div class="skillChip">Microsoft SQL Server</div><div class="skillChip">Oracle Database</div>
-                <div class="skillChip">Apache Hive</div><div class="skillChip">SQLite</div>
+                <div class="skillChip">Microsoft SQL Server</div><div class="skillChip">Oracle</div>
+                <div class="skillChip">Hive</div><div class="skillChip">SQLite</div>
             </div>
         `)
 
