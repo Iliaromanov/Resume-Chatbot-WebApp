@@ -6,7 +6,7 @@
 
     <meta name="description" content="IliaBOT - Ilia's Resume Chatbot" />
     <meta name="title" property="og:title" content="IliaBOT" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="Website" />
     <meta name="image"
           property="og:image"
           content="https://cdn.dribbble.com/users/37530/screenshots/2937858/drib_blink_bot.gif"
@@ -47,14 +47,14 @@
             </form>
         </div>
     </div>
-    <script type="text/javascript">
-        // empty fetch in the background to wake up my heroku based NLP pipeline API
-        fetch(`/get_response`, {
-            method: "POST",
-            body: JSON.stringify({msg: "hi"}),
-            headers: {'Content-Type': 'application/json;'}
-        }).then((response) => {console.log("Loaded API")});
-    </script>
+{#    <script type="text/javascript">#}
+{#        // empty fetch in the background to wake up my heroku based NLP pipeline API#}
+{#        fetch(`/get_response`, {#}
+{#            method: "POST",#}
+{#            body: JSON.stringify({msg: "hi"}),#}
+{#            headers: {'Content-Type': 'application/json;'}#}
+{#        }).then((response) => {console.log("Loaded API")});#}
+{#    </script>#}
     <script type="text/javascript" src="{{ url_for('static', filename='utils.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
 </body>

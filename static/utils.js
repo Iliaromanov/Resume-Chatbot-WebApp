@@ -504,7 +504,7 @@ const createEducationWidget = async () => {
         let educationWidget = createCollapsablesContainer(
             [
                 "+  University of Waterloo",
-                "+  Online Courseware"
+                "+  Online Certifications"
             ],
             [uw, online]
         )
