@@ -2,6 +2,7 @@ import tensorflow as tf
 import pickle
 from flask import Flask, render_template, request, logging
 import requests
+import os
 
 import numpy as np
 
@@ -26,7 +27,8 @@ def get_response():
     sentence = request.json["msg"]
 
     # contact created nlp-pipeline-API to get a bag of words
-    url = "https://nlp-pipeline-api.herokuapp.com/"
+    url = os.environ.get("NLP_PIPELINE_API_URL")
+    print(url)
     payload = {
         "sentence": sentence,
         "known_words": words
