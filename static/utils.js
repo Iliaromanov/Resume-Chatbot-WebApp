@@ -475,7 +475,7 @@ const createEducationWidget = async () => {
                 <li>Elementary Algorithm Design and Data Abstraction (C)</li>
                 <li>Designing Functional Programs (Racket)</li>
                 <li>Probability (R)</li>
-                <li>Computer Organization and Design (RISC Assembly Language)</li>
+                <li>Computer Organization and Design (ARMv8, C)</li>
             </ul>
             
         `)
