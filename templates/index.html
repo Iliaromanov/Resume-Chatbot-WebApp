@@ -28,25 +28,31 @@
     <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 </head>
 <body>
-    <div id="chatbot_window">
-        <nav id="navTitle">
-            <div id="autoScrollContainer" style="position:absolute;">
-                <input type="checkbox" id="autoScroll" checked="true">
-                <label for="autoScroll">Auto-Scroll</label>
-            </div>
-            <h1>IliaBOT</h1>
-            <p id="prediction"></p>
-        </nav>
-        <div id="chat_history"></div>
-        <div id="input_window">
-            <form id="messageForm" onsubmit="showChatbotResponse()" autocomplete="off">
-                <textarea id="userInputBox" type="text" placeholder="Type your message here"></textarea>
-                <div id="sendButton" type="button" onclick="showChatbotResponse()">
-                    <img src="/static/images/send.png" alt="Send">
+    <div id="chatbotWindowOuter">
+        <div id="chatbotWindowInner">
+            <nav id="navTitle">
+                <div id="autoScrollContainer" style="position:absolute;">
+                    <input type="checkbox" id="autoScroll" checked="true">
+                    <label for="autoScroll">Auto-Scroll</label>
                 </div>
-            </form>
+                <h1>IliaBOT</h1>
+                <p id="prediction"></p>
+            </nav>
+            <div id="chat_history"></div>
+            <div id="input_window">
+                <form id="messageForm" onsubmit="showChatbotResponse()" autocomplete="off">
+                    <textarea id="userInputBox" type="text" placeholder="Type your message here"></textarea>
+                    <div id="sendButton" type="button" onclick="showChatbotResponse()">
+                        <img src="/static/images/send.png" alt="Send">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="feedbackButtons">
+            <input type="button" value="something">
         </div>
     </div>
+
 {#    <script type="text/javascript">#}
 {#        // empty fetch in the background to wake up my heroku based NLP pipeline API#}
 {#        fetch(`/get_response`, {#}

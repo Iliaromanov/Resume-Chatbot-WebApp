@@ -197,14 +197,14 @@ const createCollapsablesContainer = (titleArr, bodyArr) => {
                 panel.style.border = null
                 panel.style.paddingBottom = null
                 let title = collapsableHeader.innerHTML
-                collapsableHeader.innerHTML = "+" + title.slice(1, title.length)
+                collapsableHeader.innerHTML = "+" + title.slice(1, title.length)  // when closed title has +
                 // scrollPaused = false
             } else {
                 panel.style.maxHeight = panel.scrollHeight + "px"
                 panel.style.border = "1px solid black"
                 panel.style.paddingBottom = "8px"
                 let title = collapsableHeader.innerHTML
-                collapsableHeader.innerHTML = "-" + title.slice(1, title.length)
+                collapsableHeader.innerHTML = "-" + title.slice(1, title.length)  // when open title has -
                 // document.getElementById("chat_history").scrollTo(collapsableHeader.scrollHeight)
                 // scrollPaused = true
             }
