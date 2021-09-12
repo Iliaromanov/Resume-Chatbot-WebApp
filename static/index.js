@@ -140,6 +140,8 @@ function showChatbotResponse() {
                 break;
         }
 
+        rolloutFeedbackButtons();
+
     }).catch((e) => {
         let whoopsTag = document.createElement("p")
         whoopsTag.innerHTML = "Whoops something went wrong :( Please try again."

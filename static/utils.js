@@ -870,6 +870,19 @@ const projectMsgAfter = async (msgId) => {
 }
 
 
+//===================Feedback Buttons Widget======================//
+const rolloutFeedbackButtons = () => {
+    let buttonsDiv = document.getElementById("feedbackButtons");
+
+    // Get rid of display: none
+    document.getElementById("correct").style.display = null;
+    document.getElementById("incorrect").style.display = null;
+
+    // Rollout
+    buttonsDiv.style.maxWidth = "85px";
+}
+
+
 const callToAction = async () => {
 
     await sendMsg(
