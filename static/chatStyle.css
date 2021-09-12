@@ -21,44 +21,77 @@ body {
 }
 #chatbotWindowOuter {
     display: flex;
-
-}
-#feedbackButtons {
-    background-color: aliceblue;
-    width: 20%;
-    height: 10%;
 }
 @media (min-width: 1101px) {
-    #chatbotWindowInner {
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: 10% 80% 10%;
+    #chatbotWindowOuter {
+        display: flex;
         position: absolute;
         height: 90%;
         width: 40%;
         min-width: 500px;
         top: 5%;
         left: 30%;
-        border: 2px solid black;
-        border-radius: 5px 5px 5px 5px;
-        background-color: aliceblue;
     }
 }
 @media (max-width: 1100px) {
-    #chatbotWindowInner {
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: 10% 80% 10%;
+    #chatbotWindowOuter {
+        display: flex;
         position: absolute;
         height: 90%;
         width: 60%;
         min-width: 500px;
         top: 5%;
         left: 20%;
-        border: 2px solid black;
-        border-radius: 5px 5px 5px 5px;
-        background-color: aliceblue;
     }
+}
+#chatbotWindowInner {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 10% 80% 10%;
+    /*height: 90%;*/
+    /*width: 60%;*/
+    min-width: 500px;
+    /*top: 5%;*/
+    /*left: 20%;*/
+    border: 2px solid black;
+    border-radius: 5px 5px 5px 5px;
+    background-color: aliceblue;
+}
+#feedbackButtons {
+    display: flex;
+    justify-content: center;
+    background-color: aliceblue;
+    width: 85px;
+    height: 30px;
+    position: absolute;
+    left: 99%;
+    top: 5%;
+    border-radius: 4px;
+}
+#feedbackButtons > div {
+    /*display: flex;*/
+    /*justify-content: center;*/
+    width: 25px;
+    height: 25px;
+    margin-top: 2px;
+    border-radius: 50%;
+    padding-right: 1px;
+    padding-top: 2px;
+}
+#correct {
+    background-color: green;
+    margin-right: 6px;
+}
+#correct:hover {
+    background-color: #005600;
+    cursor: pointer;
+}
+#incorrect {
+    background-color: red;
+}
+#incorrect:hover {
+    background-color: #be0202;
+    cursor: pointer;
 }
 #navTitle {
     display: grid;

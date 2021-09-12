@@ -29,7 +29,7 @@
 </head>
 <body>
     <div id="chatbotWindowOuter">
-        <div id="chatbotWindowInner">
+        <div id="chatbotWindowInner" style="z-index: 2">
             <nav id="navTitle">
                 <div id="autoScrollContainer" style="position:absolute;">
                     <input type="checkbox" id="autoScroll" checked="true">
@@ -48,8 +48,21 @@
                 </form>
             </div>
         </div>
-        <div id="feedbackButtons">
-            <input type="button" value="something">
+        <div id="feedbackButtons" style="z-index: 1">
+            <div id="correct">
+                <img src="/static/images/checkMark.png" alt="Correct"
+                    width="20px"
+                    height="20px"
+                    style="filter: invert(100%); transform: translateX(3px)"
+                >
+            </div>
+            <div id="incorrect">
+                <img src="/static/images/xMark.png" alt="Correct"
+                    width="20px"
+                    height="20px"
+                    style="filter: invert(100%); transform: translateY(2px) translateX(3px)"
+                >
+            </div>
         </div>
     </div>
 
