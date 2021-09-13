@@ -49,18 +49,20 @@
             </div>
         </div>
         <div id="feedbackButtons" style="z-index: 1">
-            <div id="correct">
+            <div id="correct" style="display: none">
                 <img src="/static/images/checkMark.png" alt="Correct"
                     width="20px"
                     height="20px"
                     style="filter: invert(100%); transform: translateX(3px)"
+                    onclick="toggleFeedbackButtons(true, false)"
                 >
             </div>
-            <div id="incorrect">
+            <div id="incorrect" style="display: none">
                 <img src="/static/images/xMark.png" alt="Correct"
                     width="20px"
                     height="20px"
                     style="filter: invert(100%); transform: translateY(2px) translateX(3px)"
+                    onclick="toggleFeedbackButtons(true, false)"
                 >
             </div>
         </div>

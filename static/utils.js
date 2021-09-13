@@ -871,15 +871,41 @@ const projectMsgAfter = async (msgId) => {
 
 
 //===================Feedback Buttons Widget======================//
-const rolloutFeedbackButtons = () => {
+const toggleFeedbackButtons = async (showThanks, rollout) => {
     let buttonsDiv = document.getElementById("feedbackButtons");
+    let right = document.getElementById("correct");
+    let wrong = document.getElementById("incorrect");
+    console.log(right.style.display)
 
-    // Get rid of display: none
-    document.getElementById("correct").style.display = null;
-    document.getElementById("incorrect").style.display = null;
+    if (rollout) { // this means display is set to "none" so the buttons are hidden
+        // Get rid of display: none
+        right.style.display = null;
+        wrong.style.display = null;
 
-    // Rollout
-    buttonsDiv.style.maxWidth = "85px";
+        // Rollout
+        buttonsDiv.style.maxWidth = "85px";
+    } else { // otherwise the buttons are currently being displayed and must be put away
+        if (showThanks) {
+            right.style.display = "none";
+            wrong.style.display = "none";
+
+            let thanksMsg = document.createElement("p");
+            thanksMsg.style.marginTop = "0";
+            thanksMsg.style.marginLeft = "10px";
+            thanksMsg.style.marginRight = "6px";
+            thanksMsg.style.zIndex = "2";
+            thanksMsg.style.color = "green";
+            thanksMsg.innerHTML = "Thanks!";
+
+            buttonsDiv.appendChild(thanksMsg)
+
+            await sleep(1500)  // display the Thanks msg for 3sec
+            thanksMsg.remove()
+        }
+
+        // Rollback
+        buttonsDiv.style.maxWidth = "0";
+    }
 }
 
 

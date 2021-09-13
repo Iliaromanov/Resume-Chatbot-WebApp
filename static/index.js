@@ -68,6 +68,8 @@ function showChatbotResponse() {
     let responseMsgDiv = responseDivElems[0];
     chatHistoryDiv.appendChild(responseContainer)
 
+    toggleFeedbackButtons(false, false);
+
     fetchChatbotResponse(responseMsgDiv, msg)
       .then((response) => {
         console.log(response)
@@ -140,7 +142,7 @@ function showChatbotResponse() {
                 break;
         }
 
-        rolloutFeedbackButtons();
+        toggleFeedbackButtons(false, true);
 
     }).catch((e) => {
         let whoopsTag = document.createElement("p")
