@@ -543,13 +543,13 @@ const createWorkExperienceWidget = async () => {
                 <li>Built a <b>Convolutional Neural Network</b> model using Keras to classify report pages with <b>>90% prediction
                 accuracy</b>, greatly reducing the number of pages that need to be manually reviewed during report creation.</li>
                 <li>Designed a <b>full-stack web app</b> around the Keras CNN model using JavaScript/jQuery with HTML/CSS for a 
-                dynamic user-friendly frontend, Python, Flask, Tensorflow, and Pandas for the backend which preprocesses image data and 
+                dynamic frontend, Python, Flask, Tensorflow, and Pandas for the backend which preprocesses image data and 
                 applies the Keras CNN model, and Microsoft SQL Server for the database.</li>
                 <li>Wrote Python script using the SpaCy NLP library and threading to parse <b>>1.5 billion rows</b> of unusable 
                 raw text data from a SQL Server database into usable categorical data with <b>94% parsing accuracy</b>.</li>
-                <li style="margin-bottom: 10px">Worked as member of an <b>Agile Scrum</b> team to build several
-                 <b>API microservices</b> using languages, databases, 
-                and tools such as Python, Pandas, Flask, JavaScript, jQuery, MongoDB, Apache Hive, Docker, and Postman.</li>
+                <li style="margin-bottom: 10px">Worked as member of an <b>agile scrum</b> team to build and document several
+                 <b>APIs and microservices</b> utilizing Python, Pandas, Flask, JavaScript, jQuery, 
+                 MongoDB, Apache Hive, Docker, and Postman.</li>
             </ul>
         `)
 
