@@ -1,4 +1,3 @@
-
 //=============Even listener configurations================
 // Ensure page does not refresh on form submit
 let msgForm = document.getElementById("messageForm")
@@ -26,6 +25,16 @@ $("#chat_history").bind("mousewheel", (event) => {
 })
 //=========================================================
 
+// Properties for storing chatbot response info for feedback
+let props = {
+    previousUserMsg: null,
+    previousChatBotResponse: null,
+    currentUserMsg: null,
+    currentChatBotResponse: null,
+    responseProbs: null
+}
+
+
 // Send initial greeting
 sendInitialGreeting();
 
@@ -52,6 +61,8 @@ function showChatbotResponse() {
     console.log(msg)
 
     if (!msg) return;
+
+    props.userMsg = msg;
 
     let sentMsgDiv = document.createElement("div")
     let youMsg = document.createElement("p")
