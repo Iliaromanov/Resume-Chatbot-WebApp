@@ -3,12 +3,14 @@ A web app that uses my Resume Chatbot neural network model to answer questions r
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-05122A?style=flat&logo=JavaScript)
 ![Python](https://img.shields.io/badge/-Python-05122A?style=flat&logo=Python)
-![Flask](https://img.shields.io/badge/-Flask-05122A?style=flat&logo=Flask)&nbsp;
-![Tensorflow](https://img.shields.io/badge/-Tensorflow-05122A?style=flat&logo=Tensorflow)&nbsp;
-![jQuery](https://img.shields.io/badge/-jQuery-05122A?style=flat&logo=jQuery)&nbsp;
-![HTML5](https://img.shields.io/badge/-HTML5-05122A?style=flat&logo=HTML5)&nbsp;
-![NLTK](https://img.shields.io/badge/-NLTK-05122A?style=flat&logo=NLTK)&nbsp;
-![CSS](https://img.shields.io/badge/-CSS-05122A?style=flat&logo=CSS)&nbsp;
+![Flask](https://img.shields.io/badge/-Flask-05122A?style=flat&logo=Flask)
+![Tensorflow](https://img.shields.io/badge/-Tensorflow-05122A?style=flat&logo=Tensorflow)
+![jQuery](https://img.shields.io/badge/-jQuery-05122A?style=flat&logo=jQuery)
+![HTML5](https://img.shields.io/badge/-HTML5-05122A?style=flat&logo=HTML5)
+![NLTK](https://img.shields.io/badge/-NLTK-05122A?style=flat&logo=NLTK)
+![CSS](https://img.shields.io/badge/-CSS-05122A?style=flat&logo=CSS)
+![MongoDB](https://img.shields.io/badge/-MongoDB-05122A?style=flat&logo=MongoDB)
+
 
 <!-- You can check out a limited functionality demo version of this project <a href="https://iliabot.herokuapp.com ">here</a>! -->
 
