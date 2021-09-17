@@ -3,6 +3,7 @@ import pickle
 from flask import Flask, render_template, request, logging
 import requests
 import os
+from pymongo import MongoClient
 
 import numpy as np
 
@@ -52,6 +53,22 @@ def get_response():
         "top_category": top_category,
         "chatbot_response": response
     }
+
+
+@app.route("/store_feedback", methods=['POST'])
+def store_feedback():
+    """
+    Stores feedback in MongoDB
+    """
+    password = os.environ.get("ILIABOT_MONGO_PASS")
+    client = MongoClient(
+        f"mongodb+srv://ilibotMongo:{password}@iliabot.a2hry.mongodb.net/iliabotFeedback?retryWrites=true&w=majority"
+    )
+    db = client.get_database('iliabotFeedback')
+    feedback_collection = db.feedbackInfo
+    feedback_collection.insert_one(request.json)
+
+    return "success"
 
 
 if __name__ == "__main__":

@@ -875,7 +875,6 @@ const toggleFeedbackButtons = async (showThanks, rollout) => {
     let buttonsDiv = document.getElementById("feedbackButtons");
     let right = document.getElementById("correct");
     let wrong = document.getElementById("incorrect");
-    console.log(right.style.display)
 
     if (rollout) { // this means display is set to "none" so the buttons are hidden
         // Get rid of display: none
@@ -908,6 +907,14 @@ const toggleFeedbackButtons = async (showThanks, rollout) => {
     }
 }
 
+const storeFeedback = async () => {
+    await fetch('/store_feedback', {
+        method: "POST",
+        body: JSON.stringify(feedbackInfo),
+        headers: {'Content-Type': 'application/json; charset=UTF-8'}
+
+    })
+}
 
 const callToAction = async () => {
 

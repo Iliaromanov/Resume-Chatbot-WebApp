@@ -26,11 +26,11 @@ $("#chat_history").bind("mousewheel", (event) => {
 //=========================================================
 
 // Properties for storing chatbot response info for feedback
-let props = {
-    previousUserMsg: null,
-    previousChatBotResponse: null,
-    currentUserMsg: null,
-    currentChatBotResponse: null,
+let feedbackInfo = {
+    prevUserMsg: null,
+    prevBotResponse: null,
+    curUserMsg: null,
+    curBotResponse: null,
     responseProbs: null
 }
 
@@ -62,8 +62,6 @@ function showChatbotResponse() {
 
     if (!msg) return;
 
-    props.userMsg = msg;
-
     let sentMsgDiv = document.createElement("div")
     let youMsg = document.createElement("p")
     youMsg.innerHTML = msg
@@ -89,8 +87,9 @@ function showChatbotResponse() {
         loadingGif.remove()
 
         return response.json()
-    }).then((data) => {
-        let probs = data.top_three_predictions
+    }).then(async (data) => {
+        let probs = data.top_three_predictions;
+        let botResponseText = data.chatbot_response;
         let probsStr = JSON.stringify(probs)
             .split(',').join(' ')
             .replaceAll('"', '')
@@ -102,7 +101,7 @@ function showChatbotResponse() {
         predictionsElem.innerHTML = probsStr
 
         let botMsg = document.createElement("p")
-        botMsg.innerHTML = data.chatbot_response
+        botMsg.innerHTML = botResponseText;
         responseMsgDiv.appendChild(botMsg)
 
         responseContainer.appendChild(responseMsgDiv)
@@ -117,41 +116,59 @@ function showChatbotResponse() {
         switch (data.top_category) {
             case "skills":
                 responseContainer.remove() // this container was only used to display loading gif while fetching
-                createSkillsWidget();
+                await createSkillsWidget();
+                botResponseText = document.querySelector("#skillsMsgBefore").innerHTML;
                 break;
             case "experience":
                 responseContainer.remove()
-                createWorkExperienceWidget()
+                await createWorkExperienceWidget()
+                botResponseText = document.querySelector("#experienceMsgBefore").innerHTML;
                 break;
             case "projects":
                 responseContainer.remove()
-                createProjectsWidget();
+                await createProjectsWidget();
+                botResponseText = document.querySelector("#projectsMsgBefore").innerHTML;
                 break;
             case "education":
                 responseContainer.remove()
-                createEducationWidget();
+                await createEducationWidget();
+                botResponseText = document.querySelector("#educationMsgBefore").innerHTML;
                 break;
             case "Desktop-Controller":
                 responseContainer.remove()
-                createDesktopControllerWidget()
+                await createDesktopControllerWidget()
+                botResponseText = document.querySelector("#controllerMsgBefore").innerHTML;
                 break;
             case "about_chatbot":
                 responseContainer.remove()
-                createIliaBotWidget()
+                await createIliaBotWidget()
+                botResponseText = document.querySelector("#IliaBotMsgBefore").innerHTML;
                 break;
             case "Stock-Trade":
                 responseContainer.remove()
-                createStockTradeWidget()
+                await createStockTradeWidget()
+                botResponseText = document.querySelector("#stockTradeMsgBefore").innerHTML;
                 break;
             case "Door-Detection":
                 responseContainer.remove()
-                createDoorDetectionWidget()
+                await createDoorDetectionWidget()
+                botResponseText = document.querySelector("#doorDetectionMsgBefore").innerHTML;
                 break;
             case "show_resume":
                 responseContainer.remove()
-                createResumeWidget()
+                await createResumeWidget()
+                botResponseText = document.querySelector("#resumeMsgBefore").innerHTML;
                 break;
         }
+
+        // update props for feedback info
+        feedbackInfo.prevUserMsg = feedbackInfo.curUserMsg;
+        feedbackInfo.prevBotResponse = feedbackInfo.curBotResponse;
+        feedbackInfo.curUserMsg = msg;
+        feedbackInfo.curBotResponse = botResponseText;
+        feedbackInfo.responseProbs = probs;
+
+        console.log(feedbackInfo)
 
         toggleFeedbackButtons(false, true);
 
