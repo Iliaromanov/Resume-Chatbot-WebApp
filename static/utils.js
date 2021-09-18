@@ -203,6 +203,13 @@ const createCollapsablesContainer = (titleArr, bodyArr) => {
                 panel.style.maxHeight = panel.scrollHeight + "px"
                 panel.style.border = "1px solid black"
                 panel.style.paddingBottom = "8px"
+
+                // special case for work experience widget
+                if (panel.parentElement.id == "experienceWidget") {
+                    console.log("yes")
+                    panel.style.paddingBottom = "11px"
+                }
+
                 let title = collapsableHeader.innerHTML
                 collapsableHeader.innerHTML = "-" + title.slice(1, title.length)  // when open title has -
                 // document.getElementById("chat_history").scrollTo(collapsableHeader.scrollHeight)
