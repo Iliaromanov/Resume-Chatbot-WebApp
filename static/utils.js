@@ -206,7 +206,6 @@ const createCollapsablesContainer = (titleArr, bodyArr) => {
 
                 // special case for work experience widget
                 if (panel.parentElement.id == "experienceWidget") {
-                    console.log("yes")
                     panel.style.paddingBottom = "11px"
                 }
 
@@ -634,7 +633,7 @@ const createResumeWidget = async () => {
             </div>
         `).appendTo('#chat_history')
 
-        console.log("resume widget created")
+        // console.log("resume widget created")
     }
 }
 
