@@ -23,6 +23,8 @@ You can also checkout the code for the NLP pipeline API I made as a microservice
 <!--To embed just the chat window (exclude background) use: <iframe src="https://www.xkcd.com/#chatbot_window"></iframe>-->
 
 
+*Note: This web app works best on Google Chrome, Firefox, or Microsoft Edge. (currently working on improving the UI on Safari)*
+
 <!-- ## Why? -->
 
 
