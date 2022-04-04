@@ -538,24 +538,26 @@ const createWorkExperienceWidget = async () => {
         )
 
         let opta = $(`
-            <p style="font-size: 17.5px">
-                Worked as a Software Developer Co-op at 
-                <a href="https://optaintel.ca/" target="_blank" style="text-decoration: none; color: black">
-                Opta Information Intelligence</a> (May 2021 - Aug 2021)
-            </p>
+<!--            <p style="font-size: 17.5px">-->
+<!--                Worked as a Software Developer Co-op at -->
+<!--                <a href="https://optaintel.ca/" target="_blank" style="text-decoration: none; color: black">-->
+<!--                Opta Information Intelligence</a> (May 2021 - Aug 2021)-->
+<!--            </p>-->
             
-            <b>Notable Projects:</b>
+            <b style="font-size: 13.5px"><b style="font-size: 15.5px">Software Developer Co-op</b><br>
+            <a href="https://optaintel.ca/" target="_blank" style="text-decoration: none; color: black"> 
+            (Opta Information Intelligence</a> May-Aug 2021)</b>
             <ul style="margin-top: -0.1px; margin-bottom: 10px; font-size: 15.5px; list-style-position: outside; padding-left: 1em;">
                 <li>Built a <b>Convolutional Neural Network</b> model using Keras to classify report pages with <b>>90% prediction
-                accuracy</b>, greatly reducing the number of pages that need to be manually reviewed during report creation.</li>
-                <li>Designed a <b>full-stack web app</b> around the Keras CNN model using JavaScript/jQuery with HTML/CSS for a 
+                accuracy</b>.</li>
+                <li>Designed a <b>full-stack web app</b> around the Keras CNN model using JavaScript/jQuery for a 
                 dynamic frontend, Python, Flask, Tensorflow, and Pandas for the backend which preprocesses image data and 
-                applies the Keras CNN model, and Microsoft SQL Server for the database.</li>
-                <li>Wrote Python script using the SpaCy NLP library and threading to parse <b>>1.5 billion rows</b> of unusable 
+                applies the Keras CNN model.</li>
+                <li style="margin-bottom: 10px">Wrote Python script using the SpaCy NLP library and threading to parse <b>>1.5 billion rows</b> of unusable 
                 raw text data from a SQL Server database into usable categorical data with <b>94% parsing accuracy</b>.</li>
-                <li style="margin-bottom: 10px">Worked as member of an <b>agile scrum</b> team to build and document several
-                 <b>APIs and microservices</b> utilizing Python, Pandas, Flask, JavaScript, jQuery, 
-                 MongoDB, Apache Hive, Docker, and Postman.</li>
+<!--                <li style="margin-bottom: 10px">Worked as member of an <b>agile scrum</b> team to build and document several-->
+<!--                 <b>APIs and microservices</b> utilizing Python, Flask, JavaScript, jQuery, with-->
+<!--                 MongoDB and Docker.</li>-->
             </ul>
         `)
 
