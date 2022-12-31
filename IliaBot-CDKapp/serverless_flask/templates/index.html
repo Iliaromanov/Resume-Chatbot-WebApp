@@ -18,8 +18,8 @@
     <meta name="author" content="Ilia Romanov" />
 
     <title>Ilia's Resume Chatbot</title>
-    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico" />
-    <link href="/static/chatStyle.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/public/images/favicon.ico" />
+    <link href="/public/chatStyle.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
 {#    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">#}
     <!-- Include jQuery-->
@@ -43,14 +43,14 @@
                 <form id="messageForm" onsubmit="showChatbotResponse()" autocomplete="off">
                     <textarea id="userInputBox" type="text" placeholder="Type your message here"></textarea>
                     <div id="sendButton" type="button" onclick="showChatbotResponse()">
-                        <img src="/static/images/send.png" alt="Send">
+                        <img src="/public/images/send.png" alt="Send">
                     </div>
                 </form>
             </div>
         </div>
         <div id="feedbackButtons" style="z-index: 1">
             <div id="correct" style="display: none">
-                <img src="/static/images/checkMark.png" alt="Correct"
+                <img src="/public/images/checkMark.png" alt="Correct"
                     width="20px"
                     height="20px"
                     style="filter: invert(100%); transform: translateX(3px)"
@@ -58,7 +58,7 @@
                 >
             </div>
             <div id="incorrect" style="display: none">
-                <img src="/static/images/xMark.png" alt="Correct"
+                <img src="/public/images/xMark.png" alt="Correct"
                     width="20px"
                     height="20px"
                     style="filter: invert(100%); transform: translateY(2px) translateX(3px)"
@@ -67,16 +67,7 @@
             </div>
         </div>
     </div>
-
-{#    <script type="text/javascript">#}
-{#        // empty fetch in the background to wake up my heroku based NLP pipeline API#}
-{#        fetch(`/get_response`, {#}
-{#            method: "POST",#}
-{#            body: JSON.stringify({msg: "hi"}),#}
-{#            headers: {'Content-Type': 'application/json;'}#}
-{#        }).then((response) => {console.log("Loaded API")});#}
-{#    </script>#}
-    <script type="text/javascript" src="{{ url_for('static', filename='utils.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('public', filename='utils.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('public', filename='index.js') }}"></script>
 </body>
 </html>
