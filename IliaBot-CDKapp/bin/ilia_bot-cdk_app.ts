@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import { IliaBotCdKappStack } from '../lib/ilia_bot-cd_kapp-stack';
+import { IliaBotCDKappStack } from '../lib/ilia_bot-cdk_app-stack';
 
 const app = new cdk.App();
-new IliaBotCdKappStack(app, 'IliaBotCdKappStack', {
+new IliaBotCDKappStack(app, 'IliaBotCDKappStack', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
    * but a single synthesized template can be deployed anywhere. */
