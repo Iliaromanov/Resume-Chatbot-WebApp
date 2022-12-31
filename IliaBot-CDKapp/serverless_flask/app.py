@@ -4,6 +4,6 @@ app = Blueprint(
     "IliaBotApp",
     __name__,
     template_folder="./templates",
-    static_folder="./styles",
+    static_folder="./public",
 )
 
