@@ -9,7 +9,6 @@ requests = "*"
 apig-wsgi = "*"
 certifi = "*"
 cryptography = "*"
-tensorflow = "*"
 pymongo = "*"
 numpy = "*"
 
@@ -19,7 +18,7 @@ flake8 = "*"
 black = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
 
 [pipenv]
 allow_prereleases = true
