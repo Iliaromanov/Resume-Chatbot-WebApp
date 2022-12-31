@@ -49,7 +49,7 @@ const MAX_RPS = 100;
 const MAX_RPS_BUCKET_SIZE = 1000;
 
 
-export class IliaBotCdKappStack extends cdk.Stack {
+export class IliaBotCDKappStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
