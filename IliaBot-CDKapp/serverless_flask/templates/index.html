@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+
+    <meta name="description" content="IliaBOT - Ilia's Resume Chatbot" />
+    <meta name="title" property="og:title" content="IliaBOT" />
+    <meta property="og:type" content="Website" />
+    <meta name="image"
+          property="og:image"
+          content="https://cdn.dribbble.com/users/37530/screenshots/2937858/drib_blink_bot.gif"
+    />
+    <meta name="description"
+          property="og:description"
+          content="Resume Chatbot web app for getting insights on Ilia and his resume"
+    />
+    <meta name="author" content="Ilia Romanov" />
+
+    <title>Ilia's Resume Chatbot</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico" />
+    <link href="/static/chatStyle.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+{#    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">#}
+    <!-- Include jQuery-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+</head>
+<body>
+    <div id="chatbotWindowOuter">
+        <div id="chatbotWindowInner" style="z-index: 2">
+            <nav id="navTitle">
+                <div id="autoScrollContainer" style="position: absolute; left: 0">
+                    <input type="checkbox" id="autoScroll" checked="true">
+                    <label for="autoScroll">Auto-Scroll</label>
+                </div>
+                <h1>IliaBOT</h1>
+                <p id="prediction"></p>
+            </nav>
+            <div id="chat_history"></div>
+            <div id="input_window">
+                <form id="messageForm" onsubmit="showChatbotResponse()" autocomplete="off">
+                    <textarea id="userInputBox" type="text" placeholder="Type your message here"></textarea>
+                    <div id="sendButton" type="button" onclick="showChatbotResponse()">
+                        <img src="/static/images/send.png" alt="Send">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="feedbackButtons" style="z-index: 1">
+            <div id="correct" style="display: none">
+                <img src="/static/images/checkMark.png" alt="Correct"
+                    width="20px"
+                    height="20px"
+                    style="filter: invert(100%); transform: translateX(3px)"
+                    onclick="toggleFeedbackButtons(true, false)"
+                >
+            </div>
+            <div id="incorrect" style="display: none">
+                <img src="/static/images/xMark.png" alt="Correct"
+                    width="20px"
+                    height="20px"
+                    style="filter: invert(100%); transform: translateY(2px) translateX(3px)"
+                    onclick="toggleFeedbackButtons(true, false); storeFeedback()"
+                >
+            </div>
+        </div>
+    </div>
+
+{#    <script type="text/javascript">#}
+{#        // empty fetch in the background to wake up my heroku based NLP pipeline API#}
+{#        fetch(`/get_response`, {#}
+{#            method: "POST",#}
+{#            body: JSON.stringify({msg: "hi"}),#}
+{#            headers: {'Content-Type': 'application/json;'}#}
+{#        }).then((response) => {console.log("Loaded API")});#}
+{#    </script>#}
+    <script type="text/javascript" src="{{ url_for('static', filename='utils.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>
