@@ -89,7 +89,7 @@ export class IliaBotCDKappStack extends cdk.Stack {
     let webappLambda = new lambda.Function(this, "IliaBotLambda", {
       functionName: `stock-trade-lambda-${stageName}`,
       code: lambda.Code.fromAsset(__dirname + "/../build-python",), // created in Makefile
-      runtime: lambda.Runtime.PYTHON_3_8,
+      runtime: lambda.Runtime.PYTHON_3_7,
       handler: "serverless_flask.lambda.lambda_handler",
       role: lambdaRole,
       timeout: Duration.seconds(30),
