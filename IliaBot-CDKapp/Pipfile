@@ -1,0 +1,24 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+requests = "*"
+apig-wsgi = "*"
+certifi = "*"
+cryptography = "*"
+pymongo = "*"
+numpy = "*"
+
+[dev-packages]
+pytest = "*"
+flake8 = "*"
+black = "*"
+
+[requires]
+python_version = "3.8"
+
+[pipenv]
+allow_prereleases = true
