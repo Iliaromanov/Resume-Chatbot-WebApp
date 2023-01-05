@@ -1,0 +1,11 @@
+[Unit]
+Description=Gunicorn instance for a iliabot web app
+After=network.target
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/IliaBot
+ExecStart=/home/ubuntu/IliaBot/iliabot-venv/bin/gunicorn -b localhost:8000 app:app
+Restart=always
+[Install]
+WantedBy=multi-user.target
