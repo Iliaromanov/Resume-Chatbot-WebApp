@@ -1,0 +1,5 @@
+# commands to launch iliabot service defined in ./iliabot.service on ec2
+
+sudo systemctl daemon-reload
+sudo systemctl start iliabot
+sudo systemctl enable iliabot
