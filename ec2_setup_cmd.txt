@@ -6,3 +6,6 @@ sudo systemctl enable iliabot
 # commands to launch nginx to make the gunicorn instance publicly accessable
 sudo systemctl start nginx
 sudo systemctl enable nginx
+
+# after configuring /etx/nginx/sites-available/default
+sudo systemctl restart nginx
