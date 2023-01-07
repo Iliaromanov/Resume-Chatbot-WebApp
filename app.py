@@ -35,6 +35,7 @@ def get_response():
         "known_words": words
     }
     response = requests.post(url, json=payload).json()
+    response = response["body"]
     bag = response["bag"]
 
     result = model.predict(np.array([bag]))[0]
