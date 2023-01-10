@@ -30,7 +30,7 @@ You can also checkout the code for the NLP pipeline API I made as a microservice
 
 ## Usage
 
-Follow this link to have a chat with IliaBOT: https://iliabot.herokuapp.com
+You can go <a href="http://3.143.0.66/ ">here</a> to have a chat with IliaBOT!
 
 Currently, IliaBOT will prompt users to get insights on the main features of my resume such as Skills, Work Experience, Projects, and Education right as the users land on the web page, and users are able to go through those sections without having to send a single direct chat message!
 
