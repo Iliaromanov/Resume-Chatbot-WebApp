@@ -9,3 +9,9 @@ sudo systemctl enable nginx
 
 # after configuring /etx/nginx/sites-available/default
 sudo systemctl restart nginx
+
+
+# if made changes to app.py or gunicorn config, then run the following commands
+#  for the changes to take effect
+sudo systemctl daemon-reload
+sudo systemctl restart gunicorn
