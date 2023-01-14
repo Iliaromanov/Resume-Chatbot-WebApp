@@ -561,32 +561,58 @@ const createWorkExperienceWidget = async () => {
             </ul>
         `)
 
-        let skills = $(`
-            <b style="text-align: center">Tech Used:</b>
-            <div class="skillsChipsContainer" style="padding: 8px">
-                <div class="skillChip">Python</div><div class="skillChip">JavaScript</div><div class="skillChip">Flask</div>
-                <div class="skillChip">Pandas</div><div class="skillChip">NumPy</div>
-                <div class="skillChip">Tensorflow</div><div class="skillChip">Keras</div><div class="skillChip">SpaCy</div>
-                <div class="skillChip">jQuery</div><div class="skillChip">HTML5</div><div class="skillChip">CSS</div>
-                
-                <div class="skillChip">Microsoft SQL Server</div><div class="skillChip">MongoDB</div>
-                <div class="skillChip">Apache Hive</div><div class="skillChip">Oracle Database</div>
-                
-                <div class="skillChip">Postman</div><div class="skillChip">Docker</div>
-                <div class="skillChip">Jira</div><div class="skillChip">Bitbucket</div>
-                <div class="skillChip">Jupyter Notebook</div><div class="skillChip">Git</div>
-            </div>
+        let esentire = $(`
+            <b style="font-size: 13.5px"><b style="font-size: 15.5px">Software Developer Co-op</b><br>
+            <a href="https://www.esentire.com/" target="_blank" style="text-decoration: none; color: black"> 
+            (eSentire Inc.</a> Jan-Apr 2022)</b>
+            <ul style="margin-top: -0.1px; margin-bottom: 10px; font-size: 15.5px; list-style-position: outside; padding-left: 1em;">
+                <li> Implemented concurrent self-invocations in <b>Python based AWS Lambda</b>, raising computation speed by <b>400%</b>.</li>
+                <li> Migrated two large scale <b>Python Flask REST APIs</b> to use <b>API Gateway</b> triggered <b>AWS Lambdas</b>, including database components
+                using <b>DynamoDB</b>, <b>Terraform</b> code, and <b>Docker</b> files for deployment.</li>
+                <li> Ensured <b>95% unit test coverage</b> across several <b>Python backend APIs and SDKs</b> using <b>PyTest</b>.</li>
+                <li style="margin-bottom: 10px">Wrote report on integrating <b>OAuth 2.0</b> with existing internal API for user authentication..</li>
+            </ul>
         `)
 
+        let sidefx = $(`
+            <b style="font-size: 13.5px"><b style="font-size: 15.5px">Software Developer Co-op</b><br>
+            <a href="https://www.sidefx.com/" target="_blank" style="text-decoration: none; color: black"> 
+            (SideFX Inc.</a> Sep-Dec 2022)</b>
+            <ul style="margin-top: -0.1px; margin-bottom: 10px; font-size: 15.5px; list-style-position: outside; padding-left: 1em;">
+                <li> Built tool for automated virtual environment creation using <b>Python</b> to improve machine learning workflows.</li>
+                <li> Added grouping functionality to task distribution tool using <b>C++</b> and thread safe data structures from <b>TBB</b> template library.</li>
+                <li> Restored <b>PyTorch</b> GAN model and associated data pipeline to simulate 3D terrain erosion with <b>90% accuracy</b>.</li>
+                <li style="margin-bottom: 10px"> Implemented features for desktop app GUI, writing interconnected <b>Python</b> and <b>C++</b> modules using <b>Qt</b>.</li>
+            </ul>
+        `)
+
+        // let skills = $(`
+        //     <b style="text-align: center">Tech Used:</b>
+        //     <div class="skillsChipsContainer" style="padding: 8px">
+        //         <div class="skillChip">Python</div><div class="skillChip">JavaScript</div><div class="skillChip">Flask</div>
+        //         <div class="skillChip">Pandas</div><div class="skillChip">NumPy</div>
+        //         <div class="skillChip">Tensorflow</div><div class="skillChip">Keras</div><div class="skillChip">SpaCy</div>
+        //         <div class="skillChip">jQuery</div><div class="skillChip">HTML5</div><div class="skillChip">CSS</div>
+                
+        //         <div class="skillChip">Microsoft SQL Server</div><div class="skillChip">MongoDB</div>
+        //         <div class="skillChip">Apache Hive</div><div class="skillChip">Oracle Database</div>
+                
+        //         <div class="skillChip">Postman</div><div class="skillChip">Docker</div>
+        //         <div class="skillChip">Jira</div><div class="skillChip">Bitbucket</div>
+        //         <div class="skillChip">Jupyter Notebook</div><div class="skillChip">Git</div>
+        //     </div>
+        // `)
         // if (window.innerHeight >= 880) {
         //     skills.appendTo(opta)
         // }
 
         let experienceWidget = createCollapsablesContainer(
             [
-                "+  Software Developer Co-op"
+                "+  Pipeline Developer Co-op (SideFX)",
+                "+  Software Developer Co-op (eSentire)",
+                "+  Software Developer Co-op (Opta Intel)",
             ],
-            [opta]
+            [sidefx, esentire, opta]
         )
         experienceWidget.id = "experienceWidget"
 
