@@ -10,6 +10,7 @@ A web app that uses my Resume Chatbot neural network model to answer questions r
 ![NLTK](https://img.shields.io/badge/-NLTK-05122A?style=flat&logo=NLTK)
 ![CSS](https://img.shields.io/badge/-CSS-05122A?style=flat&logo=CSS)
 ![MongoDB](https://img.shields.io/badge/-MongoDB-05122A?style=flat&logo=MongoDB)
+![AWS](https://img.shields.io/badge/-AWS-05122A?style=flat&logo=AWS)
 
 
 <!-- You can check out a limited functionality demo version of this project <a href="https://iliabot.herokuapp.com ">here</a>! -->
