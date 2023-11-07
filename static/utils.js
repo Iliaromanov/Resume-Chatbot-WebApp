@@ -463,16 +463,21 @@ const createEducationWidget = async () => {
             <p style="font-size: 17.5px"><b>Bachelor of Computer Science (BCS) Sep 2020 - Apr 2025</b></p>
             <b>Achievements:</b>
             <ul style="margin-top: -0.1px">
-                <li>Cumulative GPA: 94.1%</li>
-                <li>Term Distinction: Fall 2020, Winter 2021</li>
+                <li>Cumulative GPA: 91%</li>
+                <li>Term Distinction: Fall 2020, Winter 2021, Spring 2022, Winter 2023</li>
                 <li>Presidents Scholarship of Distinction recipient</li>
+                <li>International Experience Award recipient</li>
             </ul>
             <b>Notable Courses:</b>
             <ul style="margin-top: -0.1px">
+                <li>Algorithms (C++)</li>
+                <li>Data Structures (C++)</li>
+                <li>Machine Learning (Python, Scikit-Learn, Numpy, Pandas)</li>
+                <li>Computer Networks (Java, Docker)</li>
+                <li>Databases (SQL)</li>
                 <li>Object-Oriented Software Development (C++, Unix)</li>
-                <li>Elementary Algorithm Design and Data Abstraction (C)</li>
-                <li>Designing Functional Programs (Racket)</li>
-                <li>Probability (R)</li>
+                <li>Functional Programming (Racket)</li>
+                <li>Statistics (R)</li>
                 <li>Computer Organization and Design (ARMv8, C)</li>
             </ul>
             
@@ -530,12 +535,6 @@ const createWorkExperienceWidget = async () => {
         )
 
         let opta = $(`
-<!--            <p style="font-size: 17.5px">-->
-<!--                Worked as a Software Developer Co-op at -->
-<!--                <a href="https://optaintel.ca/" target="_blank" style="text-decoration: none; color: black">-->
-<!--                Opta Information Intelligence</a> (May 2021 - Aug 2021)-->
-<!--            </p>-->
-            
             <b style="font-size: 13.5px"><b style="font-size: 15.5px">Software Developer Co-op</b><br>
             <a href="https://optaintel.ca/" target="_blank" style="text-decoration: none; color: black"> 
             (Opta Information Intelligence</a> May-Aug 2021)</b>
@@ -554,7 +553,7 @@ const createWorkExperienceWidget = async () => {
         `)
 
         let esentire = $(`
-            <b style="font-size: 13.5px"><b style="font-size: 15.5px">Software Developer Co-op</b><br>
+            <b style="font-size: 13.5px"><b style="font-size: 15.5px">Backend Developer Co-op</b><br>
             <a href="https://www.esentire.com/" target="_blank" style="text-decoration: none; color: black"> 
             (eSentire Inc.</a> Jan-Apr 2022)</b>
             <ul style="margin-top: -0.1px; margin-bottom: 10px; font-size: 15.5px; list-style-position: outside; padding-left: 1em;">
@@ -567,7 +566,7 @@ const createWorkExperienceWidget = async () => {
         `)
 
         let sidefx = $(`
-            <b style="font-size: 13.5px"><b style="font-size: 15.5px">Software Developer Co-op</b><br>
+            <b style="font-size: 13.5px"><b style="font-size: 15.5px">CG Pipeline Developer Co-op</b><br>
             <a href="https://www.sidefx.com/" target="_blank" style="text-decoration: none; color: black"> 
             (SideFX Inc.</a> Sep-Dec 2022)</b>
             <ul style="margin-top: -0.1px; margin-bottom: 10px; font-size: 15.5px; list-style-position: outside; padding-left: 1em;">
@@ -578,33 +577,26 @@ const createWorkExperienceWidget = async () => {
             </ul>
         `)
 
-        // let skills = $(`
-        //     <b style="text-align: center">Tech Used:</b>
-        //     <div class="skillsChipsContainer" style="padding: 8px">
-        //         <div class="skillChip">Python</div><div class="skillChip">JavaScript</div><div class="skillChip">Flask</div>
-        //         <div class="skillChip">Pandas</div><div class="skillChip">NumPy</div>
-        //         <div class="skillChip">Tensorflow</div><div class="skillChip">Keras</div><div class="skillChip">SpaCy</div>
-        //         <div class="skillChip">jQuery</div><div class="skillChip">HTML5</div><div class="skillChip">CSS</div>
-                
-        //         <div class="skillChip">Microsoft SQL Server</div><div class="skillChip">MongoDB</div>
-        //         <div class="skillChip">Apache Hive</div><div class="skillChip">Oracle Database</div>
-                
-        //         <div class="skillChip">Postman</div><div class="skillChip">Docker</div>
-        //         <div class="skillChip">Jira</div><div class="skillChip">Bitbucket</div>
-        //         <div class="skillChip">Jupyter Notebook</div><div class="skillChip">Git</div>
-        //     </div>
-        // `)
-        // if (window.innerHeight >= 880) {
-        //     skills.appendTo(opta)
-        // }
+        let capitalone = $(`
+            <b style="font-size: 13.5px"><b style="font-size: 15.5px">Software Engineer Intern</b><br>
+            <a href="https://www.sidefx.com/" target="_blank" style="text-decoration: none; color: black"> 
+            (SideFX Inc.</a> Sep-Dec 2022)</b>
+            <ul style="margin-top: -0.1px; margin-bottom: 10px; font-size: 15.5px; list-style-position: outside; padding-left: 1em;">
+                <li> Built tool for automated virtual environment creation using <b>Python</b> to improve machine learning workflows.</li>
+                <li> Added grouping functionality to task distribution tool using <b>C++</b> and thread safe data structures from <b>TBB</b> template library.</li>
+                <li> Restored <b>PyTorch</b> GAN model and associated data pipeline to simulate 3D terrain erosion with <b>90% accuracy</b>.</li>
+                <li style="margin-bottom: 10px"> Implemented features for desktop app GUI, writing interconnected <b>Python</b> and <b>C++</b> modules using <b>Qt</b>.</li>
+            </ul>
+        `)
 
         let experienceWidget = createCollapsablesContainer(
             [
+                "+  Software Engineer Intern (Capital One)",
                 "+  Pipeline Developer Co-op (SideFX)",
-                "+  Software Developer Co-op (eSentire)",
+                "+  Backend Developer Co-op (eSentire)",
                 "+  Software Developer Co-op (Opta Intel)",
             ],
-            [sidefx, esentire, opta]
+            [capitalone, sidefx, esentire, opta]
         )
         experienceWidget.id = "experienceWidget"
 
