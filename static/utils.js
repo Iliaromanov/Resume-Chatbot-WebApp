@@ -392,14 +392,14 @@ const createSkillsWidget = async () => {
         let langs = $(`
             <div class="skillsChipsContainer" style="padding: 8px">
                 <div class="skillChip">Python</div><div class="skillChip">C++</div><div class="skillChip">Go</div><div class="skillChip">JavaScript</div>
-                <div class="skillChip">HTML/CSS</div>
+                <div class="skillChip">Java</div><div class="skillChip">HTML/CSS</div>
             </div>
         `)
 
         let libsAndFrameworks = $(`
             <div class="skillsChipsContainer" style="padding: 8px">
                 <div class="skillChip">Flask</div><div class="skillChip">FastAPI</div>
-                <div class="skillChip">React.js</div>
+                <div class="skillChip">React</div>
                 <div class="skillChip">jQuery</div><div class="skillChip">Tensorflow</div>
                 <div class="skillChip">Keras</div><div class="skillChip">Pandas</div>
                 <div class="skillChip">NumPy</div><div class="skillChip">Matplotlib</div><div class="skillChip">OpenCV</div>
@@ -410,7 +410,7 @@ const createSkillsWidget = async () => {
         let toolsAndOtherTech = $(`
             <div class="skillsChipsContainer" style="padding: 8px">
                 <div class="skillChip">Git</div><div class="skillChip">AWS</div>
-                <div class="skillChip">SQL</div><div class="skillChip">NoSQL</div>
+                <div class="skillChip">Docker</div><div class="skillChip">SQL</div>
                 <div class="skillChip">Postman</div>
             </div>
         `)
